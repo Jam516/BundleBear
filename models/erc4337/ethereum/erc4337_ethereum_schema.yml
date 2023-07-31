@@ -1,0 +1,87 @@
+version: 2
+
+models:
+
+  - name: erc4337_ethereum_entrypoint_call_innerhandleop
+    meta:
+      blockchain: ethereum
+      sector: erc4337
+    description: "Entrypoint innerHandleOp() calls on Ethereum"
+    columns:
+      - &call_block_number
+        name: call_block_number
+        description: "block number of the call"
+      - &call_block_time
+        name: call_block_time
+        description: "block time of the call"
+      - &call_tx_hash
+        name: call_tx_hash
+        description: "transaction hash"
+      - &callData
+        name: callData
+        description: "data included in the contract call"
+      - &op_hash
+        name: op_hash
+        description: "unique hash of the userop"
+      - &opInfo
+        name: opInfo
+        description: "userOperation parameters"
+      - &contract_address
+        name: contract_address
+        description: "the address of the entrypoint"
+      - &call_success
+        name: call_success
+        description: "the status of the call"
+      - &call_trace_address
+        name: call_trace_address
+        description: "address of the trace within the call graph forest"
+      - &params
+        name: params
+        description: "parameters of the trace"
+      - &output
+        name: output
+        description: "output data of the trace"
+
+  - name: erc4337_ethereum_userops
+    meta:
+      blockchain: ethereum
+      sector: erc4337
+    description: "ERC-4337 UserOperations on Ethereum"
+    columns:
+      - &bundle_tx_hash
+        name: bundle_tx_hash
+        description: "transaction hash of the bundle"
+      - *op_hash
+      - &block_time
+        name: block_time
+        description: "block time of the userop"
+      - &chain
+        name: chain
+        description: "chain/L2 where userop was executed"
+      - &sender
+        name: sender
+        description: "the smart account that submmited the userop"
+      - &bundler
+        name: bundler
+        description: "the bundler that bundled the userop"
+      - &bundler_name
+        name: bundler_name
+        description: "name of the entity that operates the bundler"
+      - &paymaster
+        name: paymaster
+        description: "the paymaster of the userop"
+      - &paymaster_name
+        name: paymaster_name
+        description: "name of the entity that operates the paymaster"
+      - &called_contract
+        name: called_contract
+        description: "the address of the contract the userop is calling (if any)"
+      - &functions_called
+        name: functions_called
+        description: "the selector of the contract function called by the userop (if any)"
+      - &actualgascost
+        name: actualGasCost
+        description: "actual amount paid (by account or paymaster) for this UserOperation"
+      - &actualgascost_usd
+        name: actualgascost_usd
+        description: "actualGasCost in usd"

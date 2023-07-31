@@ -10,7 +10,7 @@ with op as (
         SELECT 
             OPINFO:"mUserOp"."sender"::STRING as sender
             , OPINFO:"mUserOp"."paymaster"::STRING as paymaster
-            , OPINFO:"userOpHash" as op_hash
+            , op_hash
             , common.udfs.js_hextoint_secure(output)/1e18 as output_actualGasCost
             , call_tx_hash
             , call_block_time
@@ -73,8 +73,8 @@ SELECT
       end as called_contract
     , case when INPUT != '0x0000000000000000000000000000000000000000' then LEFT(INPUT,10)
       else 'eth_transfer' end as functions_called
-    , output_actualGasCost as actualGasCost
-    , output_actualGasCost * p.USD_PRICE as actualGasCost_usd
+    , output_actualGasCost as actualgascost
+    , output_actualGasCost * p.USD_PRICE as actualgascost_usd
 FROM op 
 INNER JOIN {{ source('common_prices', 'token_prices_hourly_easy') }} p 
     ON p.HOUR = date_trunc('hour', call_block_time)

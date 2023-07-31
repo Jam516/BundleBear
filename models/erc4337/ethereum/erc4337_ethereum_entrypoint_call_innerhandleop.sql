@@ -1,7 +1,7 @@
 {{ config
 (
     materialized = 'incremental',
-    unique_key = 'call_tx_hash'
+    unique_key = ['op_hash','call_tx_hash']
 )
 }}
 
@@ -11,6 +11,7 @@ SELECT
     TRANSACTION_HASH AS call_tx_hash,
     PARAMS:"callData"::STRING AS callData,
     PARAMS:"opInfo" AS opInfo,
+    PARAMS:"opInfo":"userOpHash" as op_hash,
     TO_ADDRESS AS contract_address,
     STATUS AS call_success,
     TRACE_ADDRESS AS call_trace_address,
