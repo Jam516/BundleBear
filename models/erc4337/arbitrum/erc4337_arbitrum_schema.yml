@@ -81,29 +81,6 @@ models:
         name: actualgascost_usd
         description: "actualGasCost in usd"
 
-  - name: erc4337_arbitrum_account_deployments
-    meta:
-      blockchain: arbitrum
-      sector: erc4337
-    description: "ERC-4337 Account Deployments on arbitrum"
-    columns:
-      - *tx_hash
-      - *block_time
-      - *op_hash
-      - &account_address
-        name: account_address
-        description: "address of the smart account that was deployed"
-      - &factory
-        name: factory
-        description: "the factory that deployed the smart account"       
-      - &factory_name
-        name: factory_name
-        description: "name of the entity that operates the factory"    
-      - *bundler
-      - *bundler_name
-      - *paymaster
-      - *paymaster_name
-
   - name: erc4337_arbitrum_entrypoint_transactions
     meta:
       blockchain: arbitrum
