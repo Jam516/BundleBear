@@ -78,7 +78,7 @@ SELECT
 FROM op 
 INNER JOIN {{ source('common_prices', 'token_prices_hourly_easy') }} p 
     ON p.HOUR = date_trunc('hour', block_time)
-    AND SYMBOL = 'ETH'
+    AND SYMBOL = 'MATIC'
     {% if is_incremental() %}
     AND p.HOUR >= CURRENT_TIMESTAMP() - interval '1 day' 
     {% endif %} 

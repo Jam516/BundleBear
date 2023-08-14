@@ -11,11 +11,11 @@ with handleop AS (
         t.HASH as tx_hash,
         row_number() over (partition by tr.TRANSACTION_HASH order by tr.TRACE_ADDRESS desc) as ranks,
         t.FROM_ADDRESS AS bundler,
-        'MATIC' AS token,
+        'ETH' AS token,
         TO_DOUBLE(tr.VALUE)/1e18 as bundler_inflow,
-        (TO_DOUBLE(t.RECEIPT_GAS_USED) * TO_DOUBLE(t.GAS_PRICE))/1e18 as bundler_outflow
-    FROM {{ source('polygon_raw', 'transactions') }} t
-    INNER JOIN {{ source('polygon_raw', 'traces') }} tr 
+        (TO_DOUBLE(t.RECEIPT_GAS_USED) * TO_DOUBLE(t.RECEIPT_EFFECTIVE_GAS_PRICE))/1e18 as bundler_outflow
+    FROM {{ source('arbitrum_raw', 'transactions') }} t
+    INNER JOIN {{ source('arbitrum_raw', 'traces') }} tr 
         ON t.HASH = tr.TRANSACTION_HASH
         AND t.TO_ADDRESS IN
         ('0x5ff137d4b0fdcd49dca30c7cf57e578a026d2789', 

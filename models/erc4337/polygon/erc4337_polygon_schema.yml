@@ -13,7 +13,7 @@ models:
     columns:
       - &block_time
         name: block_time
-        description: "block time"
+        description: "time when the block was mined"
       - &tx_hash
         name: tx_hash
         description: "transaction hash of the bundle"

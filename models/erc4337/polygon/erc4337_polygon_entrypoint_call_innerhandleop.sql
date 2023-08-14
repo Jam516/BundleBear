@@ -6,16 +6,16 @@
 }}
 
 SELECT 
-    BLOCK_TIMESTAMP AS block_time,
-    TRANSACTION_HASH AS tx_hash,
+    BLOCK_TIMESTAMP as block_time,
+    TRANSACTION_HASH as tx_hash,
     PARAMS:"opInfo":"userOpHash"::STRING as op_hash,
     PARAMS:"opInfo":"mUserOp"."sender"::STRING as sender,
     PARAMS:"opInfo":"mUserOp"."paymaster"::STRING as paymaster,
-    PARAMS:"opInfo" AS opInfo,
-    TO_ADDRESS AS contract_address,
-    STATUS AS call_success,
-    TRACE_ADDRESS AS call_trace_address,
-    PARAMS AS params,
+    PARAMS:"opInfo" as opInfo,
+    TO_ADDRESS as contract_address,
+    STATUS as call_success,
+    TRACE_ADDRESS as call_trace_address,
+    PARAMS as params,
     "OUTPUT",
     VALUE
 FROM {{ source('polygon_decoded', 'traces') }}
