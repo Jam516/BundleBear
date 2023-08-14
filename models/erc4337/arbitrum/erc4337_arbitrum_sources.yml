@@ -1,20 +1,18 @@
 version: 2
 
 sources:
-  - name: ethereum_decoded
-    database: ethereum
+  - name: arbitrum_decoded
+    database: arbitrum
     schema: decoded
     freshness: # default freshness
       warn_after: { count: 12, period: hour }
       error_after: { count: 24, period: hour }
     tables:
-      - name: traces
-        loaded_at_field: block_timestamp
-      - name: logs
-        loaded_at_field: block_timestamp        
+      - name: traces_sample
+        loaded_at_field: block_timestamp      
 
-  - name: ethereum_raw
-    database: ethereum
+  - name: arbitrum_raw
+    database: arbitrum
     schema: raw
     freshness: # default freshness
       warn_after: { count: 12, period: hour }

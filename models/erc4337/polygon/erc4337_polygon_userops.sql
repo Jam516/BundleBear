@@ -1,7 +1,7 @@
 {{ config
 (
     materialized = 'incremental',
-    unique_key = ['op_hash','tx_hash']
+    unique_key = ['op_hash', 'tx_hash']
 )
 }}
 
@@ -17,8 +17,8 @@ with op as (
             , op.call_trace_address
             , tx.FROM_ADDRESS as bundler
             , op.value
-        FROM {{ ref('erc4337_ethereum_entrypoint_call_innerhandleop') }} op
-        INNER JOIN {{ source('ethereum_raw', 'transactions') }} tx 
+        FROM {{ ref('erc4337_polygon_entrypoint_call_innerhandleop') }} op
+        INNER JOIN {{ source('polygon_raw', 'transactions') }} tx 
             ON op.block_time = tx.BLOCK_TIMESTAMP AND op.tx_hash = tx.HASH
             {% if is_incremental() %}
             AND tx.BLOCK_TIMESTAMP >= CURRENT_TIMESTAMP() - interval '1 day' 
@@ -39,7 +39,7 @@ with op as (
              , t.TRACE_ADDRESS
              , row_number() over (partition by b.sender, call_trace_address, tx_hash order by t.TRACE_ADDRESS asc) as first_call
         FROM base b
-        INNER JOIN {{ source('ethereum_raw', 'traces') }} t 
+        INNER JOIN {{ source('polygon_raw', 'traces') }} t 
             ON b.block_time = t.BLOCK_TIMESTAMP
             AND b.tx_hash = t.TRANSACTION_HASH
             AND b.sender = t.FROM_ADDRESS
@@ -78,7 +78,7 @@ SELECT
 FROM op 
 INNER JOIN {{ source('common_prices', 'token_prices_hourly_easy') }} p 
     ON p.HOUR = date_trunc('hour', block_time)
-    AND SYMBOL = 'ETH'
+    AND SYMBOL = 'MATIC'
     {% if is_incremental() %}
     AND p.HOUR >= CURRENT_TIMESTAMP() - interval '1 day' 
     {% endif %} 

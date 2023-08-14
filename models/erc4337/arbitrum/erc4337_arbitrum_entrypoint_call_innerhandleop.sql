@@ -18,7 +18,7 @@ SELECT
     PARAMS as params,
     output,
     value
-FROM {{ source('ethereum_decoded', 'traces') }}
+FROM {{ source('arbitrum_decoded', 'traces_sample') }}
 WHERE TO_ADDRESS IN 
     ('0x5ff137d4b0fdcd49dca30c7cf57e578a026d2789', 
     '0x0576a174d229e3cfa37253523e645a78a0c91b57', 

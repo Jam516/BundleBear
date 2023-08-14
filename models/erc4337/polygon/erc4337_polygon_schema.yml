@@ -2,11 +2,11 @@ version: 2
 
 models:
 
-  - name: erc4337_ethereum_entrypoint_call_innerhandleop
+  - name: erc4337_polygon_entrypoint_call_innerhandleop
     meta:
-      blockchain: ethereum
+      blockchain: polygon
       sector: erc4337
-    description: "Entrypoint innerHandleOp() calls on Ethereum"
+    description: "Entrypoint innerHandleOp() calls on polygon"
     tests:
       - unique:
           column_name: "(tx_hash || '-' || op_hash)"
@@ -48,11 +48,11 @@ models:
         name: value
         description: "value of the trace"
 
-  - name: erc4337_ethereum_userops
+  - name: erc4337_polygon_userops
     meta:
-      blockchain: ethereum
+      blockchain: polygon
       sector: erc4337
-    description: "ERC-4337 UserOperations on Ethereum"
+    description: "ERC-4337 UserOperations on polygon"
     columns:
       - *tx_hash
       - *op_hash
@@ -81,11 +81,11 @@ models:
         name: actualgascost_usd
         description: "actualGasCost in usd"
 
-  - name: erc4337_ethereum_account_deployments
+  - name: erc4337_polygon_account_deployments
     meta:
-      blockchain: ethereum
+      blockchain: polygon
       sector: erc4337
-    description: "ERC-4337 Account Deployments on Ethereum"
+    description: "ERC-4337 Account Deployments on polygon"
     columns:
       - *tx_hash
       - *block_time
@@ -104,11 +104,11 @@ models:
       - *paymaster
       - *paymaster_name
 
-  - name: erc4337_ethereum_entrypoint_transactions
+  - name: erc4337_polygon_entrypoint_transactions
     meta:
-      blockchain: ethereum
+      blockchain: polygon
       sector: erc4337
-    description: "handleOps() transactions on Ethereum"
+    description: "handleOps() transactions on polygon"
     columns:
       - name: tx_hash
         tests: 
