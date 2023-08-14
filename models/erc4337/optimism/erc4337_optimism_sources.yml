@@ -1,8 +1,8 @@
 version: 2
 
 sources:
-  - name: ethereum_decoded
-    database: ethereum
+  - name: optimism_decoded
+    database: optimism
     schema: decoded
     freshness: # default freshness
       warn_after: { count: 12, period: hour }
@@ -13,8 +13,8 @@ sources:
       - name: logs
         loaded_at_field: block_timestamp        
 
-  - name: ethereum_raw
-    database: ethereum
+  - name: optimism_raw
+    database: optimism
     schema: raw
     freshness: # default freshness
       warn_after: { count: 12, period: hour }

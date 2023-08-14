@@ -1,7 +1,7 @@
 {{ config
 (
     materialized = 'incremental',
-    unique_key = ['op_hash','tx_hash']
+    unique_key = ['op_hash', 'tx_hash']
 )
 }}
 
@@ -13,13 +13,13 @@ with op as (
             , op.op_hash
             , common.udfs.js_hextoint_secure(op.output)/1e18 as output_actualGasCost
             , op.tx_hash
-            , op.call_block_time
+            , op.block_time
             , op.call_trace_address
             , tx.FROM_ADDRESS as bundler
             , op.value
-        FROM {{ ref('erc4337_ethereum_entrypoint_call_innerhandleop') }} op
-        INNER JOIN {{ source('ethereum_raw', 'transactions') }} tx 
-            ON op.call_block_time = tx.BLOCK_TIMESTAMP AND op.tx_hash = tx.HASH
+        FROM {{ ref('erc4337_polygon_entrypoint_call_innerhandleop') }} op
+        INNER JOIN {{ source('polygon_raw', 'transactions') }} tx 
+            ON op.block_time = tx.BLOCK_TIMESTAMP AND op.tx_hash = tx.HASH
             {% if is_incremental() %}
             AND tx.BLOCK_TIMESTAMP >= CURRENT_TIMESTAMP() - interval '1 day' 
             {% endif %}
@@ -27,7 +27,7 @@ with op as (
         WHERE tx.BLOCK_TIMESTAMP >= to_timestamp('2023-01-27', 'yyyy-MM-dd') -- first mainnet entrypoint live
         {% endif %}
         {% if is_incremental() %}
-        WHERE op.call_block_time >= CURRENT_TIMESTAMP() - interval '1 day' 
+        WHERE op.block_time >= CURRENT_TIMESTAMP() - interval '1 day' 
         {% endif %}
     )
 
@@ -39,7 +39,7 @@ with op as (
              , t.TRACE_ADDRESS
              , row_number() over (partition by b.sender, call_trace_address, tx_hash order by t.TRACE_ADDRESS asc) as first_call
         FROM base b
-        INNER JOIN {{ source('ethereum_raw', 'traces') }} t 
+        INNER JOIN {{ source('polygon_raw', 'traces') }} t 
             ON b.block_time = t.BLOCK_TIMESTAMP
             AND b.tx_hash = t.TRANSACTION_HASH
             AND b.sender = t.FROM_ADDRESS
@@ -59,7 +59,7 @@ with op as (
 )
 
 SELECT 
-    call_block_time as block_time
+    block_time
     , tx_hash
     , op_hash
     , sender

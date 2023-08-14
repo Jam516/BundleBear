@@ -6,19 +6,19 @@
 }}
 
 SELECT 
-    BLOCK_TIMESTAMP as call_block_time,
-    TRANSACTION_HASH as tx_hash,
+    BLOCK_TIMESTAMP AS block_time,
+    TRANSACTION_HASH AS tx_hash,
     PARAMS:"opInfo":"userOpHash"::STRING as op_hash,
     PARAMS:"opInfo":"mUserOp"."sender"::STRING as sender,
     PARAMS:"opInfo":"mUserOp"."paymaster"::STRING as paymaster,
-    PARAMS:"opInfo" as opInfo,
-    TO_ADDRESS as contract_address,
-    STATUS as call_success,
-    TRACE_ADDRESS as call_trace_address,
-    PARAMS as params,
-    output,
-    value
-FROM {{ source('ethereum_decoded', 'traces') }}
+    PARAMS:"opInfo" AS opInfo,
+    TO_ADDRESS AS contract_address,
+    STATUS AS call_success,
+    TRACE_ADDRESS AS call_trace_address,
+    PARAMS AS params,
+    "OUTPUT",
+    VALUE
+FROM {{ source('polygon_decoded', 'traces') }}
 WHERE TO_ADDRESS IN 
     ('0x5ff137d4b0fdcd49dca30c7cf57e578a026d2789', 
     '0x0576a174d229e3cfa37253523e645a78a0c91b57', 
