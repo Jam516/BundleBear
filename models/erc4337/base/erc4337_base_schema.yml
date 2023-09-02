@@ -2,11 +2,11 @@ version: 2
 
 models:
 
-  - name: erc4337_arbitrum_entrypoint_call_innerhandleop
+  - name: erc4337_base_entrypoint_call_innerhandleop
     meta:
-      blockchain: arbitrum
+      blockchain: base
       sector: erc4337
-    description: "Entrypoint innerHandleOp() calls on arbitrum"
+    description: "Entrypoint innerHandleOp() calls on base"
     tests:
       - unique:
           column_name: "(tx_hash || '-' || op_hash)"
@@ -48,11 +48,11 @@ models:
         name: value
         description: "value of the trace"
 
-  - name: erc4337_arbitrum_userops
+  - name: erc4337_base_userops
     meta:
-      blockchain: arbitrum
+      blockchain: base
       sector: erc4337
-    description: "ERC-4337 UserOperations on arbitrum"
+    description: "ERC-4337 UserOperations on base"
     columns:
       - *tx_hash
       - *op_hash
@@ -81,11 +81,11 @@ models:
         name: actualgascost_usd
         description: "actualGasCost in usd"
 
-  - name: erc4337_arbitrum_entrypoint_transactions
+  - name: erc4337_base_entrypoint_transactions
     meta:
-      blockchain: arbitrum
+      blockchain: base
       sector: erc4337
-    description: "handleOps() transactions on arbitrum"
+    description: "handleOps() transactions on base"
     columns:
       - name: tx_hash
         tests: 
@@ -115,11 +115,11 @@ models:
         name: token
         description: "symbol of the gas token" 
 
-  - name: erc4337_arbitrum_account_deployments
+  - name: erc4337_base_account_deployments
     meta:
-      blockchain: arbitrum
+      blockchain: base
       sector: erc4337
-    description: "ERC-4337 Account Deployments on arbitrum"
+    description: "ERC-4337 Account Deployments on base"
     columns:
       - *tx_hash
       - *block_time

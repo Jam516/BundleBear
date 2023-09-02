@@ -66,7 +66,9 @@ SELECT
     , bundler
     , COALESCE(b.name, 'Unknown') as bundler_name
     , paymaster
-    , COALESCE(pay.name, 'Unknown') as paymaster_name
+    , case when paymaster = '0x0000000000000000000000000000000000000000' then 'No paymaster'
+      else COALESCE(pay.name, 'Unknown') 
+      end as paymaster_name
     , case when INPUT != '0x' then TO_ADDRESS
       else 'direct_transfer' 
       end as called_contract

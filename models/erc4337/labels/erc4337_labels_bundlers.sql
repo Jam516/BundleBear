@@ -5,6 +5,18 @@
 }}
 
 SELECT name, address FROM (VALUES
+('etherspot', '0xfb925186f787694009ab6404b9caab95bc7ae377'),
+('etherspot', '0x175a9777c6cf26e26947210bd8bab324d60dcf3c'),
+('etherspot', '0xdcdd0ddeaa0407c26dfcd481de9a34e1c55f8d54'),
+('etherspot', '0x9776cab4a2dce3dc96db55c919eee822c40b94ee'),
+('etherspot', '0x4e0df48f7584ad9ae9978c60178ef726345cc48a'),
+('etherspot', '0x29830065d28765e34c19eb774794f010e7b50cf9'),
+('etherspot', '0x7c1c87d06f88786d4da52a0e81f82aea9d90e1ec'),
+('etherspot', '0xc360e1da5b9bdb9a8879a0cfa1180556426e2305'),
+('etherspot', '0x6baad70fc330c22cf26b51897b84fd3281d283a2'),
+('etherspot', '0xc85a109221d6b3593b01b36d5b2b6719d2ab7518'),
+('alchemy', '0x34716d493d69b11fd52d3242cf1eeec8585a1491'),
+('alchemy', '0x4a25d28d10b02bcf13a16068f56d167d8f96d093'),
 ('stackup', '0x25df024637d4e56c1ae9563987bf3e92c9f534c0'),
 ('stackup', '0x6892bef4ae1b5cb33f9a175ab822518c9025fc3c'),
 ('stackup', '0xfd72ae8ff5cc18849d83f13a252a0d8fd99eb0ac'),
@@ -38,9 +50,7 @@ SELECT name, address FROM (VALUES
 ('biconomy', '0x67b4a9832dfbec071319e492f70e582ee316afc0'),
 ('biconomy', '0x80213f829c8543eda6b1f0f303e94b8e504b53d8'),
 ('unipass', '0xfa19fb4d871af87cc737499bceee041453f2fb6b'),
-('zerodev', '0x3cfeb8b4b35bd5093990798b30a8610c80809bd8'),
 ('candide', '0x3cfdc212769c890907bce93d3d8c2c53de6a7a89'),
-('etherspot', '0xfb925186f787694009ab6404b9caab95bc7ae377'),
 ('pimlico', '0x4337001fff419768e088ce247456c1b892888084'),
 ('pimlico', '0x4337002c5702ce424cb62a56ca038e31e1d4a93d'),
 ('pimlico', '0x4337003fcd2f56de3977ccb806383e9161628d0e'),

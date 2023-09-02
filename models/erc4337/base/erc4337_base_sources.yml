@@ -1,8 +1,8 @@
 version: 2
 
 sources:
-  - name: arbitrum_decoded
-    database: arbitrum
+  - name: base_decoded
+    database: base
     schema: decoded
     freshness: # default freshness
       warn_after: { count: 12, period: hour }
@@ -13,8 +13,8 @@ sources:
       - name: logs_sample
         loaded_at_field: block_timestamp       
 
-  - name: arbitrum_raw
-    database: arbitrum
+  - name: base_raw
+    database: base
     schema: raw
     freshness: # default freshness
       warn_after: { count: 12, period: hour }

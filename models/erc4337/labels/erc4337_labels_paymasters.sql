@@ -6,6 +6,7 @@
 
 SELECT name, address
 FROM (VALUES
+('alchemy', '0x4fd9098af9ddcb41da48a1d78f91f1398965addc'), 
 ('stackup', '0x474ea64bedde53aad1084210bd60eef2989bf80f'),    
 ('stackup', '0xe93eca6595fe94091dc1af46aac2a8b5d7990770'),
 ('biconomy', '0x000031dd6d9d3a133e663660b959162870d755d4'),

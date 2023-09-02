@@ -9,6 +9,8 @@ sources:
       error_after: { count: 24, period: hour }
     tables:
       - name: traces_sample
+        loaded_at_field: block_timestamp   
+      - name: logs_sample
         loaded_at_field: block_timestamp      
 
   - name: optimism_raw
