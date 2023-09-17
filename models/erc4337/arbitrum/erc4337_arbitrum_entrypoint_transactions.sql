@@ -50,6 +50,6 @@ FROM output op
 INNER JOIN input i
     ON i.TX_HASH = op.TX_HASH
     {% if is_incremental() %}
-    AND op.block_time >= CURRENT_TIMESTAMP() - interval '1 day' 
+    AND op.block_time >= CURRENT_TIMESTAMP() - interval '3 day' 
     {% endif %}
 LEFT JOIN {{ ref('erc4337_labels_bundlers') }} b ON b.address = op.bundler

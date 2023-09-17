@@ -17,6 +17,7 @@ FROM (VALUES
 ('pimlico', '0x984e2abb41a6684e5e213ab61ad4c6c830585df9'),
 ('pimlico', '0x4df91e173a6cdc74efef6fc72bb5df1e8a8d7582'),
 ('pimlico', '0x2672a6a67c37c104db47d52baaa721c8eca39421'),
+('pimlico', '0xe3dc822d77f8ca7ac74c30b0dffea9fcdcaaa321'),
 ('candide', '0x769f68e4ba8f53f3092eef34a42a811ab6365b05'),
 ('blocto', '0xa312d8d37be746bd09cbd9e9ba2ef16bc7da48ff')
 ) AS x (name, address)

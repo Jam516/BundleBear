@@ -21,13 +21,13 @@ with op as (
         INNER JOIN {{ source('arbitrum_raw', 'transactions') }} tx 
             ON op.block_time = tx.BLOCK_TIMESTAMP AND op.tx_hash = tx.HASH
             {% if is_incremental() %}
-            AND tx.BLOCK_TIMESTAMP >= CURRENT_TIMESTAMP() - interval '1 day' 
+            AND tx.BLOCK_TIMESTAMP >= CURRENT_TIMESTAMP() - interval '3 day' 
             {% endif %}
         {% if not is_incremental() %}
         WHERE tx.BLOCK_TIMESTAMP >= to_timestamp('2023-01-27', 'yyyy-MM-dd') -- first mainnet entrypoint live
         {% endif %}
         {% if is_incremental() %}
-        WHERE op.block_time >= CURRENT_TIMESTAMP() - interval '1 day' 
+        WHERE op.block_time >= CURRENT_TIMESTAMP() - interval '3 day' 
         {% endif %}
     )
 
@@ -48,7 +48,7 @@ with op as (
             AND t.BLOCK_TIMESTAMP >= to_timestamp('2023-01-27', 'yyyy-MM-dd') 
             {% endif %}
             {% if is_incremental() %}
-            AND t.BLOCK_TIMESTAMP >= CURRENT_TIMESTAMP() - interval '1 day' 
+            AND t.BLOCK_TIMESTAMP >= CURRENT_TIMESTAMP() - interval '3 day' 
             {% endif %}            
             AND ARRAY_SIZE(split(t.TRACE_ADDRESS, ',')) > 3
             AND t.CALL_TYPE != 'delegatecall'
@@ -82,7 +82,7 @@ INNER JOIN {{ source('common_prices', 'token_prices_hourly_easy') }} p
     ON p.HOUR = date_trunc('hour', block_time)
     AND SYMBOL = 'ETH'
     {% if is_incremental() %}
-    AND p.HOUR >= CURRENT_TIMESTAMP() - interval '1 day' 
+    AND p.HOUR >= CURRENT_TIMESTAMP() - interval '3 day' 
     {% endif %} 
 LEFT JOIN {{ ref('erc4337_labels_bundlers') }} b ON b.address = op.bundler
 LEFT JOIN {{ ref('erc4337_labels_paymasters') }} pay ON pay.address = op.paymaster

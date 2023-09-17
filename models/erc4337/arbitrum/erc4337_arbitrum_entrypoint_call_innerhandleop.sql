@@ -26,5 +26,5 @@ WHERE TO_ADDRESS IN
     AND NAME = 'innerHandleOp'
     AND STATUS = 1
     {% if is_incremental() %}
-    AND BLOCK_TIMESTAMP >= CURRENT_TIMESTAMP() - interval '1 day' 
+    AND BLOCK_TIMESTAMP >= CURRENT_TIMESTAMP() - interval '3 day' 
     {% endif %}

@@ -28,5 +28,5 @@ LEFT JOIN {{ ref('erc4337_labels_factories') }} f ON f.address = l.PARAMS:"facto
 LEFT JOIN {{ ref('erc4337_labels_paymasters') }} pay ON pay.address = l.PARAMS:"paymaster"
 LEFT JOIN {{ ref('erc4337_labels_bundlers') }} b ON b.address = t.FROM_ADDRESS
 {% if is_incremental() %}
-WHERE l.BLOCK_TIMESTAMP >= CURRENT_TIMESTAMP() - interval '1 day' 
+WHERE l.BLOCK_TIMESTAMP >= CURRENT_TIMESTAMP() - interval '3 day' 
 {% endif %}

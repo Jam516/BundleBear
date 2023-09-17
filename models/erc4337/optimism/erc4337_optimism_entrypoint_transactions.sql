@@ -11,9 +11,14 @@ with output AS (
         HASH as tx_hash,
         FROM_ADDRESS AS bundler,
         'ETH' AS token,
-        (TO_DOUBLE(t.RECEIPT_GAS_USED) * TO_DOUBLE(t.GAS_PRICE))/1e18 as bundler_outflow,
-        p.USD_PRICE * (TO_DOUBLE(t.RECEIPT_GAS_USED) * TO_DOUBLE(t.GAS_PRICE))/1e18 as bundler_outflow_usd
-    FROM {{ source('ethereum_raw', 'transactions') }} t
+        CASE WHEN RECEIPT_EFFECTIVE_GAS_PRICE = 0 THEN 0 
+        ELSE (RECEIPT_L1_FEE + (RECEIPT_GAS_USED*RECEIPT_EFFECTIVE_GAS_PRICE)) / 1e18
+        END AS bundler_outflow,
+        p.USD_PRICE * 
+        (CASE WHEN RECEIPT_EFFECTIVE_GAS_PRICE = 0 THEN 0 
+        ELSE (RECEIPT_L1_FEE + (RECEIPT_GAS_USED*RECEIPT_EFFECTIVE_GAS_PRICE)) / 1e18 
+        END) as bundler_outflow_usd
+    FROM {{ source('optimism_raw', 'transactions') }} t
     INNER JOIN {{ source('common_prices', 'token_prices_hourly_easy') }} p 
         ON p.HOUR = date_trunc('hour', t.BLOCK_TIMESTAMP) 
         AND t.TO_ADDRESS IN
@@ -29,7 +34,7 @@ input AS (
     TX_HASH,
     SUM(ACTUALGASCOST) as bundler_inflow,
     SUM(ACTUALGASCOST_USD) as bundler_inflow_usd
-    FROM {{ ref('erc4337_ethereum_userops') }}
+    FROM {{ ref('erc4337_optimism_userops') }}
     GROUP BY 1
 ) 
 
