@@ -43,15 +43,15 @@ op.block_time,
 op.tx_hash,
 op.bundler,
 COALESCE(b.name, 'Unknown') as bundler_name,
-i.bundler_inflow,
-i.bundler_inflow_usd,
+COALESCE(i.bundler_inflow,0) as bundler_inflow,
+COALESCE(i.bundler_inflow_usd,0) as bundler_inflow_usd,
 op.bundler_outflow,
 op.bundler_outflow_usd,
-bundler_inflow - bundler_outflow as bundler_revenue,
-bundler_inflow_usd - bundler_outflow_usd as bundler_revenue_usd,
+COALESCE(bundler_inflow,0) - bundler_outflow as bundler_revenue,
+COALESCE(bundler_inflow_usd,0) - bundler_outflow_usd as bundler_revenue_usd,
 op.token
 FROM output op
-INNER JOIN input i
+LEFT JOIN input i
     ON i.TX_HASH = op.TX_HASH
     {% if is_incremental() %}
     AND op.block_time >= CURRENT_TIMESTAMP() - interval '3 day' 

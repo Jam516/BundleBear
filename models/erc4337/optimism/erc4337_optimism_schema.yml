@@ -103,3 +103,37 @@ models:
       - *bundler_name
       - *paymaster
       - *paymaster_name
+
+  - name: erc4337_optimism_entrypoint_transactions
+    meta:
+      blockchain: optimism
+      sector: erc4337
+    description: "handleOps() transactions on Optimism"
+    columns:
+      - name: tx_hash
+        tests: 
+        - unique
+      - *block_time
+      - *bundler
+      - *bundler_name
+      - &bundler_inflow
+        name: bundler_inflow
+        description: "UserOp fees paid to bundler" 
+      - &bundler_inflow_usd
+        name: bundler_inflow_usd
+        description: "UserOp fees paid to bundler in usd" 
+      - &bundler_outflow
+        name: bundler_outflow
+        description: "gas fees paid by bundler" 
+      - &bundler_outflow_usd
+        name: bundler_outflow_usd
+        description: "gas fees paid by bundler in usd" 
+      - &bundler_revenue
+        name: bundler_revenue
+        description: "revenue earned by bundler on this txn" 
+      - &bundler_revenue_usd
+        name: bundler_revenue_usd
+        description: "revenue earned by bundler on this txn in usd" 
+      - &token
+        name: token
+        description: "symbol of the gas token" 
