@@ -31,11 +31,12 @@ with output AS (
 
 input AS (
     SELECT 
+    BLOCK_TIME,
     TX_HASH,
     SUM(ACTUALGASCOST) as bundler_inflow,
     SUM(ACTUALGASCOST_USD) as bundler_inflow_usd
     FROM {{ ref('erc4337_optimism_userops') }}
-    GROUP BY 1
+    GROUP BY 1,2
 ) 
 
 SELECT 
@@ -53,7 +54,8 @@ op.token
 FROM output op
 LEFT JOIN input i
     ON i.TX_HASH = op.TX_HASH
-    {% if is_incremental() %}
-    AND op.block_time >= CURRENT_TIMESTAMP() - interval '3 day' 
-    {% endif %}
 LEFT JOIN {{ ref('erc4337_labels_bundlers') }} b ON b.address = op.bundler
+{% if is_incremental() %}
+WHERE op.block_time >= CURRENT_TIMESTAMP() - interval '3 day' 
+AND i.block_time >= CURRENT_TIMESTAMP() - interval '3 day' 
+{% endif %}
