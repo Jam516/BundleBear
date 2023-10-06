@@ -23,6 +23,9 @@ with output AS (
         AND LEFT(INPUT,10) = '0x1fad948c'   
         AND SYMBOL = 'MATIC'  
         AND p.POLYGON_ADDRESS is not null      
+        {% if is_incremental() %}
+        AND BLOCK_TIMESTAMP >= CURRENT_TIMESTAMP() - interval '3 day' 
+        {% endif %}              
 ),
 
 input AS (
@@ -33,6 +36,9 @@ input AS (
     SUM(ACTUALGASCOST_USD) as bundler_inflow_usd,
     COUNT(*) AS num_userops
     FROM {{ ref('erc4337_polygon_userops') }}
+    {% if is_incremental() %}
+    WHERE BLOCK_TIMESTAMP >= CURRENT_TIMESTAMP() - interval '3 day' 
+    {% endif %} 
     GROUP BY 1,2
 ) 
 
@@ -53,7 +59,3 @@ FROM output op
 LEFT JOIN input i
     ON i.TX_HASH = op.TX_HASH
 LEFT JOIN {{ ref('erc4337_labels_bundlers') }} b ON b.address = op.bundler
-{% if is_incremental() %}
-WHERE op.block_time >= CURRENT_TIMESTAMP() - interval '3 day' 
-AND i.block_time >= CURRENT_TIMESTAMP() - interval '3 day' 
-{% endif %}
