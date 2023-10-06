@@ -34,7 +34,8 @@ input AS (
     BLOCK_TIME,
     TX_HASH,
     SUM(ACTUALGASCOST) as bundler_inflow,
-    SUM(ACTUALGASCOST_USD) as bundler_inflow_usd
+    SUM(ACTUALGASCOST_USD) as bundler_inflow_usd,
+    COUNT(*) AS num_userops
     FROM {{ ref('erc4337_optimism_userops') }}
     GROUP BY 1,2
 ) 
@@ -50,7 +51,8 @@ op.bundler_outflow,
 op.bundler_outflow_usd,
 COALESCE(bundler_inflow,0) - bundler_outflow as bundler_revenue,
 COALESCE(bundler_inflow_usd,0) - bundler_outflow_usd as bundler_revenue_usd,
-op.token
+op.token,
+COALESCE(i.num_userops,0) as num_userops
 FROM output op
 LEFT JOIN input i
     ON i.TX_HASH = op.TX_HASH

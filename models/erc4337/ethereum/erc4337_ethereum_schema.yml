@@ -137,3 +137,6 @@ models:
       - &token
         name: token
         description: "symbol of the gas token" 
+      - &num_userops
+        name: num_userops
+        description: "number of userops in the txn" 
