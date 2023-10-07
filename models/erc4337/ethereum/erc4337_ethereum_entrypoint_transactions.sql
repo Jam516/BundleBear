@@ -36,7 +36,7 @@ input AS (
     COUNT(*) AS num_userops
     FROM {{ ref('erc4337_ethereum_userops') }}
     {% if is_incremental() %}
-    WHERE BLOCK_TIMESTAMP >= CURRENT_TIMESTAMP() - interval '3 day' 
+    WHERE BLOCK_TIME >= CURRENT_TIMESTAMP() - interval '3 day' 
     {% endif %}     
     GROUP BY 1,2
 ) 
