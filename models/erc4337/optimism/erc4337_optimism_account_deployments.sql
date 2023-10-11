@@ -15,7 +15,14 @@ SELECT
     t.FROM_ADDRESS as bundler,
     COALESCE(b.name, 'Unknown') as bundler_name,
     l.PARAMS:"paymaster"::STRING as paymaster,
-    COALESCE(pay.name, 'Unknown') as paymaster_name
+    COALESCE(pay.name, 'Unknown') as paymaster_name,
+    CASE WHEN t.GAS_PRICE = 0 THEN 0 
+    ELSE (t.RECEIPT_L1_FEE + (t.RECEIPT_GAS_USED*t.GAS_PRICE)) / 1e18
+    END AS txn_cost,
+    p.USD_PRICE * 
+    (CASE WHEN t.GAS_PRICE = 0 THEN 0 
+    ELSE (t.RECEIPT_L1_FEE + (t.RECEIPT_GAS_USED*GAS_PRICE)) / 1e18 
+    END) as txn_cost_usd
 FROM {{ source('optimism_decoded', 'logs_sample') }} l
 INNER JOIN {{ source('optimism_raw', 'transactions') }} t 
     ON t.HASH = l.TRANSACTION_HASH
@@ -27,6 +34,9 @@ INNER JOIN {{ source('optimism_raw', 'transactions') }} t
 LEFT JOIN {{ ref('erc4337_labels_factories') }} f ON f.address = l.PARAMS:"factory"
 LEFT JOIN {{ ref('erc4337_labels_paymasters') }} pay ON pay.address = l.PARAMS:"paymaster"
 LEFT JOIN {{ ref('erc4337_labels_bundlers') }} b ON b.address = t.FROM_ADDRESS
+INNER JOIN {{ source('common_prices', 'token_prices_hourly_easy') }} p 
+    ON p.HOUR = date_trunc('hour', t.BLOCK_TIMESTAMP) 
+    AND SYMBOL = 'ETH' 
 {% if is_incremental() %}
-WHERE l.BLOCK_TIMESTAMP >= CURRENT_TIMESTAMP() - interval '3 day' 
+    AND l.BLOCK_TIMESTAMP >= CURRENT_TIMESTAMP() - interval '3 day' 
 {% endif %}
