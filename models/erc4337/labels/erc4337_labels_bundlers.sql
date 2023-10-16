@@ -5,6 +5,18 @@
 }}
 
 SELECT name, address FROM (VALUES
+('particle', '0x5a32928b135c86e58b3f7abb47a2f720f49d0909'),
+('particle', '0xb0c58be75936250b2b14c8437614ff780e902f57'),
+('particle', '0x9e375d31a8d0ed88d0ede9c7a3f775965d9442f2'),
+('particle', '0x596680f2ea1bdb041570c74fb5fc8c0c0a9fad80'),
+('particle', '0x7f0fa0bab21c6749f12116aa8cbab7bbae8f50f2'),
+('particle', '0x432c961e222fc3522fd31af85e84c6240ff0b46f'),
+('particle', '0xc389179b875d3e0586d8e7903fe1e8de474c44da'),
+('particle', '0x71320c9382addb244ced08db58ef761186a63cc3'),
+('particle', '0x74bf7407dd5fa033e51120f87246ace3b75b32d0'),
+('particle', '0x1a1c0ad7be7760f40e0bb5ab78fc7288c40a6c2b'),
+('particle', '0x007113d2a4f56a64bd3822e4746badefb8e89830'),
+('particle', '0xac16076b48e197d7dbc733ab7c5dc1002108720e'),
 ('etherspot', '0xfb925186f787694009ab6404b9caab95bc7ae377'),
 ('etherspot', '0x175a9777c6cf26e26947210bd8bab324d60dcf3c'),
 ('etherspot', '0xdcdd0ddeaa0407c26dfcd481de9a34e1c55f8d54'),
