@@ -6,22 +6,24 @@
 }}
 
 SELECT 
-    BLOCK_TIMESTAMP as block_time,
-    TRANSACTION_HASH as tx_hash,
-    DECODED_INPUT:"opInfo":"userOpHash"::STRING as op_hash,
-    DECODED_INPUT:"opInfo":"mUserOp"."sender"::STRING as sender,
-    DECODED_INPUT:"opInfo":"mUserOp"."paymaster"::STRING as paymaster,
-    DECODED_INPUT:"opInfo" as opInfo,
-    TO_ADDRESS as contract_address,
-    -- STATUS as call_success,
-    TRACE_ADDRESS as call_trace_address,
-    PARAMS as params,
-    output,
-    value
-FROM {{ source('base_decoded', 'traces__beta') }}
-WHERE TO_ADDRESS = '0x5ff137d4b0fdcd49dca30c7cf57e578a026d2789'
-    AND NAME = 'innerHandleOp'
-    -- AND STATUS = 1
+    dt.BLOCK_TIMESTAMP as block_time,
+    dt.TRANSACTION_HASH as tx_hash,
+    dt.DECODED_INPUT:"opInfo":"userOpHash"::STRING as op_hash,
+    dt.DECODED_INPUT:"opInfo":"mUserOp"."sender"::STRING as sender,
+    dt.DECODED_INPUT:"opInfo":"mUserOp"."paymaster"::STRING as paymaster,
+    dt.DECODED_INPUT:"opInfo" as opInfo,
+    dt.TO_ADDRESS as contract_address,
+    rt.STATUS as call_success,
+    rt.TRACE_ADDRESS as call_trace_address,
+    dt.DECODED_INPUT as params,
+    rt.output,
+    rt.value
+FROM {{ source('base_decoded', 'traces__beta') }} dt
+INNER JOIN {{ source('base_raw', 'traces') }} rt
+    ON dt.TRACE_ID = rt.TRACE_ID
+    AND dt.TO_ADDRESS = '0x5ff137d4b0fdcd49dca30c7cf57e578a026d2789'
+    AND dt.SELECTOR = '0x1d732756' -- innerhandleop
+    AND rt.STATUS = 1
     {% if is_incremental() %}
-    AND BLOCK_TIMESTAMP >= CURRENT_TIMESTAMP() - interval '3 day' 
+    AND dt.BLOCK_TIMESTAMP >= CURRENT_TIMESTAMP() - interval '3 day' 
     {% endif %}
