@@ -137,3 +137,9 @@ models:
       - *bundler_name
       - *paymaster
       - *paymaster_name
+      - &txn_cost
+        name: txn_cost
+        description: gas fee paid for the transaction
+      - &txn_cost_usd
+        name: txn_cost_usd
+        description: gas fee paid for the transaction in usd
