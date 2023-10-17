@@ -13,7 +13,7 @@ SELECT
     DECODED_INPUT:"opInfo":"mUserOp"."paymaster"::STRING as paymaster,
     DECODED_INPUT:"opInfo" as opInfo,
     TO_ADDRESS as contract_address,
-    STATUS as call_success,
+    -- STATUS as call_success,
     TRACE_ADDRESS as call_trace_address,
     PARAMS as params,
     output,
@@ -21,7 +21,7 @@ SELECT
 FROM {{ source('base_decoded', 'traces__beta') }}
 WHERE TO_ADDRESS = '0x5ff137d4b0fdcd49dca30c7cf57e578a026d2789'
     AND NAME = 'innerHandleOp'
-    AND STATUS = 1
+    -- AND STATUS = 1
     {% if is_incremental() %}
     AND BLOCK_TIMESTAMP >= CURRENT_TIMESTAMP() - interval '3 day' 
     {% endif %}
