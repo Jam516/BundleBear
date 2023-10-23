@@ -14,6 +14,7 @@ FROM (VALUES
 ('biconomy', '0x00000f79b7faf42eebadba19acc07cd08af44789'),
 ('pimlico erc-20', '0xa683b47e447de6c8a007d9e294e87b6db333eb18'),
 ('pimlico erc-20', '0x49ee41bc335fb36be46a17307dcfe536a3494644'),
+('pimlico erc-20', '0x939263eafe57038a072cb4edd6b25dd81a8a6c56'),
 ('pimlico', '0x984e2abb41a6684e5e213ab61ad4c6c830585df9'),
 ('pimlico', '0x4df91e173a6cdc74efef6fc72bb5df1e8a8d7582'),
 ('pimlico', '0x2672a6a67c37c104db47d52baaa721c8eca39421'),
