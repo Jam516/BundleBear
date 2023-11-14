@@ -11,13 +11,12 @@ SELECT
     PARAMS:"opInfo":"userOpHash"::STRING as op_hash,
     PARAMS:"opInfo":"mUserOp"."sender"::STRING as sender,
     PARAMS:"opInfo":"mUserOp"."paymaster"::STRING as paymaster,
-    PARAMS:"opInfo" as opInfo,
+    PARAMS:"calldata" as executeCall,
     TO_ADDRESS as contract_address,
     STATUS as call_success,
     TRACE_ADDRESS as call_trace_address,
     PARAMS as params,
-    output,
-    value
+    output
 FROM {{ source('arbitrum_decoded', 'traces_sample') }}
 WHERE TO_ADDRESS IN 
     ('0x5ff137d4b0fdcd49dca30c7cf57e578a026d2789', 

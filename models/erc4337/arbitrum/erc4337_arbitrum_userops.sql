@@ -16,7 +16,7 @@ with op as (
             , op.block_time
             , op.call_trace_address
             , tx.FROM_ADDRESS as bundler
-            , op.value
+            , op.executeCall
         FROM {{ ref('erc4337_arbitrum_entrypoint_call_innerhandleop') }} op
         INNER JOIN {{ source('arbitrum_raw', 'transactions') }} tx 
             ON op.block_time = tx.BLOCK_TIMESTAMP AND op.tx_hash = tx.HASH
@@ -76,7 +76,9 @@ SELECT
       else 'eth_transfer' end as function_called
     , output_actualGasCost as actualgascost
     , output_actualGasCost * p.USD_PRICE as actualgascost_usd
-    , value
+    , case when INPUT != '0x' then 0
+      else common.udfs.js_hextoint_secure(SUBSTRING(executeCall, 75, 64))/1e18 
+      end as value
 FROM op 
 INNER JOIN {{ source('common_prices', 'token_prices_hourly_easy') }} p 
     ON p.HOUR = date_trunc('hour', block_time)
