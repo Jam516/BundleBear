@@ -69,11 +69,15 @@ SELECT
     , case when paymaster = '0x0000000000000000000000000000000000000000' then 'No paymaster'
       else COALESCE(pay.name, 'Unknown') 
       end as paymaster_name
-    , case when INPUT != '0x' then TO_ADDRESS
-      else 'direct_transfer' 
-      end as called_contract
-    , case when INPUT != '0x' then COALESCE(TEXT_SIGNATURE_SHORT, LEFT(INPUT,10))
-      else 'eth_transfer' end as function_called
+    , case 
+        when INPUT != '0x' then TO_ADDRESS
+        when (INPUT = '0x' AND common.udfs.js_hextoint_secure(SUBSTRING(executeCall, 75, 64))/1e18 > 0) then 'direct_transfer'
+        else 'empty_call' 
+        end as called_contract
+    , case 
+        when INPUT != '0x' then COALESCE(TEXT_SIGNATURE_SHORT, LEFT(INPUT,10))
+        when (INPUT = '0x' AND common.udfs.js_hextoint_secure(SUBSTRING(executeCall, 75, 64))/1e18 > 0) then 'eth_transfer'
+        else 'empty_call' end as function_called
     , output_actualGasCost as actualgascost
     , output_actualGasCost * p.USD_PRICE as actualgascost_usd
     , case when INPUT != '0x' then 0
