@@ -11,7 +11,7 @@ SELECT
     PARAMS:"opInfo":"userOpHash"::STRING as op_hash,
     PARAMS:"opInfo":"mUserOp"."sender"::STRING as sender,
     PARAMS:"opInfo":"mUserOp"."paymaster"::STRING as paymaster,
-    PARAMS:"opInfo" as opInfo,
+    PARAMS:"callData"::STRING as executeCall,
     TO_ADDRESS as contract_address,
     STATUS as call_success,
     TRACE_ADDRESS as call_trace_address,

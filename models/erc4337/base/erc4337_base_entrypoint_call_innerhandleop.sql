@@ -11,7 +11,7 @@ SELECT
     dt.DECODED_INPUT:"input_params":"opInfo":"userOpHash"::STRING as op_hash,
     dt.DECODED_INPUT:"input_params":"opInfo":"mUserOp"."sender"::STRING as sender,
     dt.DECODED_INPUT:"input_params":"opInfo":"mUserOp"."paymaster"::STRING as paymaster,
-    dt.DECODED_INPUT:"input_params":"opInfo" as opInfo,
+    dt.DECODED_INPUT:"input_params":"callData" as executeCall,
     dt.TO_ADDRESS as contract_address,
     rt.STATUS as call_success,
     rt.TRACE_ADDRESS as call_trace_address,
