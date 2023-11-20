@@ -16,8 +16,7 @@ SELECT
     rt.STATUS as call_success,
     rt.TRACE_ADDRESS as call_trace_address,
     dt.DECODED_INPUT as params,
-    rt.output,
-    rt.value
+    rt.output
 FROM {{ source('base_decoded', 'traces__beta') }} dt
 INNER JOIN {{ source('base_raw', 'traces') }} rt
     ON dt.TRACE_ID = rt.TRACE_ID
