@@ -103,5 +103,6 @@ FROM (VALUES
 ('CyberID', '0xe55793f55df1f1b5037eba41881663583d4f9b24', 'NFT'),
 ('ZTX Hoodie', '0x2fd9c72ea5763340e96e9369226032c38cf7a1da', 'NFT'),
 ('Cyberconnect', '0xb2bbfc07948fedeb5935316203c33ce70bef57d0', 'social'),
-('Gong', '0xe6ff0ea09e3f58c0065fdb0305a925a476380bba', 'quest')
+('Gong', '0xe6ff0ea09e3f58c0065fdb0305a925a476380bba', 'quest'),
+('CapX ID', '0x40a3e8318a3de306ce27386b72cd05594d78f8cb', 'NFT')
 ) AS x (name, address, category)
