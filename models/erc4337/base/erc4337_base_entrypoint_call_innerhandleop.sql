@@ -22,7 +22,7 @@ INNER JOIN {{ source('base_raw', 'traces') }} rt
     ON dt.TRACE_ID = rt.TRACE_ID
     AND dt.TO_ADDRESS = '0x5ff137d4b0fdcd49dca30c7cf57e578a026d2789'
     AND dt.SELECTOR = '0x1d732756' -- innerhandleop
-    AND rt.STATUS = 1
+    AND rt.ERROR IS NULL
     {% if is_incremental() %}
     AND dt.BLOCK_TIMESTAMP >= CURRENT_TIMESTAMP() - interval '3 day' 
     {% endif %}
