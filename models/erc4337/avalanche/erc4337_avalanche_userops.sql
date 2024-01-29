@@ -76,7 +76,7 @@ SELECT
         end as called_contract
     , case 
         when INPUT != '0x' then COALESCE(TEXT_SIGNATURE_SHORT, LEFT(INPUT,10))
-        when (INPUT = '0x' AND common.udfs.js_hextoint_secure(SUBSTRING(executeCall, 75, 64))/1e18 > 0) then 'matic_transfer'
+        when (INPUT = '0x' AND common.udfs.js_hextoint_secure(SUBSTRING(executeCall, 75, 64))/1e18 > 0) then 'avax_transfer'
         else 'empty_call' end as function_called
     , output_actualGasCost as actualgascost
     , output_actualGasCost * p.USD_PRICE as actualgascost_usd
@@ -86,7 +86,7 @@ SELECT
 FROM op 
 INNER JOIN {{ source('common_prices', 'token_prices_hourly_easy') }} p 
     ON p.HOUR = date_trunc('hour', block_time)
-    AND SYMBOL = 'ETH'
+    AND SYMBOL = 'AVAX'
     {% if is_incremental() %}
     AND p.HOUR >= CURRENT_TIMESTAMP() - interval '3 day' 
     {% endif %} 
