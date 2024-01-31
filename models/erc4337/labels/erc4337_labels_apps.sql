@@ -107,5 +107,12 @@ FROM (VALUES
 ('CapX ID', '0x40a3e8318a3de306ce27386b72cd05594d78f8cb', 'NFT'),
 ('Realm ID', '0x8eb187a55b701f8990539bf219b7921d5d3bdadd', 'NFT'),
 ('Anichess Orb Token Claim', '0x163f88becdf706499023d4364fd9c4fe51a03283', 'NFT drop'),
-('Stader', '0xcf5ea1b38380f6af39068375516daf40ed70d299', 'Staking')
+('Stader', '0xcf5ea1b38380f6af39068375516daf40ed70d299', 'Staking'),
+('ZerooneGallery', '0x02ff4cf1e5522bdc6f85ccb383dd1d2521460613', 'NFT market'),
+('USDC', '0xb97ef9ef8734c71904d8002f8b6bc66dd9c48a6e', 'ERC20'),
+('sAVAX', '0x2b2c81e08f1af8835a78bb2a90ae924ace0ea4be', 'ERC20'),
+('USDT', '0x9702230a8ea53601f5cd2dc00fdbc13d4df4a8c7', 'ERC20'),
+('wAVAX', '0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7', 'ERC20'),
+('AMPL', '0x027dbca046ca156de9622cd1e2d907d375e53aa7', 'ERC20'),
+('Zeroone Collection Factory', '0xf92d80b79da082f0a289a4af41652d61e72bdda8', 'factory')
 ) AS x (name, address, category)
