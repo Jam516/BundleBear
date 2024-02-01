@@ -114,5 +114,9 @@ FROM (VALUES
 ('USDT', '0x9702230a8ea53601f5cd2dc00fdbc13d4df4a8c7', 'ERC20'),
 ('wAVAX', '0xb31f66aa3c1e785363f0875a1b74e27b85fd66c7', 'ERC20'),
 ('AMPL', '0x027dbca046ca156de9622cd1e2d907d375e53aa7', 'ERC20'),
-('Zeroone Collection Factory', '0xf92d80b79da082f0a289a4af41652d61e72bdda8', 'factory')
+('Zeroone Collection Factory', '0xf92d80b79da082f0a289a4af41652d61e72bdda8', 'factory'),
+('Art-and-stuff', '0x0ccd3679d1c2752130cb1f6ec79454155616f53f', 'NFT'),
+('Classes Colletion', '0x99274da5502687831430c94936938f7d7bdb40b7', 'NFT'),
+('Colborns Colletion', '0xcce45c565693aa7bc9f2b79a54575387d1d906c9', 'NFT'),
+('Tormentials Colletion', '0x60789da274e66bb57262e7600a10167f4e8662d0', 'NFT')
 ) AS x (name, address, category)
