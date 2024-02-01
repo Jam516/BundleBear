@@ -23,5 +23,7 @@ FROM (VALUES
 ('alchemy_lightaccount', '0x000000893a26168158fbeadd9335be5bc96592e2'),
 ('etherspot', '0x7f6d8f107fe8551160bd5351d5f1514a6ad5d40e'),
 ('thirdweb', '0x872f64d0510c8c470188bc29487ea7ab79faa518'),
-('thirdweb', '0xebdacbaf7e6f2521250da8713ecacbaf10ccbe8a')
+('thirdweb', '0xebdacbaf7e6f2521250da8713ecacbaf10ccbe8a'),
+('thirdweb', '0xa0b9ebd2cc138e0748c69baf66df2e01c57521ec'),
+('polynomial', '0xb43c0899eccf98bc7a0f3e2c2a211d6fc4f9b3fe')
 ) AS x (name, address)
