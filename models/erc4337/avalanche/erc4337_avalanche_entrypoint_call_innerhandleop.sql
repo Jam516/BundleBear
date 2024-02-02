@@ -22,7 +22,7 @@ WHERE TO_ADDRESS IN
     ('0x5ff137d4b0fdcd49dca30c7cf57e578a026d2789', 
     '0x0576a174d229e3cfa37253523e645a78a0c91b57', 
     '0x0f46c65c17aa6b4102046935f33301f0510b163a')
-    AND NAME = 'innerHandleOp'
+    AND SELECTOR = '0x1d732756'
     AND ERROR IS NULL
     {% if is_incremental() %}
     AND BLOCK_TIMESTAMP >= CURRENT_TIMESTAMP() - interval '3 day' 

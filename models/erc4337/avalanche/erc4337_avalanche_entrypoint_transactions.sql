@@ -10,7 +10,7 @@ with output AS (
         BLOCK_TIMESTAMP as block_time,
         HASH as tx_hash,
         FROM_ADDRESS AS bundler,
-        'MATIC' AS token,
+        'AVAX' AS token,
         (TO_DOUBLE(t.RECEIPT_GAS_USED) * TO_DOUBLE(t.GAS_PRICE))/1e18 as bundler_outflow,
         p.USD_PRICE * (TO_DOUBLE(t.RECEIPT_GAS_USED) * TO_DOUBLE(t.GAS_PRICE))/1e18 as bundler_outflow_usd
     FROM {{ source('avalanche_raw', 'transactions') }} t
