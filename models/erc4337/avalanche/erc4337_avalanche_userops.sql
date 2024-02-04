@@ -26,9 +26,6 @@ with op as (
         {% if not is_incremental() %}
         WHERE tx.BLOCK_TIMESTAMP >= to_timestamp('2023-01-27', 'yyyy-MM-dd') -- first mainnet entrypoint live
         {% endif %}
-        {% if is_incremental() %}
-        WHERE op.block_time >= CURRENT_TIMESTAMP() - interval '3 day' 
-        {% endif %}
     )
 
     , joined as (
