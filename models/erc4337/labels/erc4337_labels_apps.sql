@@ -98,7 +98,7 @@ FROM (VALUES
 ('Degensbet', '0xe7703c5c264cdf7b86bee65582759cd37ed3efac', 'betting'),
 ('Degensbet', '0x162309511d386e28015fd0a9a33d3df50f4e5c8c', 'betting'),
 ('Degensbet', '0x885b8d3c9f86cba2cc9d7c702171e7d065176a45', 'betting'),
-('Treasure DAO', '0x072b65f891b1a389539e921bdb9427af41a7b1f7', 'gaming'),
+('Treasure DAO', '0x072b65f891b1a389539e921bdb9427af41a7b1f7', 'game'),
 ('stETH', '0xae7ab96520de3a18e5e111b5eaab095312d7fe84', 'ERC20'),
 ('EigenLayer', '0x858646372cc42e1a627fce94aa7a7033e7cf075a', 'restaking'),
 ('rETH', '0xae78736cd615f374d3085123a210448e74fc6393', 'ERC20'),
