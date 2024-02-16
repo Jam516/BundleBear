@@ -146,3 +146,18 @@ models:
       - &num_userops
         name: num_userops
         description: "number of userops in the txn" 
+
+  - name: erc4337_ethereum_failed_validation_ops
+    meta:
+      blockchain: ethereum
+      sector: erc4337
+    description: "ERC-4337 UserOps that failed validation"
+    columns:
+      - *tx_hash
+      - *block_time
+      - *bundler
+      - &trace_id
+        name: trace_id
+        description: "unique id of the trace"
+        tests: 
+        - unique
