@@ -6,8 +6,8 @@
 }}
 
 SELECT
-    BLOCK_TIMESTAMP,
-    TRANSACTION_HASH,
+    BLOCK_TIMESTAMP AS block_time,
+    TRANSACTION_HASH AS tx_hash,
     FROM_ADDRESS AS bundler,
     TRACE_ID
 FROM {{ source('avalanche_raw', 'traces') }} l
