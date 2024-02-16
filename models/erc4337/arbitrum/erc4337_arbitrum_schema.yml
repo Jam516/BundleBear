@@ -146,3 +146,18 @@ models:
       - &txn_cost_usd
         name: txn_cost_usd
         description: gas fee paid for the transaction in usd
+
+  - name: erc4337_arbitrum_failed_validation_ops
+    meta:
+      blockchain: arbitrum
+      sector: erc4337
+    description: "ERC-4337 UserOps that failed validation"
+    columns:
+      - *tx_hash
+      - *block_time
+      - *bundler
+      - &trace_id
+        name: trace_id
+        description: "unique id of the trace"
+        tests: 
+        - unique
