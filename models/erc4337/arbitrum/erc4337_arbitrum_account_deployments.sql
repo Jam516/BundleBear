@@ -18,7 +18,7 @@ SELECT
     COALESCE(pay.name, 'Unknown') as paymaster_name,
     (TO_DOUBLE(t.RECEIPT_GAS_USED) * TO_DOUBLE(t.RECEIPT_EFFECTIVE_GAS_PRICE))/1e18 as txn_cost,
     p.USD_PRICE * (TO_DOUBLE(t.RECEIPT_GAS_USED) * TO_DOUBLE(t.RECEIPT_EFFECTIVE_GAS_PRICE))/1e18 as txn_cost_usd
-FROM {{ source('arbitrum_decoded', 'logs_sample') }} l
+FROM {{ source('arbitrum_decoded', 'logs') }} l
 INNER JOIN {{ source('arbitrum_raw', 'transactions') }} t 
     ON t.HASH = l.TRANSACTION_HASH
     AND l.TOPIC0 = '0xd51a9c61267aa6196961883ecf5ff2da6619c37dac0fa92122513fb32c032d2d'
