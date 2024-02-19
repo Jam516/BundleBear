@@ -153,9 +153,10 @@ models:
       sector: erc4337
     description: "ERC-4337 UserOps that failed validation"
     columns:
-      - *tx_hash
       - *block_time
+      - *tx_hash
       - *bundler
+      - *bundler_name
       - &trace_id
         name: trace_id
         description: "unique id of the trace"

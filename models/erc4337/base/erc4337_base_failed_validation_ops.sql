@@ -9,6 +9,7 @@ SELECT
     BLOCK_TIMESTAMP AS block_time,
     TRANSACTION_HASH AS tx_hash,
     FROM_ADDRESS AS bundler,
+    COALESCE(b.name, 'Unknown') as bundler_name,
     TRACE_ID
 FROM {{ source('base_raw', 'traces') }} l
 LEFT JOIN {{ ref('erc4337_labels_bundlers') }} b ON b.address = l.FROM_ADDRESS
