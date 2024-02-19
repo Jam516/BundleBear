@@ -1,7 +1,7 @@
 {{ config
 (
     materialized = 'incremental',
-    unique_key = ['TRACE_ID','TRANSACTION_HASH']
+    unique_key = ['TRACE_ID','TX_HASH']
 )
 }}
 
