@@ -156,6 +156,7 @@ models:
       - *block_time
       - *tx_hash
       - *bundler
+      - *bundler_name
       - &trace_id
         name: trace_id
         description: "unique id of the trace"
