@@ -144,9 +144,9 @@ models:
         name: txn_cost_usd
         description: gas fee paid for the transaction in usd
 
-  - name: erc4337_ethereum_failed_validation_ops
+  - name: erc4337_base_failed_validation_ops
     meta:
-      blockchain: ethereum
+      blockchain: base
       sector: erc4337
     description: "ERC-4337 UserOps that failed validation"
     columns:
