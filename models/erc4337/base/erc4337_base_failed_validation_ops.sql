@@ -1,7 +1,7 @@
 {{ config
 (
     materialized = 'incremental',
-    unique_key = ['TRACE_ID','TRANSACTION_HASH']
+    unique_key = ['TRACE_ID','TX_HASH']
 )
 }}
 
@@ -11,6 +11,7 @@ SELECT
     FROM_ADDRESS AS bundler,
     TRACE_ID
 FROM {{ source('base_raw', 'traces') }} l
+LEFT JOIN {{ ref('erc4337_labels_bundlers') }} b ON b.address = l.FROM_ADDRESS
 WHERE
     TO_ADDRESS IN 
     ('0x5ff137d4b0fdcd49dca30c7cf57e578a026d2789', 
