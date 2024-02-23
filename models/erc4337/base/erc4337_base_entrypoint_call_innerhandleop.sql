@@ -20,7 +20,9 @@ SELECT
 FROM {{ source('base_decoded', 'traces__beta') }} dt
 INNER JOIN {{ source('base_raw', 'traces') }} rt
     ON dt.TRACE_ID = rt.TRACE_ID
-    AND dt.TO_ADDRESS = '0x5ff137d4b0fdcd49dca30c7cf57e578a026d2789'
+    AND dt.TO_ADDRESS IN 
+    ('0x5ff137d4b0fdcd49dca30c7cf57e578a026d2789',
+    '0x0000000071727de22e5e9d8baf0edac6f37da032')
     AND dt.SELECTOR = '0x1d732756' -- innerhandleop
     AND rt.ERROR IS NULL
     {% if is_incremental() %}
