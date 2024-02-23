@@ -137,5 +137,11 @@ FROM (VALUES
 ('mhotx', '0xdad86b45285df081670ffba7569e04542f2ce55d', 'ERC20'),
 ('ETHx', '0xa35b1b31ce002fbf2058d22f30f95d405200a15b', 'ERC20'),
 ('Odos', '0xcf5540fffcdc3d510b18bfca6d2b9987b0772559', 'DEX'),
-('KelpDAO', '0x036676389e48133b63a802f8635ad39e752d375d', 'restaking')
+('KelpDAO', '0x036676389e48133b63a802f8635ad39e752d375d', 'restaking'),
+('rsETH', '0xa1290d69c65a6fe4df752f95823fae25cb99e5a7', 'ERC20'),
+('PENDLE-LPT', '0x4f43c77872db6ba177c270986cd30c3381af37ee', 'ERC20'),
+('Pendle Router', '0x00000000005bbb0ef59571e58418f9a4357b68a0', 'DEX'),
+('DefinitiveSharesLevCompV3steth', '0x4184a083307a208f5bf20d0b44e161bc55aae996', 'ERC20'),
+('Blacksmith', '0xa29d89f65ea06881e2ab724cd247ebf07ee4273a', 'DEX'),
+('Kyberswap', '0x6131b5fae19ea4f9d964eac0408e4408b66337b5', 'DEX')
 ) AS x (name, address, category)
