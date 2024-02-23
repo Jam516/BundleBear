@@ -7,7 +7,9 @@
 
 SELECT 
 CONCAT('0x', SUBSTRING(TOPIC2, 27, 40)) as ADDRESS,
-'ethereum' as blockchain
+'ethereum' as blockchain,
+TRANSACTION_HASH as tx_hash,
+LOG_INDEX
 FROM ETHEREUM.RAW.LOGS
 WHERE TOPIC0 = '0x83435eca805f6256e4aa778ee8b2e8aec7485fa4b643a0fff05b7df6bf688389' -- LogAccountCreated
 AND ADDRESS = '0x2971adfa57b20e5a416ae5a708a8655a9c74f723'
@@ -20,7 +22,9 @@ AND BLOCK_TIMESTAMP >= CURRENT_TIMESTAMP() - interval '3 day'
 
 UNION ALL SELECT 
 CONCAT('0x', SUBSTRING(TOPIC2, 27, 40)) as ADDRESS,
-'polygon' as blockchain
+'polygon' as blockchain,
+TRANSACTION_HASH as tx_hash,
+LOG_INDEX
 FROM POLYGON.RAW.LOGS
 WHERE TOPIC0 = '0x83435eca805f6256e4aa778ee8b2e8aec7485fa4b643a0fff05b7df6bf688389' -- LogAccountCreated
 AND ADDRESS = '0xa9b99766e6c676cf1975c0d3166f96c0848ff5ad'
@@ -33,7 +37,9 @@ AND BLOCK_TIMESTAMP >= CURRENT_TIMESTAMP() - interval '3 day'
 
 UNION ALL SELECT 
 CONCAT('0x', SUBSTRING(TOPIC2, 27, 40)) as ADDRESS,
-'optimism' as blockchain
+'optimism' as blockchain,
+TRANSACTION_HASH as tx_hash,
+LOG_INDEX
 FROM OPTIMISM.RAW.LOGS
 WHERE TOPIC0 = '0x83435eca805f6256e4aa778ee8b2e8aec7485fa4b643a0fff05b7df6bf688389' -- LogAccountCreated
 AND ADDRESS = '0x6ce3e607c808b4f4c26b7f6adaeb619e49cabb25'
@@ -46,7 +52,9 @@ AND BLOCK_TIMESTAMP >= CURRENT_TIMESTAMP() - interval '3 day'
 
 UNION ALL SELECT 
 CONCAT('0x', SUBSTRING(TOPIC2, 27, 40)) as ADDRESS,
-'arbitrum' as blockchain
+'arbitrum' as blockchain,
+TRANSACTION_HASH as tx_hash,
+LOG_INDEX
 FROM ARBITRUM.RAW.LOGS
 WHERE TOPIC0 = '0x83435eca805f6256e4aa778ee8b2e8aec7485fa4b643a0fff05b7df6bf688389' -- LogAccountCreated
 AND ADDRESS = '0x1ee00c305c51ff3be60162456a9b533c07cd9288'
