@@ -22,5 +22,6 @@ FROM (VALUES
 ('pimlico', '0x67f21be69a16c314a0b7da537309b2f3addde031'),
 ('candide', '0x769f68e4ba8f53f3092eef34a42a811ab6365b05'),
 ('blocto', '0xa312d8d37be746bd09cbd9e9ba2ef16bc7da48ff'),
-('circle', '0x7cea357b5ac0639f89f9e378a1f03aa5005c0a25')
+('circle', '0x7cea357b5ac0639f89f9e378a1f03aa5005c0a25'),
+('particle', '0x23b944a93020a9c7c414b1adecdb2fd4cd4e8184')
 ) AS x (name, address)
