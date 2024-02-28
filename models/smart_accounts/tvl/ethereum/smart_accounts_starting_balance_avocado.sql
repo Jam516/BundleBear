@@ -23,4 +23,5 @@ inner join address_table
     on address = address_filter
     AND block_timestamp <= TO_DATE('2023-04-01', 'YYYY-MM-DD')
     and balances.usd_balance is not null
+    and balances.usd_balance > 0    
     QUALIFY ROW_NUMBER() OVER(PARTITION BY balances.address, balances.token_address ORDER BY balances.block_timestamp DESC) = 1
