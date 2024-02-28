@@ -18,7 +18,7 @@ select
     balances.balance,
     balances.token_address,
     balances.token_symbol
-from ETHEREUM.ASSETS.ETH_AND_ERC20_BALANCES_LATEST balances 
+from ETHEREUM.ASSETS.ETH_AND_ERC20_BALANCES balances 
 inner join address_table 
     on address = address_filter
     AND block_timestamp <= TO_DATE('2023-04-01', 'YYYY-MM-DD')
