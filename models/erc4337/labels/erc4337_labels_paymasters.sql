@@ -23,5 +23,9 @@ FROM (VALUES
 ('candide', '0x769f68e4ba8f53f3092eef34a42a811ab6365b05'),
 ('blocto', '0xa312d8d37be746bd09cbd9e9ba2ef16bc7da48ff'),
 ('circle', '0x7cea357b5ac0639f89f9e378a1f03aa5005c0a25'),
-('particle', '0x23b944a93020a9c7c414b1adecdb2fd4cd4e8184')
+('particle', '0x23b944a93020a9c7c414b1adecdb2fd4cd4e8184'),
+('etherspot', '0x7f690e93cecfca5a31e6e1df50a33f6d3059048c'),
+('etherspot', '0x26fec24b0d467c9de105217b483931e8f944ff50'),
+('etherspot', '0xec2ee24e79c73db13dd9bc782856a5296626b7eb'),
+('etherspot', '0x805650ce74561c85baa44a8bd13e19633fd0f79d')
 ) AS x (name, address)
