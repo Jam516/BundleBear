@@ -66,6 +66,9 @@ SELECT
     , case when paymaster = '0x0000000000000000000000000000000000000000' then 'No paymaster'
       else COALESCE(pay.name, 'Unknown') 
       end as paymaster_name
+    , case when paymaster = '0x0000000000000000000000000000000000000000' then 'No paymaster'
+      else COALESCE(pay.type, 'Unknown') 
+      end as paymaster_type
     , case 
         when INPUT != '0x' then TO_ADDRESS
         when (INPUT = '0x' AND common.udfs.js_hextoint_secure(SUBSTRING(executeCall, 75, 64))/1e18 > 0) then 'direct_transfer'
