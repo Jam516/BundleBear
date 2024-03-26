@@ -8,7 +8,7 @@ sources:
       warn_after: { count: 12, period: hour }
       error_after: { count: 24, period: hour }
     tables:
-      - name: traces_sample
+      - name: traces
         loaded_at_field: block_timestamp
       - name: logs
         loaded_at_field: block_timestamp       
