@@ -8,14 +8,14 @@
 SELECT 
     BLOCK_TIMESTAMP as block_time,
     TRANSACTION_HASH as tx_hash,
-    PARAMS:"opInfo":"userOpHash"::STRING as op_hash,
-    PARAMS:"opInfo":"mUserOp"."sender"::STRING as sender,
-    PARAMS:"opInfo":"mUserOp"."paymaster"::STRING as paymaster,
-    PARAMS:"callData"::STRING as executeCall,
+    INPUT_PARAMS:"opInfo":"userOpHash"::STRING as op_hash,
+    INPUT_PARAMS:"opInfo":"mUserOp"."sender"::STRING as sender,
+    INPUT_PARAMS:"opInfo":"mUserOp"."paymaster"::STRING as paymaster,
+    INPUT_PARAMS:"callData"::STRING as executeCall,
     TO_ADDRESS as contract_address,
     STATUS as call_success,
     TRACE_ADDRESS as call_trace_address,
-    PARAMS as params,
+    INPUT_PARAMS as params,
     output
 FROM {{ source('optimism_decoded', 'traces') }}
 WHERE TO_ADDRESS IN 
