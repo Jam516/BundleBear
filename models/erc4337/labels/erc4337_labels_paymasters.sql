@@ -32,5 +32,6 @@ FROM (VALUES
 ('etherspot', '0x7f690e93cecfca5a31e6e1df50a33f6d3059048c', 'verifying'),
 ('etherspot', '0x26fec24b0d467c9de105217b483931e8f944ff50', 'verifying'),
 ('etherspot', '0xec2ee24e79c73db13dd9bc782856a5296626b7eb', 'verifying'),
-('etherspot', '0x805650ce74561c85baa44a8bd13e19633fd0f79d', 'verifying')
+('etherspot', '0x805650ce74561c85baa44a8bd13e19633fd0f79d', 'verifying'),
+('safe', '0xe3dc822d77f8ca7ac74c30b0dffea9fcdcaaa321', 'verifying')
 ) AS x (name, address, type)
