@@ -27,5 +27,6 @@ FROM (VALUES
 ('thirdweb', '0xebdacbaf7e6f2521250da8713ecacbaf10ccbe8a'),
 ('thirdweb', '0xa0b9ebd2cc138e0748c69baf66df2e01c57521ec'),
 ('polynomial', '0xb43c0899eccf98bc7a0f3e2c2a211d6fc4f9b3fe'),
-('circle', '0xfef1c57185393f456eaeca363a0d3c12cd8df07b')
+('circle', '0xfef1c57185393f456eaeca363a0d3c12cd8df07b'),
+('nani', '0x000000000000dd366cc2e4432bb998e41dfd47c7')
 ) AS x (name, address)
