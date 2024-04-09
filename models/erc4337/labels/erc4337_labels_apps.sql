@@ -143,5 +143,8 @@ FROM (VALUES
 ('Pendle Router', '0x00000000005bbb0ef59571e58418f9a4357b68a0', 'DEX'),
 ('DefinitiveSharesLevCompV3steth', '0x4184a083307a208f5bf20d0b44e161bc55aae996', 'ERC20'),
 ('Blacksmith', '0xa29d89f65ea06881e2ab724cd247ebf07ee4273a', 'DEX'),
-('Kyberswap', '0x6131b5fae19ea4f9d964eac0408e4408b66337b5', 'DEX')
+('Kyberswap', '0x6131b5fae19ea4f9d964eac0408e4408b66337b5', 'DEX'),
+('Piggybox', '0x1836084c8d1bf58118f072baeddd1523403b1b32', 'ERC20'),
+('Safe4337Module', '0xa581c4a4db7175302464ff3c06380bc3270b4037', 'plugin'),
+('USBG', '0x20b5630824be86108356215fcc9d65b1fca8376a', 'ERC20')
 ) AS x (name, address, category)
