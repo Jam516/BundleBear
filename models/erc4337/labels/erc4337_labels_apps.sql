@@ -147,5 +147,6 @@ FROM (VALUES
 ('Piggybox', '0x1836084c8d1bf58118f072baeddd1523403b1b32', 'ERC20'),
 ('Safe4337Module', '0xa581c4a4db7175302464ff3c06380bc3270b4037', 'plugin'),
 ('USBG', '0x20b5630824be86108356215fcc9d65b1fca8376a', 'ERC20'),
-('Degen', '0x4ed4e862860bed51a9570b96d89af5e1b0efefed', 'ERC20')
+('Degen', '0x4ed4e862860bed51a9570b96d89af5e1b0efefed', 'ERC20'),
+('Kwenta', '0x1353f762736eddc82d26a1995b9cb0eabfa034d0', 'derivatives')
 ) AS x (name, address, category)
