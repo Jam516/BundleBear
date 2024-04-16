@@ -16,4 +16,4 @@ FROM (
     WHERE IS_BRIDGE = FALSE
     AND CHAIN = 'tron'
 ) t
-WHERE rn = 1;
+WHERE rn = 1
