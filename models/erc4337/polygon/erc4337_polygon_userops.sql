@@ -41,6 +41,7 @@ with op as (
             AND b.tx_hash = t.TRANSACTION_HASH
             AND b.sender = t.FROM_ADDRESS
             AND split(b.call_trace_address, ',')[0] = split(t.TRACE_ADDRESS, ',')[0] 
+            AND _CREATED_AT IS NOT NULL
             {% if not is_incremental() %}
             AND t.BLOCK_TIMESTAMP >= to_timestamp('2023-01-27', 'yyyy-MM-dd') 
             {% endif %}
