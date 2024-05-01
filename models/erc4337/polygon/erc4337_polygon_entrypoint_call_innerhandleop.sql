@@ -25,7 +25,7 @@ WHERE TO_ADDRESS IN
     '0x0000000071727de22e5e9d8baf0edac6f37da032')
     AND NAME = 'innerHandleOp'
     AND ERROR IS NULL
-    AND _CREATED_AT IS NOT NULL
+    -- AND _CREATED_AT IS NOT NULL
     {% if is_incremental() %}
     AND BLOCK_TIMESTAMP >= CURRENT_TIMESTAMP() - interval '3 day' 
     {% endif %}
