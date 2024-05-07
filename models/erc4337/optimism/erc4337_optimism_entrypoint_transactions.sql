@@ -11,12 +11,12 @@ with output AS (
         HASH as tx_hash,
         FROM_ADDRESS AS bundler,
         'ETH' AS token,
-        CASE WHEN GAS_PRICE = 0 THEN 0 
-        ELSE (RECEIPT_L1_FEE + (RECEIPT_GAS_USED*GAS_PRICE)) / 1e18
+        CASE WHEN RECEIPT_EFFECTIVE_GAS_PRICE = 0 THEN 0 
+        ELSE (RECEIPT_L1_FEE + (RECEIPT_GAS_USED*RECEIPT_EFFECTIVE_GAS_PRICE)) / 1e18
         END AS bundler_outflow,
         p.USD_PRICE * 
-        (CASE WHEN GAS_PRICE = 0 THEN 0 
-        ELSE (RECEIPT_L1_FEE + (RECEIPT_GAS_USED*GAS_PRICE)) / 1e18 
+        (CASE WHEN RECEIPT_EFFECTIVE_GAS_PRICE = 0 THEN 0 
+        ELSE (RECEIPT_L1_FEE + (RECEIPT_GAS_USED*RECEIPT_EFFECTIVE_GAS_PRICE)) / 1e18 
         END) as bundler_outflow_usd
     FROM {{ source('optimism_raw', 'transactions') }} t
     INNER JOIN {{ source('common_prices', 'token_prices_hourly_easy') }} p 

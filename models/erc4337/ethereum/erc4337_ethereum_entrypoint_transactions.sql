@@ -11,8 +11,8 @@ with output AS (
         HASH as tx_hash,
         FROM_ADDRESS AS bundler,
         'ETH' AS token,
-        (TO_DOUBLE(t.RECEIPT_GAS_USED) * TO_DOUBLE(t.GAS_PRICE))/1e18 as bundler_outflow,
-        p.USD_PRICE * (TO_DOUBLE(t.RECEIPT_GAS_USED) * TO_DOUBLE(t.GAS_PRICE))/1e18 as bundler_outflow_usd
+        (TO_DOUBLE(t.RECEIPT_GAS_USED) * TO_DOUBLE(t.RECEIPT_EFFECTIVE_GAS_PRICE))/1e18 as bundler_outflow,
+        p.USD_PRICE * (TO_DOUBLE(t.RECEIPT_GAS_USED) * TO_DOUBLE(t.RECEIPT_EFFECTIVE_GAS_PRICE))/1e18 as bundler_outflow_usd
     FROM {{ source('ethereum_raw', 'transactions') }} t
     INNER JOIN {{ source('common_prices', 'token_prices_hourly_easy') }} p 
         ON p.HOUR = date_trunc('hour', t.BLOCK_TIMESTAMP) 
