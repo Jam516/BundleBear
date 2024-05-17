@@ -153,5 +153,7 @@ FROM (VALUES
 ('Superfluid', '0x4c073b3bab6d8826b8c5b229f3cfdc1ec6e47e74', 'streaming'),
 ('DEGENx', '0x1eff3dd78f4a14abfa9fa66579bd3ce9e1b30529', 'ERC20'),
 ('Superfluid', '0xcfa132e353cb4e398080b9700609bb008eceb125', 'streaming'),
-('Superfluid', '0x30e0b740acfb45b6edb9eed40094134f24d8f159', 'streaming')
+('Superfluid', '0x30e0b740acfb45b6edb9eed40094134f24d8f159', 'streaming'),
+('Reach', '0xfae1a99fc906c5f5ad65f32822ec0cd9808f2bf2', 'ERC20 claim'),
+('PassportRegistry', '0x5f3aa689c4dcbae505e6f6c8548dbd9b908ba71d', 'identity')
 ) AS x (name, address, category)
