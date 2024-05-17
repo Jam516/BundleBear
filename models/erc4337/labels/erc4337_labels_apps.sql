@@ -152,5 +152,6 @@ FROM (VALUES
 ('ALFA', '0x905cf6adf9510ee12c78dd9c6a5445320db24342', 'ERC20'),
 ('Superfluid', '0x4c073b3bab6d8826b8c5b229f3cfdc1ec6e47e74', 'streaming'),
 ('DEGENx', '0x1eff3dd78f4a14abfa9fa66579bd3ce9e1b30529', 'ERC20'),
-('Superfluid', '0xcfa132e353cb4e398080b9700609bb008eceb125', 'streaming')
+('Superfluid', '0xcfa132e353cb4e398080b9700609bb008eceb125', 'streaming'),
+('Superfluid', '0x30e0b740acfb45b6edb9eed40094134f24d8f159', 'streaming')
 ) AS x (name, address, category)
