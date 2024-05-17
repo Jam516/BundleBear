@@ -150,5 +150,7 @@ FROM (VALUES
 ('Degen', '0x4ed4e862860bed51a9570b96d89af5e1b0efefed', 'ERC20'),
 ('Kwenta', '0x1353f762736eddc82d26a1995b9cb0eabfa034d0', 'derivatives'),
 ('ALFA', '0x905cf6adf9510ee12c78dd9c6a5445320db24342', 'ERC20'),
-('Superfluid', '0x4c073b3bab6d8826b8c5b229f3cfdc1ec6e47e74', 'streaming')
+('Superfluid', '0x4c073b3bab6d8826b8c5b229f3cfdc1ec6e47e74', 'streaming'),
+('DEGENx', '0x1eff3dd78f4a14abfa9fa66579bd3ce9e1b30529', 'ERC20'),
+('Superfluid', '0xcfa132e353cb4e398080b9700609bb008eceb125', 'streaming')
 ) AS x (name, address, category)
