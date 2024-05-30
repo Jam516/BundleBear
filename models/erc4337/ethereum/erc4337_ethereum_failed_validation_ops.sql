@@ -20,7 +20,7 @@ WHERE
     '0x0f46c65c17aa6b4102046935f33301f0510b163a',
     '0x0000000071727de22e5e9d8baf0edac6f37da032')
     AND ERROR IS NOT NULL
-    AND OUTPUT LIKE '%41413235%' -- AA25 Nonce Error
+    AND OUTPUT LIKE ANY ('%41413235%', '%41413130%') -- AA25 Nonce Error
     AND SELECTOR = '0x1fad948c'
     {% if not is_incremental() %}
         AND BLOCK_TIMESTAMP >= to_timestamp('2023-01-27', 'yyyy-MM-dd') -- first mainnet entrypoint live
