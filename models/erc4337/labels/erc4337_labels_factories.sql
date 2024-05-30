@@ -29,5 +29,6 @@ FROM (VALUES
 ('polynomial', '0xb43c0899eccf98bc7a0f3e2c2a211d6fc4f9b3fe'),
 ('circle', '0xfef1c57185393f456eaeca363a0d3c12cd8df07b'),
 ('nani', '0x000000000000dd366cc2e4432bb998e41dfd47c7'),
-('zerodev_kernel', '0xd703aae79538628d27099b8c4f621be4ccd142d5')
+('zerodev_kernel', '0xd703aae79538628d27099b8c4f621be4ccd142d5'),
+('coinbase_smart_wallet', '0x0ba5ed0c6aa8c49038f819e587e2633c4a9f428a')
 ) AS x (name, address)
