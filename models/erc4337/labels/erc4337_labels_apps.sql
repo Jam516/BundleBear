@@ -6,16 +6,16 @@
 
 SELECT name, address, category
 FROM (VALUES
-('G1', '0xe36bd65609c08cd17b53520293523cf4560533d0', 'ERC20'), 
-('USDC', '0x2791bca1f2de4661ed88a30c99a7a9449aa84174', 'ERC20'),  
-('USDC', '0x7f5c764cbc14f9669b88837ca1490cca17c31607', 'ERC20'), 
-('USDC', '0x0b2c639c533813f4aa9d7837caf62653d097ff85', 'ERC20'), 
-('USDC', '0xff970a61a04b1ca14834a43f5de4533ebddb5cc8', 'ERC20'), 
+('G1', '0xe36bd65609c08cd17b53520293523cf4560533d0', 'ERC20'),
+('USDC', '0x2791bca1f2de4661ed88a30c99a7a9449aa84174', 'ERC20'),
+('USDC', '0x7f5c764cbc14f9669b88837ca1490cca17c31607', 'ERC20'),
+('USDC', '0x0b2c639c533813f4aa9d7837caf62653d097ff85', 'ERC20'),
+('USDC', '0xff970a61a04b1ca14834a43f5de4533ebddb5cc8', 'ERC20'),
 ('USDC', '0xaf88d065e77c8cc2239327c5edb3a432268e5831', 'ERC20'),
-('USDC', '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48', 'ERC20'), 
+('USDC', '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48', 'ERC20'),
 ('USDC', '0x833589fcd6edb6e08f4c7c32d4f71b54bda02913', 'ERC20'),
 ('USDC', '0xd9aaec86b65d86f6a7b5b1b0c42ffa531710b6ca', 'ERC20'),
-('cbETH', '0xbe9895146f7af43049ca1c1ae358b0541ea49704', 'ERC20'),    
+('cbETH', '0xbe9895146f7af43049ca1c1ae358b0541ea49704', 'ERC20'),
 ('USDT', '0xc2132d05d31c914a87c6611c10748aeb04b58e8f', 'ERC20'),
 ('USDT', '0x94b008aa00579c1307b0ef2c499ad98a8ce58e58', 'ERC20'),
 ('USDT', '0xdac17f958d2ee523a2206206994597c13d831ec7', 'ERC20'),
@@ -155,5 +155,6 @@ FROM (VALUES
 ('Superfluid', '0xcfa132e353cb4e398080b9700609bb008eceb125', 'streaming'),
 ('Superfluid', '0x30e0b740acfb45b6edb9eed40094134f24d8f159', 'streaming'),
 ('Reach', '0xfae1a99fc906c5f5ad65f32822ec0cd9808f2bf2', 'ERC20 claim'),
-('PassportRegistry', '0x5f3aa689c4dcbae505e6f6c8548dbd9b908ba71d', 'identity')
+('PassportRegistry', '0x5f3aa689c4dcbae505e6f6c8548dbd9b908ba71d', 'identity'),
+('Kwenta', '0xe331a7eeC851Ba702aA8BF43070a178451d6D28E', 'derivatives')
 ) AS x (name, address, category)
