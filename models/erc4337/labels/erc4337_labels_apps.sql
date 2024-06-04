@@ -156,5 +156,5 @@ FROM (VALUES
 ('Superfluid', '0x30e0b740acfb45b6edb9eed40094134f24d8f159', 'streaming'),
 ('Reach', '0xfae1a99fc906c5f5ad65f32822ec0cd9808f2bf2', 'ERC20 claim'),
 ('PassportRegistry', '0x5f3aa689c4dcbae505e6f6c8548dbd9b908ba71d', 'identity'),
-('Kwenta', '0xe331a7eeC851Ba702aA8BF43070a178451d6D28E', 'derivatives')
+('Kwenta', '0xe331a7eec851ba702aa8bf43070a178451d6d28e', 'derivatives')
 ) AS x (name, address, category)
