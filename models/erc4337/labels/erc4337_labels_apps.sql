@@ -157,5 +157,7 @@ FROM (VALUES
 ('Reach', '0xfae1a99fc906c5f5ad65f32822ec0cd9808f2bf2', 'ERC20 claim'),
 ('PassportRegistry', '0x5f3aa689c4dcbae505e6f6c8548dbd9b908ba71d', 'identity'),
 ('Kwenta', '0xe331a7eec851ba702aa8bf43070a178451d6d28e', 'identity'),
-('Nekocoin', '0x6668bc6eea73404b4da5775c774fafc815b66b36', 'identity')
+('Nekocoin', '0x6668bc6eea73404b4da5775c774fafc815b66b36', 'identity'),
+('OpenSocial', '0x00000066c6c6fca286f48a7f4e989b7198c26caf', 'social'),
+('Blocklords', '0xa5eae9b57ce5f22785263223eee03fcad2e4cd76', 'NFT')
 ) AS x (name, address, category)
