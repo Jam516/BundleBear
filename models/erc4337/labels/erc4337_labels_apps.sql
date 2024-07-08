@@ -159,5 +159,12 @@ FROM (VALUES
 ('Kwenta', '0xe331a7eec851ba702aa8bf43070a178451d6d28e', 'identity'),
 ('Nekocoin', '0x6668bc6eea73404b4da5775c774fafc815b66b36', 'identity'),
 ('OpenSocial', '0x00000066c6c6fca286f48a7f4e989b7198c26caf', 'social'),
-('Blocklords', '0xa5eae9b57ce5f22785263223eee03fcad2e4cd76', 'NFT')
+('Blocklords', '0xa5eae9b57ce5f22785263223eee03fcad2e4cd76', 'NFT'),
+('Blocklords', '0x017405a2de0613e12cd3d7b67e691bfefc46debf', 'game'),
+('ManagedAccountFactory Thirdweb', '0x463effb51873c7720c810ac7fb2e145ec2f8cc60', 'factory'),
+('Blocklords', '0x80625310db240631a91f61659ccc550ea9761742', 'game'),
+('Uncuts', '0x077ab174ac10c904c5393f65fade8279dfbd3779', 'NFT'),
+('ManagedAccountFactory Thirdweb', '0xa0b9ebd2cc138e0748c69baf66df2e01c57521ec', 'factory'),
+('LyncReinvent Lottery', '0x31b47ee2a5103441d95cb7ecf0a74d907d8b6a87', 'game'),
+('AccountFactory Thirdweb', '0x20c70bd6588511f1824fbe116928c3d6c4b989ab', 'factory')
 ) AS x (name, address, category)

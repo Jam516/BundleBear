@@ -31,6 +31,8 @@ FROM (VALUES
 ('thirdweb', '0x872f64d0510c8c470188bc29487ea7ab79faa518'),
 ('thirdweb', '0xebdacbaf7e6f2521250da8713ecacbaf10ccbe8a'),
 ('thirdweb', '0xa0b9ebd2cc138e0748c69baf66df2e01c57521ec'),
+('thirdweb', '0x463effb51873c7720c810ac7fb2e145ec2f8cc60'),
+('thirdweb', '0x20c70bd6588511f1824fbe116928c3d6c4b989ab'),
 ('polynomial', '0xb43c0899eccf98bc7a0f3e2c2a211d6fc4f9b3fe'),
 ('circle', '0xfef1c57185393f456eaeca363a0d3c12cd8df07b'),
 ('nani', '0x000000000000dd366cc2e4432bb998e41dfd47c7'),
