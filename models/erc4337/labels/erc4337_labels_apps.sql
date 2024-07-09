@@ -167,5 +167,7 @@ FROM (VALUES
 ('ManagedAccountFactory Thirdweb', '0xa0b9ebd2cc138e0748c69baf66df2e01c57521ec', 'factory'),
 ('LyncReinvent Lottery', '0x31b47ee2a5103441d95cb7ecf0a74d907d8b6a87', 'game'),
 ('AccountFactory Thirdweb', '0x20c70bd6588511f1824fbe116928c3d6c4b989ab', 'factory'),
-('Blocklords', '0x0982b3a5b24b2bd8ef74126e15fca2decfd75a28', 'NFT')
+('Blocklords', '0x0982b3a5b24b2bd8ef74126e15fca2decfd75a28', 'NFT'),
+('Hedgey Finance', '0xe9c01f928296359ba1d0ad1000cc9bf972cb0026', 'ERC20 claim'),
+('Jasper Vault', '0xa5db2700e2cc1e007d9f50261ecb04339d712e3a', 'options')
 ) AS x (name, address, category)
