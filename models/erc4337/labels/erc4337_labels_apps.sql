@@ -166,5 +166,6 @@ FROM (VALUES
 ('Uncuts', '0x077ab174ac10c904c5393f65fade8279dfbd3779', 'NFT'),
 ('ManagedAccountFactory Thirdweb', '0xa0b9ebd2cc138e0748c69baf66df2e01c57521ec', 'factory'),
 ('LyncReinvent Lottery', '0x31b47ee2a5103441d95cb7ecf0a74d907d8b6a87', 'game'),
-('AccountFactory Thirdweb', '0x20c70bd6588511f1824fbe116928c3d6c4b989ab', 'factory')
+('AccountFactory Thirdweb', '0x20c70bd6588511f1824fbe116928c3d6c4b989ab', 'factory'),
+('Blocklords', '0x0982b3a5b24b2bd8ef74126e15fca2decfd75a28', 'NFT')
 ) AS x (name, address, category)
