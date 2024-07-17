@@ -28,7 +28,7 @@ FROM (VALUES
 ('alchemy_modularaccount', '0x000000000019d2ee9f2729a65afe20bb0020aefc'),
 ('alchemy_modularaccount', '0xd2c27f9ee8e4355f71915ffd5568cb3433b6823d'),
 ('etherspot', '0x7f6d8f107fe8551160bd5351d5f1514a6ad5d40e'),
-('thirdweb', '0x85e23b94e7f5e9cc1ff78bce78cfb15b81f0df00'),
+('thirdweb_default', '0x85e23b94e7f5e9cc1ff78bce78cfb15b81f0df00'),
 ('polynomial', '0xb43c0899eccf98bc7a0f3e2c2a211d6fc4f9b3fe'),
 ('circle', '0xfef1c57185393f456eaeca363a0d3c12cd8df07b'),
 ('nani', '0x000000000000dd366cc2e4432bb998e41dfd47c7'),
