@@ -1,7 +1,7 @@
 {{ config
 (
     materialized = 'incremental',
-    unique_key = ['successful_txn','op_hash']
+    unique_key = ['successful_txn','failed_txn']
 )
 }}
 
