@@ -51,7 +51,7 @@ WHERE
 )
 
 , op_overlap AS (
-    SELECT DISTINCT
+    SELECT
     u.BLOCK_TIME,
     u.TX_HASH AS successful_txn,
     f.TRANSACTION_HASH AS failed_txn,
