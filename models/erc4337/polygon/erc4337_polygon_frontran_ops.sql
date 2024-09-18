@@ -1,7 +1,7 @@
 {{ config
 (
     materialized = 'incremental',
-    unique_key = ['successful_txn','failed_txn']
+    unique_key = ['op_hash','failed_txn']
 )
 }}
 
@@ -51,7 +51,7 @@ WHERE
 )
 
 , op_overlap AS (
-    SELECT 
+    SELECT DISTINCT
     u.BLOCK_TIME,
     u.TX_HASH AS successful_txn,
     f.TRANSACTION_HASH AS failed_txn,
