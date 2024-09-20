@@ -23,7 +23,7 @@ with output AS (
     '0x0000000071727de22e5e9d8baf0edac6f37da032')
         AND LEFT(INPUT,10) = '0x1fad948c'   
         AND SYMBOL = 'MATIC'  
-        AND p.POLYGON_ADDRESS is not null      
+        -- AND p.POLYGON_ADDRESS is not null      
         {% if is_incremental() %}
         AND BLOCK_TIMESTAMP >= CURRENT_TIMESTAMP() - interval '3 day' 
         {% endif %}              
