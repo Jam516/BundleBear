@@ -169,5 +169,10 @@ FROM (VALUES
 ('AccountFactory Thirdweb', '0x20c70bd6588511f1824fbe116928c3d6c4b989ab', 'factory'),
 ('Blocklords', '0x0982b3a5b24b2bd8ef74126e15fca2decfd75a28', 'NFT'),
 ('Hedgey Finance', '0xe9c01f928296359ba1d0ad1000cc9bf972cb0026', 'ERC20 claim'),
-('Jasper Vault', '0xa5db2700e2cc1e007d9f50261ecb04339d712e3a', 'options')
+('Jasper Vault', '0xa5db2700e2cc1e007d9f50261ecb04339d712e3a', 'options'),
+('Ducklings', '0xb66bf78cad7cbab51988ddc792652cbabdff7675', 'game'),
+('Yellow Network', '0x2a8b51821884cf9a7ea1a24c72e46ff52dcb4f16', 'DEX'),
+('PCM', '0xd0cf4de352ac8dcce00bd6b93ee73d3cb272edc3', 'ERC20'),
+('KIP', '0xd692f41fd540abb39aff27d7914ad7f1831f785b', 'login'),
+('PTOCS', '0x0d7d21ae700d0e3d9f320a26b4ff23f314f6d8c8', 'NFT')
 ) AS x (name, address, category)
