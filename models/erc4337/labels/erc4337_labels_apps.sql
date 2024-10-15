@@ -174,5 +174,10 @@ FROM (VALUES
 ('Yellow Network', '0x2a8b51821884cf9a7ea1a24c72e46ff52dcb4f16', 'DEX'),
 ('PCM', '0xd0cf4de352ac8dcce00bd6b93ee73d3cb272edc3', 'ERC20'),
 ('KIP', '0xd692f41fd540abb39aff27d7914ad7f1831f785b', 'login'),
-('PTOCS', '0x0d7d21ae700d0e3d9f320a26b4ff23f314f6d8c8', 'NFT')
+('PTOCS', '0x0d7d21ae700d0e3d9f320a26b4ff23f314f6d8c8', 'NFT'),
+('Somon Badge', '0x831c653440fbc393c78b9f6e5dcae54c4cba80c5', 'NFT'),
+('Wormfare', '0x381ae980c9da2a15c5f210809e4ca50853a4918d', 'game'),
+('SoMon Claim', '0x3c5c3b31f84b3caefc145801bbd59f3db694006d', 'ERC20 claim'),
+('River', '0x9978c826d93883701522d2ca645d5436e5654252', 'messaging'),
+('REACH', '0x4379c13143eb91148ff9282cfb2f93536687a45b', 'messaging')
 ) AS x (name, address, category)
