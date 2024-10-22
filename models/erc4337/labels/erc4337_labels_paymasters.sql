@@ -38,5 +38,6 @@ FROM (VALUES
 -- ('safe', '0xe3dc822d77f8ca7ac74c30b0dffea9fcdcaaa321', 'verifying'),
 ('nani', '0x00000000000009b4ab3f1bc2b029bd7513fbd8ed', 'verifying'),
 ('cometh', '0x6a6b7f6012ee5bef1cdf95df25e5045c7727c739', 'verifying'),
-('coinbase', '0xa270ef92c1e11f1c1f95753c2e56801e8125fa83', 'verifying')
+('coinbase', '0xa270ef92c1e11f1c1f95753c2e56801e8125fa83', 'verifying'),
+('coinbase', '0x2faeb0760d4230ef2ac21496bb4f0b47d634fd4c', 'verifying')
 ) AS x (name, address, type)
