@@ -179,5 +179,8 @@ FROM (VALUES
 ('Wormfare', '0x381ae980c9da2a15c5f210809e4ca50853a4918d', 'game'),
 ('SoMon Claim', '0x3c5c3b31f84b3caefc145801bbd59f3db694006d', 'ERC20 claim'),
 ('River', '0x9978c826d93883701522d2ca645d5436e5654252', 'messaging'),
-('REACH', '0x4379c13143eb91148ff9282cfb2f93536687a45b', 'messaging')
+('REACH', '0x4379c13143eb91148ff9282cfb2f93536687a45b', 'messaging'),
+('Super Champs', '0x974474c8bcb36302be93858466728271fb36544e', 'game'),
+('Super Champs', '0xba957a2f3424d72d6c3b788dfcda4fe104d8ce49', 'game'),
+('OwO', '0x5d559ea7bb2dae4b694a079cb8328a2145fd32f6', 'ERC20')
 ) AS x (name, address, category)
