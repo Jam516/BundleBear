@@ -23,6 +23,9 @@ INNER JOIN {{ source('base_raw', 'traces') }} rt
     AND dt.TO_ADDRESS IN 
     ('0x5ff137d4b0fdcd49dca30c7cf57e578a026d2789',
     '0x0000000071727de22e5e9d8baf0edac6f37da032')
+    AND rt.TO_ADDRESS IN 
+    ('0x5ff137d4b0fdcd49dca30c7cf57e578a026d2789',
+    '0x0000000071727de22e5e9d8baf0edac6f37da032')
     AND dt.SELECTOR = '0x1d732756' -- innerhandleop
     AND rt.SELECTOR = '0x1d732756'
     AND rt.ERROR IS NULL

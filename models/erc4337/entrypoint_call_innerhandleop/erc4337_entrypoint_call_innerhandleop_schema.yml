@@ -1,0 +1,159 @@
+version: 2
+
+
+models:
+  - name: erc4337_arbitrum_entrypoint_call_innerhandleop
+    meta:
+      blockchain: arbitrum
+      sector: erc4337
+    description: "Entrypoint innerHandleOp() calls on arbitrum"
+    tests:
+      - unique:
+          column_name: "(tx_hash || '-' || op_hash)"
+    columns:
+      - &block_time
+        name: block_time
+        description: "time when the block was mined"
+      - &tx_hash
+        name: tx_hash
+        description: "transaction hash of the bundle"
+      - &op_hash
+        name: op_hash
+        description: "unique hash of the userop"
+      - &sender
+        name: sender
+        description: "the smart account that submmited the userop"
+      - &paymaster
+        name: paymaster
+        description: "the paymaster of the userop"
+      - &opInfo
+        name: opInfo
+        description: "userOperation parameters"
+      - &contract_address
+        name: contract_address
+        description: "the address of the entrypoint"
+      - &call_success
+        name: call_success
+        description: "the status of the call"
+      - &call_trace_address
+        name: call_trace_address
+        description: "address of the trace within the call graph forest"
+      - &params
+        name: params
+        description: "parameters of the trace"
+      - &output
+        name: output
+        description: "output data of the trace"
+      - &value
+        name: value
+        description: "value of the trace"
+
+  - name: erc4337_avalanche_entrypoint_call_innerhandleop
+    meta:
+      blockchain: avalanche
+      sector: erc4337
+    description: "Entrypoint innerHandleOp() calls on avalanche"
+    tests:
+      - unique:
+          column_name: "(tx_hash || '-' || op_hash)"
+    columns:
+      - *block_time
+      - *tx_hash
+      - *op_hash
+      - *sender
+      - *paymaster
+      - *opInfo
+      - *contract_address
+      - *call_success
+      - *call_trace_address
+      - *params
+      - *output
+      - *value
+
+  - name: erc4337_base_entrypoint_call_innerhandleop
+    meta:
+      blockchain: base
+      sector: erc4337
+    description: "Entrypoint innerHandleOp() calls on base"
+    tests:
+      - unique:
+          column_name: "(tx_hash || '-' || op_hash)"
+    columns:
+      - *block_time
+      - *tx_hash
+      - *op_hash
+      - *sender
+      - *paymaster
+      - *opInfo
+      - *contract_address
+      - *call_success
+      - *call_trace_address
+      - *params
+      - *output
+      - *value
+
+  - name: erc4337_ethereum_entrypoint_call_innerhandleop
+    meta:
+      blockchain: ethereum
+      sector: erc4337
+    description: "Entrypoint innerHandleOp() calls on ethereum"
+    tests:
+      - unique:
+          column_name: "(tx_hash || '-' || op_hash)"
+    columns:
+      - *block_time
+      - *tx_hash
+      - *op_hash
+      - *sender
+      - *paymaster
+      - *opInfo
+      - *contract_address
+      - *call_success
+      - *call_trace_address
+      - *params
+      - *output
+      - *value      
+
+  - name: erc4337_optimism_entrypoint_call_innerhandleop
+    meta:
+      blockchain: optimism
+      sector: erc4337
+    description: "Entrypoint innerHandleOp() calls on optimism"
+    tests:
+      - unique:
+          column_name: "(tx_hash || '-' || op_hash)"
+    columns:
+      - *block_time
+      - *tx_hash
+      - *op_hash
+      - *sender
+      - *paymaster
+      - *opInfo
+      - *contract_address
+      - *call_success
+      - *call_trace_address
+      - *params
+      - *output
+      - *value   
+
+  - name: erc4337_polygon_entrypoint_call_innerhandleop
+    meta:
+      blockchain: polygon
+      sector: erc4337
+    description: "Entrypoint innerHandleOp() calls on polygon"
+    tests:
+      - unique:
+          column_name: "(tx_hash || '-' || op_hash)"
+    columns:
+      - *block_time
+      - *tx_hash
+      - *op_hash
+      - *sender
+      - *paymaster
+      - *opInfo
+      - *contract_address
+      - *call_success
+      - *call_trace_address
+      - *params
+      - *output
+      - *value 

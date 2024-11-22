@@ -1,0 +1,143 @@
+version: 2
+
+
+models:
+
+  - name: erc4337_arbitrum_entrypoint_transactions
+    meta:
+      blockchain: arbitrum
+      sector: erc4337
+    description: "handleOps() transactions on arbitrum"
+    columns:
+      - &tx_hash
+        name: tx_hash
+        tests:
+        - unique
+      - &block_time
+        name: block_time
+        description: "time when the block was mined"
+      - &bundler
+        name: bundler
+        description: "the bundler that bundled the userop"
+      - &bundler_name
+        name: bundler_name
+        description: "name of the entity that operates the bundler"
+      - &bundler_inflow
+        name: bundler_inflow
+        description: "UserOp fees paid to bundler"
+      - &bundler_inflow_usd
+        name: bundler_inflow_usd
+        description: "UserOp fees paid to bundler in usd"
+      - &bundler_outflow
+        name: bundler_outflow
+        description: "gas fees paid by bundler"
+      - &bundler_outflow_usd
+        name: bundler_outflow_usd
+        description: "gas fees paid by bundler in usd"
+      - &bundler_revenue
+        name: bundler_revenue
+        description: "revenue earned by bundler on this txn"
+      - &bundler_revenue_usd
+        name: bundler_revenue_usd
+        description: "revenue earned by bundler on this txn in usd"
+      - &token
+        name: token
+        description: "symbol of the gas token"
+      - &num_userops
+        name: num_userops
+        description: "number of userops in the txn" 
+
+  - name: erc4337_avalanche_entrypoint_transactions
+    meta:
+      blockchain: avalanche
+      sector: erc4337
+    description: "handleOps() transactions on avalanche"
+    columns:
+      - *tx_hash
+      - *block_time
+      - *bundler
+      - *bundler_name
+      - *bundler_inflow
+      - *bundler_inflow_usd
+      - *bundler_outflow
+      - *bundler_outflow_usd
+      - *bundler_revenue
+      - *bundler_revenue_usd
+      - *token
+      - *num_userops   
+
+  - name: erc4337_base_entrypoint_transactions
+    meta:
+      blockchain: base
+      sector: erc4337
+    description: "handleOps() transactions on base"
+    columns:
+      - *tx_hash
+      - *block_time
+      - *bundler
+      - *bundler_name
+      - *bundler_inflow
+      - *bundler_inflow_usd
+      - *bundler_outflow
+      - *bundler_outflow_usd
+      - *bundler_revenue
+      - *bundler_revenue_usd
+      - *token
+      - *num_userops      
+
+  - name: erc4337_ethereum_entrypoint_transactions
+    meta:
+      blockchain: ethereum
+      sector: erc4337
+    description: "handleOps() transactions on ethereum"
+    columns:
+      - *tx_hash
+      - *block_time
+      - *bundler
+      - *bundler_name
+      - *bundler_inflow
+      - *bundler_inflow_usd
+      - *bundler_outflow
+      - *bundler_outflow_usd
+      - *bundler_revenue
+      - *bundler_revenue_usd
+      - *token
+      - *num_userops      
+
+  - name: erc4337_optimism_entrypoint_transactions
+    meta:
+      blockchain: optimism
+      sector: erc4337
+    description: "handleOps() transactions on optimism"
+    columns:
+      - *tx_hash
+      - *block_time
+      - *bundler
+      - *bundler_name
+      - *bundler_inflow
+      - *bundler_inflow_usd
+      - *bundler_outflow
+      - *bundler_outflow_usd
+      - *bundler_revenue
+      - *bundler_revenue_usd
+      - *token
+      - *num_userops     
+
+  - name: erc4337_polygon_entrypoint_transactions
+    meta:
+      blockchain: polygon
+      sector: erc4337
+    description: "handleOps() transactions on polygon"
+    columns:
+      - *tx_hash
+      - *block_time
+      - *bundler
+      - *bundler_name
+      - *bundler_inflow
+      - *bundler_inflow_usd
+      - *bundler_outflow
+      - *bundler_outflow_usd
+      - *bundler_revenue
+      - *bundler_revenue_usd
+      - *token
+      - *num_userops        
