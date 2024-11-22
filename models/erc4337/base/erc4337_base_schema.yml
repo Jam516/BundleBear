@@ -115,35 +115,6 @@ models:
         name: token
         description: "symbol of the gas token" 
 
-  - name: erc4337_base_account_deployments
-    meta:
-      blockchain: base
-      sector: erc4337
-    description: "ERC-4337 Account Deployments on base"
-    columns:
-      - *tx_hash
-      - *block_time
-      - *op_hash
-      - &account_address
-        name: account_address
-        description: "address of the smart account that was deployed"
-      - &factory
-        name: factory
-        description: "the factory that deployed the smart account"       
-      - &factory_name
-        name: factory_name
-        description: "name of the entity that operates the factory"    
-      - *bundler
-      - *bundler_name
-      - *paymaster
-      - *paymaster_name
-      - &txn_cost
-        name: txn_cost
-        description: gas fee paid for the transaction
-      - &txn_cost_usd
-        name: txn_cost_usd
-        description: gas fee paid for the transaction in usd
-
   - name: erc4337_base_failed_validation_ops
     meta:
       blockchain: base

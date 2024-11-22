@@ -138,5 +138,5 @@ models:
       - *paymaster
       - *paymaster_name
       - *txn_cost
-      - *txn_cost_usd      
+      - *txn_cost_usd    
 
