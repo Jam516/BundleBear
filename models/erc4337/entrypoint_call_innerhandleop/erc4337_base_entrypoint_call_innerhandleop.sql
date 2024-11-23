@@ -31,4 +31,5 @@ INNER JOIN {{ source('base_raw', 'traces') }} rt
     AND rt.ERROR IS NULL
     {% if is_incremental() %}
     AND dt.BLOCK_TIMESTAMP >= CURRENT_TIMESTAMP() - interval '3 day' 
+    AND rt.BLOCK_TIMESTAMP >= CURRENT_TIMESTAMP() - interval '3 day' 
     {% endif %}
