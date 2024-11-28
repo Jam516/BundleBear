@@ -4,22 +4,14 @@
 )
 }}
 
-SELECT 
-DATE,
-CHAIN,
-SUM(GAS_SPENT) AS GAS_SPENT
-FROM 
-(
-    SELECT 'arbitrum' AS CHAIN, * FROM {{ ref('erc4337_arbitrum_day_paymaster_spend_chain') }}
-    UNION ALL 
-    SELECT 'avalanche' AS CHAIN, * FROM {{ ref('erc4337_avalanche_day_paymaster_spend_chain') }}
-    UNION ALL 
-    SELECT 'base' AS CHAIN, * FROM {{ ref('erc4337_base_day_paymaster_spend_chain') }}
-    UNION ALL 
-    SELECT 'ethereum' AS CHAIN, * FROM {{ ref('erc4337_ethereum_day_paymaster_spend_chain') }}
-    UNION ALL 
-    SELECT 'optimism' AS CHAIN, * FROM {{ ref('erc4337_optimism_day_paymaster_spend_chain') }}
-    UNION ALL 
-    SELECT 'polygon' AS CHAIN, * FROM {{ ref('erc4337_polygon_day_paymaster_spend_chain') }}
-)
+SELECT
+date_trunc('day', BLOCK_TIME) as DATE,
+CHAIN, 
+SUM(ACTUALGASCOST_USD) AS GAS_SPENT
+FROM {{ ref('erc4337_all_userops') }}
+WHERE PAYMASTER != '0x0000000000000000000000000000000000000000'
+AND ACTUALGASCOST_USD != 'NaN'
+AND ACTUALGASCOST_USD < 1000
+AND date_trunc('day', BLOCK_TIME) < date_trunc('day', CURRENT_DATE)
 GROUP BY 1,2
+ORDER BY 1
