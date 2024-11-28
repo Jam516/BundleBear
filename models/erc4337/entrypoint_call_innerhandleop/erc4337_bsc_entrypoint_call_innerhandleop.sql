@@ -17,7 +17,7 @@ SELECT
     TRACE_ADDRESS as call_trace_address,
     INPUT_PARAMS as params,
     output
-FROM {{ source('polygon_decoded', 'traces') }}
+FROM {{ source('bsc_decoded', 'traces') }}
 WHERE TO_ADDRESS IN 
     ('0x5ff137d4b0fdcd49dca30c7cf57e578a026d2789', 
     '0x0000000071727de22e5e9d8baf0edac6f37da032')
