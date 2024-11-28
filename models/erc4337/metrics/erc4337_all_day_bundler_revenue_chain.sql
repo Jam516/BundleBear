@@ -4,22 +4,13 @@
 )
 }}
 
-SELECT 
-DATE,
+SELECT
+date_trunc('day', BLOCK_TIME) as DATE,
 CHAIN,
-SUM(REVENUE) AS REVENUE
-FROM 
-(
-    SELECT 'arbitrum' AS CHAIN, * FROM {{ ref('erc4337_arbitrum_day_bundler_revenue_chain') }}
-    UNION ALL 
-    SELECT 'avalanche' AS CHAIN, * FROM {{ ref('erc4337_avalanche_day_bundler_revenue_chain') }}
-    UNION ALL 
-    SELECT 'base' AS CHAIN, * FROM {{ ref('erc4337_base_day_bundler_revenue_chain') }}
-    UNION ALL 
-    SELECT 'ethereum' AS CHAIN, * FROM {{ ref('erc4337_ethereum_day_bundler_revenue_chain') }}
-    UNION ALL 
-    SELECT 'optimism' AS CHAIN, * FROM {{ ref('erc4337_optimism_day_bundler_revenue_chain') }}
-    UNION ALL 
-    SELECT 'polygon' AS CHAIN, * FROM {{ ref('erc4337_polygon_day_bundler_revenue_chain') }}
-)
+SUM(BUNDLER_REVENUE_USD) AS REVENUE
+FROM {{ ref('erc4337_all_entrypoint_transactions') }}
+WHERE BUNDLER_REVENUE_USD != 'NaN'
+AND BUNDLER_REVENUE_USD < 1000000000
+AND date_trunc('day', BLOCK_TIME) < date_trunc('day', CURRENT_DATE)
 GROUP BY 1,2
+ORDER BY 1
