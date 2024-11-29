@@ -17,3 +17,5 @@ UNION ALL
 SELECT  *, 'polygon' AS chain FROM {{ ref('erc4337_polygon_account_deployments') }}
 UNION ALL
 SELECT  *, 'bsc' AS chain FROM {{ ref('erc4337_bsc_account_deployments') }}
+UNION ALL
+SELECT  *, 'linea' AS chain FROM {{ ref('erc4337_linea_account_deployments') }}

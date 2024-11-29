@@ -194,6 +194,8 @@ sources:
         loaded_at_field: block_timestamp
       - name: traces
         loaded_at_field: block_timestamp  
+      - name: logs
+        loaded_at_field: block_timestamp        
 
   - name: common_prices
     database: common
