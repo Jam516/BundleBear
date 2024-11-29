@@ -28,7 +28,7 @@ cohort_size AS (
 user_activities AS (
     SELECT
     DISTINCT
-        DATEDIFF(day, cohort_day, created_at) AS day_number,
+        DATEDIFF(day, cohort_day, created_at) AS week_number,
         A.SENDER
     FROM transactions AS A
     LEFT JOIN cohort AS C 
@@ -38,7 +38,7 @@ user_activities AS (
 retention_table AS (
     SELECT
     cohort_day,
-    A.day_number,
+    A.week_number,
     COUNT(1) AS num_users
     FROM user_activities A
     LEFT JOIN cohort AS C 
@@ -49,7 +49,7 @@ retention_table AS (
 SELECT
     TO_VARCHAR(date_trunc('day', A.cohort_day), 'YYYY-MM-DD') AS cohort,
     B.num_users AS total_users,
-    A.day_number,
+    A.week_number,
     ROUND((A.num_users * 100 / B.num_users), 2) as percentage
 FROM retention_table AS A
 LEFT JOIN cohort_size AS B
