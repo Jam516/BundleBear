@@ -15,3 +15,5 @@ UNION ALL
 SELECT  *, 'optimism' AS chain FROM {{ ref('erc4337_optimism_entrypoint_transactions') }}
 UNION ALL
 SELECT  *, 'polygon' AS chain FROM {{ ref('erc4337_polygon_entrypoint_transactions') }}
+UNION ALL
+SELECT  *, 'bsc' AS chain FROM {{ ref('erc4337_bsc_entrypoint_transactions') }}

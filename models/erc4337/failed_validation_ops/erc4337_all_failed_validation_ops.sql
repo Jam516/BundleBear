@@ -15,3 +15,5 @@ UNION ALL
 SELECT  *, 'optimism' AS chain FROM {{ ref('erc4337_optimism_failed_validation_ops') }}
 UNION ALL
 SELECT  *, 'polygon' AS chain FROM {{ ref('erc4337_polygon_failed_validation_ops') }}
+UNION ALL
+SELECT  *, 'bsc' AS chain FROM {{ ref('erc4337_bsc_failed_validation_ops') }}
