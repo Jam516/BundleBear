@@ -15,6 +15,7 @@ FROM (VALUES
 ('USDC', '0xa0b86991c6218b36c1d19d4a2e9eb0ce3606eb48', 'ERC20'), 
 ('USDC', '0x833589fcd6edb6e08f4c7c32d4f71b54bda02913', 'ERC20'),
 ('USDC', '0xd9aaec86b65d86f6a7b5b1b0c42ffa531710b6ca', 'ERC20'),
+('USDC', '0x176211869ca2b568f2a7d4ee941e073a821ee1ff', 'ERC20'),
 ('cbETH', '0xbe9895146f7af43049ca1c1ae358b0541ea49704', 'ERC20'),    
 ('USDT', '0xc2132d05d31c914a87c6611c10748aeb04b58e8f', 'ERC20'),
 ('USDT', '0x94b008aa00579c1307b0ef2c499ad98a8ce58e58', 'ERC20'),
@@ -172,6 +173,7 @@ FROM (VALUES
 ('Jasper Vault', '0xa5db2700e2cc1e007d9f50261ecb04339d712e3a', 'options'),
 ('Ducklings', '0xb66bf78cad7cbab51988ddc792652cbabdff7675', 'game'),
 ('Yellow Network', '0x2a8b51821884cf9a7ea1a24c72e46ff52dcb4f16', 'DEX'),
+('Yellow Network', '0x5df971419a39cc846b801b22d56af59234b86238', 'ERC20 claim'),
 ('PCM', '0xd0cf4de352ac8dcce00bd6b93ee73d3cb272edc3', 'ERC20'),
 ('KIP', '0xd692f41fd540abb39aff27d7914ad7f1831f785b', 'login'),
 ('PTOCS', '0x0d7d21ae700d0e3d9f320a26b4ff23f314f6d8c8', 'NFT'),
@@ -202,5 +204,8 @@ FROM (VALUES
 ('BUSD', '0xe9e7cea3dedca5984780bafc599bd69add087d56', 'ERC20'),
 ('ICE', '0xc335df7c25b72eec661d5aa32a7c2b7b2a1d1874', 'ERC20'),
 ('CAKE', '0x0e09fabb73bd3ade0a17ecc321fd13a19e81ce82', 'ERC20'),
-('BabyDoge', '0xc748673057861a797275cd8a068abb95a902e8de', 'ERC20')
+('BabyDoge', '0xc748673057861a797275cd8a068abb95a902e8de', 'ERC20'),
+('AccountFactory Thirdweb', '0x93e09526b7b35acd6eb8ff0693dfccd10f18a9df', 'thirdweb'),
+('Syncswap', '0x80e38291e06339d10aab483c65695d004dbd5c69', 'DEX'),
+('Velocore', '0x1d0188c4b276a09366d05d6be06af61a73bc7535', 'DEX')
 ) AS x (name, address, category)
