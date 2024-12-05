@@ -6,30 +6,23 @@
 }}
 
 SELECT 
-    dt.BLOCK_TIMESTAMP as block_time,
-    dt.TRANSACTION_HASH as tx_hash,
-    dt.DECODED_INPUT:"input_params":"opInfo":"userOpHash"::STRING as op_hash,
-    dt.DECODED_INPUT:"input_params":"opInfo":"mUserOp"."sender"::STRING as sender,
-    dt.DECODED_INPUT:"input_params":"opInfo":"mUserOp"."paymaster"::STRING as paymaster,
-    dt.DECODED_INPUT:"input_params":"callData" as executeCall,
-    dt.TO_ADDRESS as contract_address,
-    rt.STATUS as call_success,
-    rt.TRACE_ADDRESS as call_trace_address,
-    dt.DECODED_INPUT as params,
-    rt.output
-FROM {{ source('base_decoded', 'traces__beta') }} dt
-INNER JOIN {{ source('base_raw', 'traces') }} rt
-    ON dt.TRACE_ID = rt.TRACE_ID
-    AND dt.TO_ADDRESS IN 
-    ('0x5ff137d4b0fdcd49dca30c7cf57e578a026d2789',
+    BLOCK_TIMESTAMP as block_time,
+    TRANSACTION_HASH as tx_hash,
+    INPUT_PARAMS:"opInfo":"userOpHash"::STRING as op_hash,
+    INPUT_PARAMS:"opInfo":"mUserOp"."sender"::STRING as sender,
+    INPUT_PARAMS:"opInfo":"mUserOp"."paymaster"::STRING as paymaster,
+    INPUT_PARAMS:"callData"::STRING as executeCall,
+    TO_ADDRESS as contract_address,
+    STATUS as call_success,
+    TRACE_ADDRESS as call_trace_address,
+    INPUT_PARAMS as params,
+    output
+FROM {{ source('base_decoded', 'traces') }}
+WHERE TO_ADDRESS IN 
+    ('0x5ff137d4b0fdcd49dca30c7cf57e578a026d2789', 
     '0x0000000071727de22e5e9d8baf0edac6f37da032')
-    AND rt.TO_ADDRESS IN 
-    ('0x5ff137d4b0fdcd49dca30c7cf57e578a026d2789',
-    '0x0000000071727de22e5e9d8baf0edac6f37da032')
-    AND dt.SELECTOR = '0x1d732756' -- innerhandleop
-    AND rt.SELECTOR = '0x1d732756'
-    AND rt.ERROR IS NULL
+    AND NAME = 'innerHandleOp'
+    AND ERROR IS NULL
     {% if is_incremental() %}
-    AND dt.BLOCK_TIMESTAMP >= CURRENT_TIMESTAMP() - interval '3 day' 
-    AND rt.BLOCK_TIMESTAMP >= CURRENT_TIMESTAMP() - interval '3 day' 
+    AND BLOCK_TIMESTAMP >= CURRENT_TIMESTAMP() - interval '3 day' 
     {% endif %}
