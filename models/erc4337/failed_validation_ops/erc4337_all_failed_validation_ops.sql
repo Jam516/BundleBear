@@ -18,4 +18,6 @@ SELECT  *, 'polygon' AS chain FROM {{ ref('erc4337_polygon_failed_validation_ops
 UNION ALL
 SELECT  *, 'bsc' AS chain FROM {{ ref('erc4337_bsc_failed_validation_ops') }}
 UNION ALL
-SELECT  *, 'bsc' AS chain FROM {{ ref('erc4337_linea_failed_validation_ops') }}
+SELECT  *, 'linea' AS chain FROM {{ ref('erc4337_linea_failed_validation_ops') }}
+UNION ALL
+SELECT  *, 'celo' AS chain FROM {{ ref('erc4337_celo_failed_validation_ops') }}

@@ -19,3 +19,5 @@ UNION ALL
 SELECT  *, 'bsc' AS chain FROM {{ ref('erc4337_bsc_account_deployments') }}
 UNION ALL
 SELECT  *, 'linea' AS chain FROM {{ ref('erc4337_linea_account_deployments') }}
+UNION ALL
+SELECT  *, 'celo' AS chain FROM {{ ref('erc4337_celo_account_deployments') }}
