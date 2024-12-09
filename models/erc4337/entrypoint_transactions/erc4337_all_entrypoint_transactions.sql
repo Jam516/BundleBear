@@ -21,3 +21,5 @@ UNION ALL
 SELECT  *, 'linea' AS chain FROM {{ ref('erc4337_linea_entrypoint_transactions') }}
 UNION ALL
 SELECT  *, 'celo' AS chain FROM {{ ref('erc4337_celo_entrypoint_transactions') }}
+UNION ALL
+SELECT  *, 'arbitrum_nova' AS chain FROM {{ ref('erc4337_arbitrum_nova_entrypoint_transactions') }}

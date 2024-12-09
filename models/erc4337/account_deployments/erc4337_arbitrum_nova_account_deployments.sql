@@ -18,8 +18,8 @@ SELECT
     COALESCE(pay.name, 'Unknown') as paymaster_name,
     (TO_DOUBLE(t.RECEIPT_GAS_USED) * TO_DOUBLE(t.RECEIPT_EFFECTIVE_GAS_PRICE))/1e18 txn_cost,
     p.USD_PRICE * (TO_DOUBLE(t.RECEIPT_GAS_USED) * TO_DOUBLE(t.RECEIPT_EFFECTIVE_GAS_PRICE))/1e18  as txn_cost_usd
-FROM {{ source('celo_raw', 'logs') }} l
-INNER JOIN {{ source('celo_raw', 'transactions') }} t 
+FROM {{ source('arbitrum_nova_raw', 'logs') }} l
+INNER JOIN {{ source('arbitrum_nova_raw', 'transactions') }} t 
     ON t.HASH = l.TRANSACTION_HASH
     AND l.TOPIC0 = '0xd51a9c61267aa6196961883ecf5ff2da6619c37dac0fa92122513fb32c032d2d' 
     AND t.TO_ADDRESS IN
@@ -34,7 +34,7 @@ LEFT JOIN {{ ref('erc4337_labels_paymasters') }} pay ON pay.address = '0x' || SU
 LEFT JOIN {{ ref('erc4337_labels_bundlers') }} b ON b.address = t.FROM_ADDRESS
 INNER JOIN {{ source('common_prices', 'token_prices_hourly_easy') }} p 
     ON p.HOUR = date_trunc('hour', t.BLOCK_TIMESTAMP) 
-    AND SYMBOL = 'CELO' 
+    AND SYMBOL = 'ETH' 
 {% if is_incremental() %}
     AND l.BLOCK_TIMESTAMP >= CURRENT_TIMESTAMP() - interval '3 day' 
 {% endif %}
