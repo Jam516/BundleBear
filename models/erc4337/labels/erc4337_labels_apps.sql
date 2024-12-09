@@ -166,6 +166,7 @@ FROM (VALUES
 ('Blocklords', '0x80625310db240631a91f61659ccc550ea9761742', 'game'),
 ('Uncuts', '0x077ab174ac10c904c5393f65fade8279dfbd3779', 'NFT'),
 ('ManagedAccountFactory Thirdweb', '0xa0b9ebd2cc138e0748c69baf66df2e01c57521ec', 'factory'),
+('ManagedAccountFactory Thirdweb', '0x0c4176d4a4e2bb32ede3bfab928fd26ad8d15749', 'factory'),
 ('LyncReinvent Lottery', '0x31b47ee2a5103441d95cb7ecf0a74d907d8b6a87', 'game'),
 ('AccountFactory Thirdweb', '0x20c70bd6588511f1824fbe116928c3d6c4b989ab', 'factory'),
 ('Blocklords', '0x0982b3a5b24b2bd8ef74126e15fca2decfd75a28', 'NFT'),
@@ -207,5 +208,7 @@ FROM (VALUES
 ('BabyDoge', '0xc748673057861a797275cd8a068abb95a902e8de', 'ERC20'),
 ('AccountFactory Thirdweb', '0x93e09526b7b35acd6eb8ff0693dfccd10f18a9df', 'thirdweb'),
 ('Syncswap', '0x80e38291e06339d10aab483c65695d004dbd5c69', 'DEX'),
-('Velocore', '0x1d0188c4b276a09366d05d6be06af61a73bc7535', 'DEX')
+('Velocore', '0x1d0188c4b276a09366d05d6be06af61a73bc7535', 'DEX'),
+('BEED', '0x5252d3f666a0707c4b7f9d9300bd965eee57695f', 'ERC20'),
+('Polkamarket', '0xdcbe79f74c98368141798ea0b7b979b9ba54b026', 'prediction')
 ) AS x (name, address, category)
