@@ -33,6 +33,7 @@ FROM (VALUES
 ('circle', '0xfef1c57185393f456eaeca363a0d3c12cd8df07b'),
 ('circle', '0x1a1f5310ed7ff0b84cef7e6d7d0f94cc16d23013 '),
 ('nani', '0x000000000000dd366cc2e4432bb998e41dfd47c7'),
+('nani', '0x0000000000009f1e546fc4a8f68eb98031846cb8'),
 ('zerodev_kernel', '0xd703aae79538628d27099b8c4f621be4ccd142d5'),
 ('coinbase_smart_wallet', '0x0ba5ed0c6aa8c49038f819e587e2633c4a9f428a'),
 ('lumx', '0x2e1c14daadefc4a85eaec81dacba27cd455a0b66')
