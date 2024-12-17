@@ -1,0 +1,51 @@
+version: 2
+
+
+models:
+
+  - name: erc4337_labels_bundlers
+    meta:
+      sector: erc4337
+    description: "Labels for ERC-4337 bundlers"
+    columns:
+      - &name
+        name: name
+        description: "name of operator"
+      - &address
+        name: address
+        description: "address"
+        tests:
+          - unique
+          - not_null
+
+  - name: erc4337_labels_paymasters
+    meta:
+      sector: erc4337
+    description: "Labels for ERC-4337 paymasters"
+    columns:
+      - *name
+      - *address
+      - &type
+        name: type
+        description: "category of paymaster"
+
+  - name: erc4337_labels_factories
+    meta:
+      sector: erc4337
+    description: "Labels for ERC-4337 factories"
+    columns:
+      - *name
+      - *address
+
+  - name: erc4337_labels_apps
+    meta:
+      sector: erc4337
+    description: "Labels for ERC-4337 apps"
+    columns:
+      - *name
+      - *address
+      - &category
+        name: category
+        description: "category of app"
+
+      
