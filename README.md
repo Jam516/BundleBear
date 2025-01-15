@@ -31,4 +31,4 @@ To add a label you have to make a pull request to this repo. Once your label is 
 
 ### Resources:
 - Read the [4337 proposal](https://eips.ethereum.org/EIPS/eip-4337)
-- Learn more about [4337 data analysis](https://docs.getdbt.com/docs/introduction)
+- Learn more about [4337 data analysis](https://read.cryptodatabytes.com/p/web3-sql-weekly-8-analyzing-account)
