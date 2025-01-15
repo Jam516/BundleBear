@@ -1,0 +1,142 @@
+version: 2
+
+
+models:
+
+  - name: erc4337_arbitrum_userops
+    meta:
+      blockchain: arbitrum
+      sector: erc4337
+    description: "ERC-4337 UserOperations on arbitrum"
+    columns:
+      - &block_time
+        name: block_time
+        description: "time when the block was mined"
+      - &tx_hash
+        name: tx_hash
+        description: "transaction hash of the bundle"
+      - &op_hash
+        name: op_hash
+        description: "unique hash of the userop"
+      - &sender
+        name: sender
+        description: "the smart account that submmited the userop"
+      - &bundler
+        name: bundler
+        description: "the bundler that bundled the userop"
+      - &bundler_name
+        name: bundler_name
+        description: "name of the entity that operates the bundler"
+      - &paymaster
+        name: paymaster
+        description: "the paymaster of the userop"
+      - &paymaster_name
+        name: paymaster_name
+        description: "name of the entity that operates the paymaster"
+      - &called_contract
+        name: called_contract
+        description: "the address of the contract the userop is calling (if any)"
+      - &functions_called
+        name: functions_called
+        description: "the selector of the contract function called by the userop (if any)"
+      - &actualgascost
+        name: actualGasCost
+        description: "actual amount paid (by account or paymaster) for this UserOperation"
+      - &actualgascost_usd
+        name: actualgascost_usd
+        description: "actualGasCost in usd"
+
+  - name: erc4337_avalanche_userops
+    meta:
+      blockchain: avalanche
+      sector: erc4337
+    description: "ERC-4337 UserOperations on avalanche"
+    columns:
+      - *block_time
+      - *tx_hash
+      - *op_hash
+      - *sender
+      - *bundler
+      - *bundler_name
+      - *paymaster
+      - *paymaster_name
+      - *called_contract
+      - *functions_called
+      - *actualgascost
+      - *actualgascost_usd   
+
+  - name: erc4337_base_userops
+    meta:
+      blockchain: base
+      sector: erc4337
+    description: "ERC-4337 UserOperations on base"
+    columns:
+      - *block_time
+      - *tx_hash
+      - *op_hash
+      - *sender
+      - *bundler
+      - *bundler_name
+      - *paymaster
+      - *paymaster_name
+      - *called_contract
+      - *functions_called
+      - *actualgascost
+      - *actualgascost_usd   
+
+  - name: erc4337_ethereum_userops
+    meta:
+      blockchain: ethereum
+      sector: erc4337
+    description: "ERC-4337 UserOperations on ethereum"
+    columns:
+      - *block_time
+      - *tx_hash
+      - *op_hash
+      - *sender
+      - *bundler
+      - *bundler_name
+      - *paymaster
+      - *paymaster_name
+      - *called_contract
+      - *functions_called
+      - *actualgascost
+      - *actualgascost_usd         
+
+  - name: erc4337_optimism_userops
+    meta:
+      blockchain: optimism
+      sector: erc4337
+    description: "ERC-4337 UserOperations on optimism"
+    columns:
+      - *block_time
+      - *tx_hash
+      - *op_hash
+      - *sender
+      - *bundler
+      - *bundler_name
+      - *paymaster
+      - *paymaster_name
+      - *called_contract
+      - *functions_called
+      - *actualgascost
+      - *actualgascost_usd  
+
+  - name: erc4337_polygon_userops
+    meta:
+      blockchain: polygon
+      sector: erc4337
+    description: "ERC-4337 UserOperations on polygon"
+    columns:
+      - *block_time
+      - *tx_hash
+      - *op_hash
+      - *sender
+      - *bundler
+      - *bundler_name
+      - *paymaster
+      - *paymaster_name
+      - *called_contract
+      - *functions_called
+      - *actualgascost
+      - *actualgascost_usd       

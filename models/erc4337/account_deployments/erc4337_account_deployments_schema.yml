@@ -1,0 +1,142 @@
+version: 2
+
+models:
+
+  - name: erc4337_arbitrum_account_deployments
+    meta:
+      blockchain: arbitrum
+      sector: erc4337
+    description: "ERC-4337 Account Deployments on arbitrum"
+    columns:
+      - &block_time
+        name: block_time
+        description: "time when the block was mined"
+      - &tx_hash
+        name: tx_hash
+        description: "transaction hash of the bundle"
+      - &op_hash
+        name: op_hash
+        description: "unique hash of the userop"
+      - &account_address
+        name: account_address
+        description: "address of the smart account that was deployed"
+      - &factory
+        name: factory
+        description: "the factory that deployed the smart account"       
+      - &factory_name
+        name: factory_name
+        description: "name of the entity that operates the factory"    
+      - &bundler
+        name: bundler
+        description: "the bundler that bundled the userop"
+      - &bundler_name
+        name: bundler_name
+        description: "name of the entity that operates the bundler"
+      - &paymaster
+        name: paymaster
+        description: "the paymaster of the userop"
+      - &paymaster_name
+        name: paymaster_name
+        description: "name of the entity that operates the paymaster"
+      - &txn_cost
+        name: txn_cost
+        description: gas fee paid for the transaction
+      - &txn_cost_usd
+        name: txn_cost_usd
+        description: gas fee paid for the transaction in usd
+
+  - name: erc4337_avalanche_account_deployments
+    meta:
+      blockchain: avalanche
+      sector: erc4337
+    description: "ERC-4337 Account Deployments on avalanche"
+    columns:
+      - *block_time
+      - *tx_hash
+      - *op_hash
+      - *account_address
+      - *factory     
+      - *factory_name   
+      - *bundler
+      - *bundler_name
+      - *paymaster
+      - *paymaster_name
+      - *txn_cost
+      - *txn_cost_usd
+
+  - name: erc4337_base_account_deployments
+    meta:
+      blockchain: base
+      sector: erc4337
+    description: "ERC-4337 Account Deployments on base"
+    columns:
+      - *block_time
+      - *tx_hash
+      - *op_hash
+      - *account_address
+      - *factory     
+      - *factory_name   
+      - *bundler
+      - *bundler_name
+      - *paymaster
+      - *paymaster_name
+      - *txn_cost
+      - *txn_cost_usd
+
+  - name: erc4337_ethereum_account_deployments
+    meta:
+      blockchain: ethereum
+      sector: erc4337
+    description: "ERC-4337 Account Deployments on ethereum"
+    columns:
+      - *block_time
+      - *tx_hash
+      - *op_hash
+      - *account_address
+      - *factory     
+      - *factory_name   
+      - *bundler
+      - *bundler_name
+      - *paymaster
+      - *paymaster_name
+      - *txn_cost
+      - *txn_cost_usd
+
+  - name: erc4337_optimism_account_deployments
+    meta:
+      blockchain: optimism
+      sector: erc4337
+    description: "ERC-4337 Account Deployments on optimism"
+    columns:
+      - *block_time
+      - *tx_hash
+      - *op_hash
+      - *account_address
+      - *factory     
+      - *factory_name   
+      - *bundler
+      - *bundler_name
+      - *paymaster
+      - *paymaster_name
+      - *txn_cost
+      - *txn_cost_usd
+
+  - name: erc4337_polygon_account_deployments
+    meta:
+      blockchain: polygon
+      sector: erc4337
+    description: "ERC-4337 Account Deployments on polygon"
+    columns:
+      - *block_time
+      - *tx_hash
+      - *op_hash
+      - *account_address
+      - *factory     
+      - *factory_name   
+      - *bundler
+      - *bundler_name
+      - *paymaster
+      - *paymaster_name
+      - *txn_cost
+      - *txn_cost_usd    
+

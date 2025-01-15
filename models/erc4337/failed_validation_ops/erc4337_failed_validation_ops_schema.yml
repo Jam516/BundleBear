@@ -1,0 +1,88 @@
+version: 2
+
+
+models:
+
+  - name: erc4337_arbitrum_failed_validation_ops
+    meta:
+      blockchain: arbitrum
+      sector: erc4337
+    description: "ERC-4337 UserOps that failed validation"
+    columns:
+      - &block_time
+        name: block_time
+        description: "time when the block was mined"
+      - &tx_hash
+        name: tx_hash
+        description: "transaction hash of the bundle"
+      - &bundler
+        name: bundler
+        description: "the bundler that bundled the userop"
+      - &bundler_name
+        name: bundler_name
+        description: "name of the entity that operates the bundler"
+      - &trace_id
+        name: trace_id
+        description: "unique id of the trace"
+        tests:
+        - unique
+
+  - name: erc4337_avalanche_failed_validation_ops
+    meta:
+      blockchain: avalanche
+      sector: erc4337
+    description: "ERC-4337 UserOps that failed validation"
+    columns:
+      - *block_time
+      - *tx_hash
+      - *bundler
+      - *bundler_name
+      - *trace_id
+
+  - name: erc4337_base_failed_validation_ops
+    meta:
+      blockchain: base
+      sector: erc4337
+    description: "ERC-4337 UserOps that failed validation"
+    columns:
+      - *block_time
+      - *tx_hash
+      - *bundler
+      - *bundler_name
+      - *trace_id
+
+  - name: erc4337_optimism_failed_validation_ops
+    meta:
+      blockchain: optimism
+      sector: erc4337
+    description: "ERC-4337 UserOps that failed validation"
+    columns:
+      - *block_time
+      - *tx_hash
+      - *bundler
+      - *bundler_name
+      - *trace_id
+
+  - name: erc4337_polygon_failed_validation_ops
+    meta:
+      blockchain: polygon
+      sector: erc4337
+    description: "ERC-4337 UserOps that failed validation"
+    columns:
+      - *block_time
+      - *tx_hash
+      - *bundler
+      - *bundler_name
+      - *trace_id
+
+  - name: erc4337_ethereum_failed_validation_ops
+    meta:
+      blockchain: ethereum
+      sector: erc4337
+    description: "ERC-4337 UserOps that failed validation"
+    columns:
+      - *block_time
+      - *tx_hash
+      - *bundler
+      - *bundler_name
+      - *trace_id
