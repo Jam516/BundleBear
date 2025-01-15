@@ -6,7 +6,9 @@ The SQL queries in this [dbt](https://docs.getdbt.com/docs/introduction) project
 
 ### How to contribute to the Operator Registry:
 
-The Operator Registry stores labels for the contracts and EOAs of ERC-4337 bundlers, paymasters, factories and apps. To add a label you have to make a pull request to this repo. Once your label is in the dataset, the BundleBear team will update the BundleBear [dashboard](https://www.bundlebear.com/overview/all) so that your app or infrastructure provider is properly represented there.
+The Operator Registry stores labels for the contracts and EOAs of ERC-4337 bundlers, paymasters, factories and apps. 
+
+To add a label you have to make a pull request to this repo. Once your label is in the dataset, the BundleBear team will update the BundleBear [dashboard](https://www.bundlebear.com/overview/all) so that your app or infrastructure provider is properly represented there.
 
 1. Fork the BundleBear repo (button towards the top right of the repo page).
 
