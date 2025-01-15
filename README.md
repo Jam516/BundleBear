@@ -21,7 +21,7 @@ To add a label you have to make a pull request to this repo. Once your label is 
     - BundleBear/models/erc4337/labels/erc4337_labels_factories.sql = Edit this to label a new factory contract
     - BundleBear/models/erc4337/labels/erc4337_labels_paymasters.sql = Edit this to label a new paymaster contract
 
-    Note: All addresses need to be in lowercase!
+    Note: **All addresses need to be in lowercase!**
 
 4. Make a Pull Request on your new branch, to the main BundleBear repo, with a brief explanation of what you changed.
 
