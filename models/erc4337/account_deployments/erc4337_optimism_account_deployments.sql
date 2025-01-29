@@ -36,7 +36,7 @@ LEFT JOIN {{ ref('erc4337_labels_factories') }} f ON f.address = l.PARAMS:"facto
 LEFT JOIN {{ ref('erc4337_labels_paymasters') }} pay ON pay.address = l.PARAMS:"paymaster"
 LEFT JOIN {{ ref('erc4337_labels_bundlers') }} b ON b.address = t.FROM_ADDRESS
 INNER JOIN {{ source('common_prices', 'hourly') }} p 
-    ON p.HOUR = date_trunc('hour', t.BLOCK_TIMESTAMP) 
+    ON p.TIMESTAMP = date_trunc('hour', t.BLOCK_TIMESTAMP) 
     AND ADDRESS = '0x0000000000000000000000000000000000000000' 
     AND CHAIN = 'ethereum'
 {% if is_incremental() %}
