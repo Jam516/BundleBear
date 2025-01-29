@@ -19,7 +19,7 @@ SELECT
     CASE WHEN t.GAS_PRICE = 0 THEN 0 
     ELSE (t.RECEIPT_L1_FEE + (t.RECEIPT_GAS_USED*t.GAS_PRICE)) / 1e18
     END AS txn_cost,
-    p.USD_PRICE * 
+    p.PRICE * 
     (CASE WHEN t.GAS_PRICE = 0 THEN 0 
     ELSE (t.RECEIPT_L1_FEE + (t.RECEIPT_GAS_USED*GAS_PRICE)) / 1e18 
     END) as txn_cost_usd

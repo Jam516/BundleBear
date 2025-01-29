@@ -17,7 +17,7 @@ SELECT
     '0x' || SUBSTRING(DATA, 90, 130) as paymaster,
     COALESCE(pay.name, 'Unknown') as paymaster_name,
     (TO_DOUBLE(t.RECEIPT_GAS_USED) * TO_DOUBLE(t.RECEIPT_EFFECTIVE_GAS_PRICE))/1e18 txn_cost,
-    p.USD_PRICE * (TO_DOUBLE(t.RECEIPT_GAS_USED) * TO_DOUBLE(t.RECEIPT_EFFECTIVE_GAS_PRICE))/1e18  as txn_cost_usd
+    p.PRICE * (TO_DOUBLE(t.RECEIPT_GAS_USED) * TO_DOUBLE(t.RECEIPT_EFFECTIVE_GAS_PRICE))/1e18  as txn_cost_usd
 FROM {{ source('arbitrum_nova_raw', 'logs') }} l
 INNER JOIN {{ source('arbitrum_nova_raw', 'transactions') }} t 
     ON t.HASH = l.TRANSACTION_HASH

@@ -12,7 +12,7 @@ with output AS (
         FROM_ADDRESS AS bundler,
         'ETH' AS token,
         (TO_DOUBLE(RECEIPT_GAS_USED) * TO_DOUBLE(RECEIPT_EFFECTIVE_GAS_PRICE))/1e18 as bundler_outflow,
-        p.USD_PRICE * (TO_DOUBLE(RECEIPT_GAS_USED) * TO_DOUBLE(RECEIPT_EFFECTIVE_GAS_PRICE))/1e18 as bundler_outflow_usd
+        p.PRICE * (TO_DOUBLE(RECEIPT_GAS_USED) * TO_DOUBLE(RECEIPT_EFFECTIVE_GAS_PRICE))/1e18 as bundler_outflow_usd
     FROM {{ source('arbitrum_nova_raw', 'transactions') }} t
     INNER JOIN {{ source('common_prices', 'hourly') }} p 
         ON p.TIMESTAMP = date_trunc('hour', t.BLOCK_TIMESTAMP) 
