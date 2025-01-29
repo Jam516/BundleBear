@@ -14,7 +14,7 @@ with output AS (
         CASE WHEN RECEIPT_EFFECTIVE_GAS_PRICE = 0 THEN 0 
         ELSE (RECEIPT_L1_FEE + (RECEIPT_GAS_USED*RECEIPT_EFFECTIVE_GAS_PRICE)) / 1e18
         END AS bundler_outflow,
-        p.USD_PRICE * 
+        p.PRICE * 
         (CASE WHEN RECEIPT_EFFECTIVE_GAS_PRICE = 0 THEN 0 
         ELSE (RECEIPT_L1_FEE + (RECEIPT_GAS_USED*RECEIPT_EFFECTIVE_GAS_PRICE)) / 1e18 
         END) as bundler_outflow_usd

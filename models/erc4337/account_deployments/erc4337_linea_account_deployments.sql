@@ -17,7 +17,7 @@ SELECT
     '0x' || SUBSTRING(DATA, 90, 130) as paymaster,
     COALESCE(pay.name, 'Unknown') as paymaster_name,
     (TO_DOUBLE(t.RECEIPT_GAS_USED) * TO_DOUBLE(t.GAS_PRICE))/1e18 txn_cost,
-    p.USD_PRICE * (TO_DOUBLE(t.RECEIPT_GAS_USED) * TO_DOUBLE(t.GAS_PRICE))/1e18  as txn_cost_usd
+    p.PRICE * (TO_DOUBLE(t.RECEIPT_GAS_USED) * TO_DOUBLE(t.GAS_PRICE))/1e18  as txn_cost_usd
 FROM {{ source('linea_raw', 'logs') }} l
 INNER JOIN {{ source('linea_raw', 'transactions') }} t 
     ON t.HASH = l.TRANSACTION_HASH
