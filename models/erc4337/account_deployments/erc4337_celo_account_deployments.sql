@@ -32,9 +32,10 @@ INNER JOIN {{ source('celo_raw', 'transactions') }} t
 LEFT JOIN {{ ref('erc4337_labels_factories') }} f ON f.address = '0x' || SUBSTRING(l.DATA, 27, 40)
 LEFT JOIN {{ ref('erc4337_labels_paymasters') }} pay ON pay.address = '0x' || SUBSTRING(l.DATA, 90, 130)
 LEFT JOIN {{ ref('erc4337_labels_bundlers') }} b ON b.address = t.FROM_ADDRESS
-INNER JOIN {{ source('common_prices', 'token_prices_hourly_easy') }} p 
+INNER JOIN {{ source('common_prices', 'hourly') }} p 
     ON p.HOUR = date_trunc('hour', t.BLOCK_TIMESTAMP) 
-    AND SYMBOL = 'CELO' 
+    AND ADDRESS = '0x0000000000000000000000000000000000000000' 
+    AND CHAIN = 'celo'
 {% if is_incremental() %}
     AND l.BLOCK_TIMESTAMP >= CURRENT_TIMESTAMP() - interval '3 day' 
 {% endif %}
