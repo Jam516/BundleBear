@@ -278,8 +278,8 @@ sources:
       warn_after: { count: 12, period: hour }
       error_after: { count: 24, period: hour }
     tables:
-      - name: token_prices_hourly_easy
-        loaded_at_field: hour 
+      - name: hourly
+        loaded_at_field: timestamp 
 
   - name: common_decoded
     database: common

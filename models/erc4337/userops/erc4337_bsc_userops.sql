@@ -85,11 +85,12 @@ SELECT
       else common.udfs.js_hextoint_secure(SUBSTRING(executeCall, 75, 64))/1e18 
       end as value
 FROM op 
-INNER JOIN {{ source('common_prices', 'token_prices_hourly_easy') }} p 
-    ON p.HOUR = date_trunc('hour', block_time)
-    AND SYMBOL = 'BNB'
+INNER JOIN {{ source('common_prices', 'hourly') }} p 
+    ON p.TIMESTAMP = date_trunc('hour', block_time)
+    AND p.ADDRESS = '0x0000000000000000000000000000000000000000' 
+    AND p.CHAIN = 'bsc'
     {% if is_incremental() %}
-    AND p.HOUR >= CURRENT_TIMESTAMP() - interval '3 day' 
+    AND p.TIMESTAMP >= CURRENT_TIMESTAMP() - interval '3 day' 
     {% endif %} 
 LEFT JOIN {{ ref('erc4337_labels_bundlers') }} b ON b.address = op.bundler
 LEFT JOIN {{ ref('erc4337_labels_paymasters') }} pay ON pay.address = op.paymaster
