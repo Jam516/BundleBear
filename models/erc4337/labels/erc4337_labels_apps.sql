@@ -215,5 +215,6 @@ FROM (VALUES
 ('Syncswap', '0x80e38291e06339d10aab483c65695d004dbd5c69', 'DEX'),
 ('Velocore', '0x1d0188c4b276a09366d05d6be06af61a73bc7535', 'DEX'),
 ('BEED', '0x5252d3f666a0707c4b7f9d9300bd965eee57695f', 'ERC20'),
+('BVRP', '0xe55fee191604cdbeb874f87a28ca89aed401c303', 'ERC20'),
 ('Polkamarket', '0xdcbe79f74c98368141798ea0b7b979b9ba54b026', 'prediction')
 ) AS x (name, address, category)
