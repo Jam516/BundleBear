@@ -32,7 +32,7 @@ LEFT JOIN {{ ref('erc4337_labels_paymasters') }} pay ON pay.address = l.PARAMS:"
 LEFT JOIN {{ ref('erc4337_labels_bundlers') }} b ON b.address = t.FROM_ADDRESS
 INNER JOIN {{ source('common_prices', 'hourly') }} p 
     ON p.TIMESTAMP = date_trunc('hour', t.BLOCK_TIMESTAMP) 
-    AND ADDRESS = '0x0000000000000000000000000000000000000000' 
+    AND p.ADDRESS = '0x0000000000000000000000000000000000000000' 
     AND CHAIN = 'avalanche'
 {% if is_incremental() %}
     AND l.BLOCK_TIMESTAMP >= CURRENT_TIMESTAMP() - interval '3 day' 
