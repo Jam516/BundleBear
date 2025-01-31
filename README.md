@@ -14,12 +14,12 @@ To add a label you have to make a pull request to this repo. Once your label is 
 
 2. Start a new branch in your forked repo.
 
-3. Edit the appropriate label query in the BundleBear/models/erc4337/labels folder. The queries are as follows
+3. Edit the appropriate label query in the [BundleBear/models/erc4337/labels](https://github.com/Jam516/BundleBear/tree/main/models/erc4337/labels) folder. The queries are as follows
 
-    - BundleBear/models/erc4337/labels/erc4337_labels_apps.sql = Edit this to label a new app contract
-    - BundleBear/models/erc4337/labels/erc4337_labels_bundlers.sql = Edit this to label a new bundler EOA
-    - BundleBear/models/erc4337/labels/erc4337_labels_factories.sql = Edit this to label a new factory contract
-    - BundleBear/models/erc4337/labels/erc4337_labels_paymasters.sql = Edit this to label a new paymaster contract
+    - [BundleBear/models/erc4337/labels/erc4337_labels_apps.sql](https://github.com/Jam516/BundleBear/blob/main/models/erc4337/labels/erc4337_labels_apps.sql) = Edit this to label a new app contract
+    - [BundleBear/models/erc4337/labels/erc4337_labels_bundlers.sql](https://github.com/Jam516/BundleBear/blob/main/models/erc4337/labels/erc4337_labels_bundlers.sql) = Edit this to label a new bundler EOA
+    - [BundleBear/models/erc4337/labels/erc4337_labels_factories.sql](https://github.com/Jam516/BundleBear/blob/main/models/erc4337/labels/erc4337_labels_factories.sql) = Edit this to label a new factory contract
+    - [BundleBear/models/erc4337/labels/erc4337_labels_paymasters.sql](https://github.com/Jam516/BundleBear/blob/main/models/erc4337/labels/erc4337_labels_paymasters.sql) = Edit this to label a new paymaster contract
 
     Note: **All addresses need to be in lowercase!**
 
