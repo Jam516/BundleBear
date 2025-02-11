@@ -540,6 +540,7 @@ SELECT name, address FROM (VALUES
 ('biconomy', '0x11bb32089aed47af4ac0f993a91c52a0710eae6e'),
 ('unipass', '0xfa19fb4d871af87cc737499bceee041453f2fb6b'),
 ('candide', '0x3cfdc212769c890907bce93d3d8c2c53de6a7a89'),
+('candide', '0x6eb0296e64fb8d9d946c7b819e4ff55c7167b0ce'),
 ('pimlico', '0x4337001fff419768e088ce247456c1b892888084'),
 ('pimlico', '0x4337002c5702ce424cb62a56ca038e31e1d4a93d'),
 ('pimlico', '0x4337003fcd2f56de3977ccb806383e9161628d0e'),
