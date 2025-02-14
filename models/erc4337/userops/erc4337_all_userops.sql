@@ -1,6 +1,7 @@
 {{ config
 (
-    materialized = 'table'
+    materialized = 'table',
+    copy_grants=true
 )
 }}
 
