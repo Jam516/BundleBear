@@ -33,6 +33,7 @@ FROM (VALUES
 ('thirdweb_managedaccount', '0x463effb51873c7720c810ac7fb2e145ec2f8cc60'),
 ('thirdweb_managedaccount', '0xa0b9ebd2cc138e0748c69baf66df2e01c57521ec'),
 ('thirdweb_managedaccount', '0x0c4176d4a4e2bb32ede3bfab928fd26ad8d15749'),
+('thirdweb_managedaccount', '0x1d126c5366aaaebe53fed61242553923284e2f5b'),
 ('polynomial', '0xb43c0899eccf98bc7a0f3e2c2a211d6fc4f9b3fe'),
 ('circle', '0xfef1c57185393f456eaeca363a0d3c12cd8df07b'),
 ('circle', '0x1a1f5310ed7ff0b84cef7e6d7d0f94cc16d23013 '),
