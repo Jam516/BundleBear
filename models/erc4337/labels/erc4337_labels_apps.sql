@@ -233,5 +233,16 @@ FROM (VALUES
 ('Zerodev Session Key Validator', '0x5c06ce2b673fd5e6e56076e40dd46ab67f5a72a5', 'session keys'),
 ('PiChain Recovery Module', '0xb382daf7230b73f71a766c96707cf9ec6316b360', 'plugin'),
 ('Nekocoin Claim', '0xe1f5b740d1a0e5b66db505e3bacdbdda40dfb9cb', 'ERC20 claim'),
-('Miracleplay', '0xebdacbaf7e6f2521250da8713ecacbaf10ccbe8a', 'game')
+('Miracleplay', '0xebdacbaf7e6f2521250da8713ecacbaf10ccbe8a', 'game'),
+('BedRock', '0x11b3808a5c0b612bc284ef7c2c6034c77a66be7b', 'ERC20'),
+('BedRock', '0x58cb2637deca008a7e9aebbe9843fa7e4d9d187d', 'ERC20'),
+('BedRock', '0xbc48e8bb4e270e0c59cc1bc8885571b7bc33d03d', 'ERC20'),
+('BedRock', '0xdfc7d2d003a053b2e0490531e9317a59962b511e', 'ERC20'),
+('BedRock', '0x3376ebca0a85fc8d791b1001a571c41fdd61514a', 'ERC20'),
+('BedRock', '0xd3c8da379d71a33bfee8875f87ac2748beb1d58d', 'ERC20'),
+('BedRock', '0xf9775085d726e782e83585033b58606f7731ab18', 'ERC20'),
+('BedRock', '0x89b2c722abf9e1c8dd215e4e8352e0f293740aeb', 'ERC20'),
+('BedRock', '0x93919784c523f39cacaa98ee0a9d96c3f32b593e', 'ERC20'),
+('BedRock', '0x552b0c6688fcae5cf0164f27fd129b882a42fa05', 'ERC20'),
+('BedRock', '0x9203ce1bcded1a20f697e1780bc47d5b6d718031', 'ERC20')
 ) AS x (name, address, category)
