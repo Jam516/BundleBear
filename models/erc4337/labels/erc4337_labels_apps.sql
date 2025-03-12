@@ -245,10 +245,10 @@ FROM (VALUES
 ('BedRock', '0x93919784c523f39cacaa98ee0a9d96c3f32b593e', 'ERC20'),
 ('BedRock', '0x552b0c6688fcae5cf0164f27fd129b882a42fa05', 'ERC20'),
 ('BedRock', '0x9203ce1bcded1a20f697e1780bc47d5b6d718031', 'ERC20'),
-('Send', '0x3f14920c99BEB920Afa163031c4e47a3e03B3e4A', 'ERC20'), -- SendTokenV0
-('Send', '0x60E5445EDc1A469CFc0181861c88BD4B6895F615', 'ERC20'), -- SendTokenLockbox
-('Send', '0xEab49138BA2Ea6dd776220fE26b7b8E446638956', 'ERC20'), -- SendToken
-('Send', '0x614F5273FDB63C1E1972FE1457CE77DF1CA440A6', 'rewards'), -- SendMerkleDrop V0
-('Send', '0x2C1630CD8F40D0458B7B5849E6CC2904A7D18A57', 'rewards'), -- SendMerkleDrop
-('Send', '0x36f43082d01df4801AF2D95aeEd1a0200C5510AE', 'name service') -- SendtagCheckout
+('Send', '0x3f14920c99beb920afa163031c4e47a3e03b3e4a', 'ERC20'), -- SendTokenV0
+('Send', '0x60e5445edc1a469cfc0181861c88bd4b6895f615', 'ERC20'), -- SendTokenLockbox
+('Send', '0xeab49138ba2ea6dd776220fe26b7b8e446638956', 'ERC20'), -- SendToken
+('Send', '0x614f5273fdb63c1e1972fe1457ce77df1ca440a6', 'rewards'), -- SendMerkleDrop V0
+('Send', '0x2c1630cd8f40d0458b7b5849e6cc2904a7d18a57', 'rewards'), -- SendMerkleDrop
+('Send', '0x36f43082d01df4801af2d95aeed1a0200c5510ae', 'name service') -- SendtagCheckout
 ) AS x (name, address, category)

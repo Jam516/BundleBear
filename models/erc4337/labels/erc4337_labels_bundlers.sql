@@ -2965,5 +2965,5 @@ SELECT name, address FROM (VALUES
 ('cometh', '0xf0f772fa5f01bc19064a8ba323a4f53505586ce1'),
 ('cometh', '0xb11febe816d2157d8efa83404d37447abc41366f'),
 ('cometh', '0x6d34bfbc85a29ccd377da82a0d1f07deb763c910'),
-('Send', '0x9d1478044F781Ca722ff257e70D05e4Ad673f443')
+('Send', '0x9d1478044f781ca722ff257e70d05e4ad673f443')
 ) AS x (name, address)

@@ -50,6 +50,6 @@ FROM (VALUES
 ('coinbase', '0xa270ef92c1e11f1c1f95753c2e56801e8125fa83', 'verifying'),
 ('coinbase', '0x2faeb0760d4230ef2ac21496bb4f0b47d634fd4c', 'both'),
 ('coinbase', '0xdcbe0c1a00e4cf24ae77c52125e6e6b4f7c6db4e', 'both'),
-('Send', '0x592e1224D203Be4214B15e205F6081FbbaCFcD2D', 'token'),
-('Send', '0x8A77aE0c07047c5b307B2319A8F4Bd9d3604DdD8', 'verifying')
+('send', '0x592e1224d203be4214b15e205f6081fbbacfcd2d', 'token'),
+('send', '0x8a77ae0c07047c5b307b2319a8f4bd9d3604ddd8', 'verifying')
 ) AS x (name, address, type)
