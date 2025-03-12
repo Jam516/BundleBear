@@ -7,8 +7,8 @@
 
 SELECT name, address, type
 FROM (VALUES
-('alchemy', '0x4fd9098af9ddcb41da48a1d78f91f1398965addc', 'verifying'), 
-('stackup', '0x474ea64bedde53aad1084210bd60eef2989bf80f', 'verifying'),    
+('alchemy', '0x4fd9098af9ddcb41da48a1d78f91f1398965addc', 'verifying'),
+('stackup', '0x474ea64bedde53aad1084210bd60eef2989bf80f', 'verifying'),
 ('stackup', '0xe93eca6595fe94091dc1af46aac2a8b5d7990770', 'both'),
 ('stackup', '0x9d6ac51b972544251fcc0f2902e633e3f9bd3f29', 'both'),
 ('biconomy', '0x000031dd6d9d3a133e663660b959162870d755d4', 'verifying'),
@@ -49,5 +49,7 @@ FROM (VALUES
 ('cometh', '0x6a6b7f6012ee5bef1cdf95df25e5045c7727c739', 'verifying'),
 ('coinbase', '0xa270ef92c1e11f1c1f95753c2e56801e8125fa83', 'verifying'),
 ('coinbase', '0x2faeb0760d4230ef2ac21496bb4f0b47d634fd4c', 'both'),
-('coinbase', '0xdcbe0c1a00e4cf24ae77c52125e6e6b4f7c6db4e', 'both')
+('coinbase', '0xdcbe0c1a00e4cf24ae77c52125e6e6b4f7c6db4e', 'both'),
+('Send', '0x592e1224D203Be4214B15e205F6081FbbaCFcD2D', 'token'),
+('Send', '0x8A77aE0c07047c5b307B2319A8F4Bd9d3604DdD8', 'verifying')
 ) AS x (name, address, type)

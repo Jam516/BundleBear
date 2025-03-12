@@ -7,13 +7,13 @@
 
 SELECT name, address
 FROM (VALUES
-('biconomy', '0x000000f9ee1842bb72f6bbdd75e6d3d4e3e9594c'), 
-('biconomy', '0x000000a56aaca3e9a4c479ea6b6cd0dbcb6634f5'),       
-('zerodev_kernel', '0xaee9762ce625e0a8f7b184670fb57c37bfe1d0f1'),    
-('zerodev_kernel', '0x4e4946298614fc299b50c947289f4ad0572cb9ce'),    
-('zerodev_kernel', '0x19b03a419124b77a7659a0fdab7903c6f40183e5'),  
-('zerodev_kernel', '0x5de4839a76cf55d0c90e2061ef4386d962e15ae3'),   
-('zerodev_kernel', '0x33ddf684dcc6937ffe59d8405aa80c41fb518c5c'),    
+('biconomy', '0x000000f9ee1842bb72f6bbdd75e6d3d4e3e9594c'),
+('biconomy', '0x000000a56aaca3e9a4c479ea6b6cd0dbcb6634f5'),
+('zerodev_kernel', '0xaee9762ce625e0a8f7b184670fb57c37bfe1d0f1'),
+('zerodev_kernel', '0x4e4946298614fc299b50c947289f4ad0572cb9ce'),
+('zerodev_kernel', '0x19b03a419124b77a7659a0fdab7903c6f40183e5'),
+('zerodev_kernel', '0x5de4839a76cf55d0c90e2061ef4386d962e15ae3'),
+('zerodev_kernel', '0x33ddf684dcc6937ffe59d8405aa80c41fb518c5c'),
 ('blocto', '0xf7ccfaee69cd8a0b3a62c2a0f35f95cc7e588183'),
 ('banana', '0x8e5ffc77d0906618a8ed73db34f92ea0251b327b'),
 ('fun.xyz', '0xda2ba73e0dd91d8bbb72dc10655b691295bdf985'),
@@ -44,5 +44,6 @@ FROM (VALUES
 ('nani', '0x0000000000009f1e546fc4a8f68eb98031846cb8'),
 ('zerodev_kernel', '0xd703aae79538628d27099b8c4f621be4ccd142d5'),
 ('coinbase_smart_wallet', '0x0ba5ed0c6aa8c49038f819e587e2633c4a9f428a'),
-('lumx', '0x2e1c14daadefc4a85eaec81dacba27cd455a0b66')
+('lumx', '0x2e1c14daadefc4a85eaec81dacba27cd455a0b66'),
+('Send', '0x008c9561857b6555584d20aC55110335759Aa2c2')
 ) AS x (name, address)
