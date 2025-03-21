@@ -8,6 +8,9 @@
 SELECT name, address, type
 FROM (VALUES
 ('alchemy', '0x4fd9098af9ddcb41da48a1d78f91f1398965addc', 'verifying'),
+('alchemy', '0x2cc0c7981d846b9f2a16276556f6e8cb52bfb633', 'verifying'),
+('alchemy', '0xeaf0cde110a5d503f2dd69b3a49e031e29b3f9d2', 'verifying'),
+('alchemy', '0xef725aa22d43ea69fb22be2ebe6eca205a6bcf5b', 'verifying'),
 ('stackup', '0x474ea64bedde53aad1084210bd60eef2989bf80f', 'verifying'),
 ('stackup', '0xe93eca6595fe94091dc1af46aac2a8b5d7990770', 'both'),
 ('stackup', '0x9d6ac51b972544251fcc0f2902e633e3f9bd3f29', 'both'),
