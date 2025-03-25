@@ -10,18 +10,16 @@ with output AS (
         BLOCK_TIMESTAMP as block_time,
         HASH as tx_hash,
         FROM_ADDRESS AS bundler,
-        'MATIC' AS token,
+        'XDAI' AS token,
         (TO_DOUBLE(t.RECEIPT_GAS_USED) * TO_DOUBLE(t.RECEIPT_EFFECTIVE_GAS_PRICE))/1e18 as bundler_outflow,
         p.PRICE * (TO_DOUBLE(t.RECEIPT_GAS_USED) * TO_DOUBLE(t.RECEIPT_EFFECTIVE_GAS_PRICE))/1e18 as bundler_outflow_usd
-    FROM {{ source('polygon_raw', 'transactions') }} t
+    FROM {{ source('gnosis_raw', 'transactions') }} t
     INNER JOIN {{ source('common_prices', 'hourly') }} p 
         ON p.TIMESTAMP = date_trunc('hour', t.BLOCK_TIMESTAMP) 
         AND p.ADDRESS = '0x0000000000000000000000000000000000000000' 
-        AND p.CHAIN = 'polygon'
+        AND p.CHAIN = 'gnosis'
         AND t.TO_ADDRESS IN
-        ('0x5ff137d4b0fdcd49dca30c7cf57e578a026d2789', 
-        '0x0576a174d229e3cfa37253523e645a78a0c91b57', 
-        '0x0f46c65c17aa6b4102046935f33301f0510b163a',
+    ('0x5ff137d4b0fdcd49dca30c7cf57e578a026d2789', 
     '0x0000000071727de22e5e9d8baf0edac6f37da032',
     '0x4337084d9e255ff0702461cf8895ce9e3b5ff108')
         AND LEFT(INPUT,10) = '0x1fad948c'      
@@ -37,7 +35,7 @@ input AS (
     SUM(ACTUALGASCOST) as bundler_inflow,
     SUM(ACTUALGASCOST_USD) as bundler_inflow_usd,
     COUNT(*) AS num_userops
-    FROM {{ ref('erc4337_polygon_userops') }}
+    FROM {{ ref('erc4337_gnosis_userops') }}
     {% if is_incremental() %}
     WHERE BLOCK_TIME >= CURRENT_TIMESTAMP() - interval '3 day' 
     {% endif %} 
