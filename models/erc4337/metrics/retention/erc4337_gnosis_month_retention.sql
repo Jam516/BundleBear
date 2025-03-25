@@ -6,7 +6,7 @@
 
 WITH transactions AS (
     SELECT SENDER, BLOCK_TIME AS created_at
-    FROM {{ ref('erc4337_all_userops') }}
+    FROM {{ ref('erc4337_gnosis_userops') }}
 ),
 
 cohort AS (

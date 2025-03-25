@@ -24,7 +24,8 @@ INNER JOIN {{ source('arbitrum_nova_raw', 'transactions') }} t
     AND l.TOPIC0 = '0xd51a9c61267aa6196961883ecf5ff2da6619c37dac0fa92122513fb32c032d2d' 
     AND t.TO_ADDRESS IN
     ('0x5ff137d4b0fdcd49dca30c7cf57e578a026d2789', 
-    '0x0000000071727de22e5e9d8baf0edac6f37da032')
+    '0x0000000071727de22e5e9d8baf0edac6f37da032',
+    '0x4337084d9e255ff0702461cf8895ce9e3b5ff108')
     {% if is_incremental() %}
     AND l.BLOCK_TIMESTAMP >= CURRENT_TIMESTAMP() - interval '3 day' 
     AND t.BLOCK_TIMESTAMP >= CURRENT_TIMESTAMP() - interval '3 day' 

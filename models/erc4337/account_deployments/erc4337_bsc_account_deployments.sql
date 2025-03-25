@@ -24,7 +24,8 @@ INNER JOIN {{ source('bsc_raw', 'transactions') }} t
     AND l.NAME = 'AccountDeployed' 
     AND t.TO_ADDRESS IN
     ('0x5ff137d4b0fdcd49dca30c7cf57e578a026d2789', 
-    '0x0000000071727de22e5e9d8baf0edac6f37da032')
+    '0x0000000071727de22e5e9d8baf0edac6f37da032',
+    '0x4337084d9e255ff0702461cf8895ce9e3b5ff108')
 LEFT JOIN {{ ref('erc4337_labels_factories') }} f ON f.address = l.PARAMS:"factory"
 LEFT JOIN {{ ref('erc4337_labels_paymasters') }} pay ON pay.address = l.PARAMS:"paymaster"
 LEFT JOIN {{ ref('erc4337_labels_bundlers') }} b ON b.address = t.FROM_ADDRESS

@@ -6,22 +6,7 @@
 
 WITH transactions AS (
     SELECT SENDER, BLOCK_TIME AS created_at
-    FROM {{ ref('erc4337_arbitrum_userops') }}
-    UNION ALL
-    SELECT SENDER, BLOCK_TIME AS created_at
-    FROM {{ ref('erc4337_avalanche_userops') }}
-    UNION ALL
-    SELECT SENDER, BLOCK_TIME AS created_at
-    FROM {{ ref('erc4337_base_userops') }}
-    UNION ALL
-    SELECT SENDER, BLOCK_TIME AS created_at
-    FROM {{ ref('erc4337_ethereum_userops') }}
-    UNION ALL
-    SELECT SENDER, BLOCK_TIME AS created_at
-    FROM {{ ref('erc4337_optimism_userops') }}
-    UNION ALL
-    SELECT SENDER, BLOCK_TIME AS created_at
-    FROM {{ ref('erc4337_polygon_userops') }}
+    FROM {{ ref('erc4337_all_userops') }}
 ),
 
 cohort AS (
