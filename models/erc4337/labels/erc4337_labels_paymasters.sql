@@ -31,6 +31,8 @@ FROM (VALUES
 ('pimlico', '0x67f21be69a16c314a0b7da537309b2f3addde031', 'verifying'),
 ('pimlico', '0x0000000000000039cd5e8ae05257ce51c473ddd1', 'both'),
 ('pimlico', '0x00000000000000fb866daaa79352cc568a005d96', 'both'),
+('pimlico', '0x6666666666667849c56f2850848ce1c4da65c68b', 'both'),
+('pimlico', '0x777777777777aec03fd955926dbf81597e66834c', 'both'),
 ('candide', '0x769f68e4ba8f53f3092eef34a42a811ab6365b05', 'both'),
 ('candide', '0x3fe285dcd76bcce4ac92d38a6f2f8e964041e020', 'both'),
 ('candide', '0xdad1b9318cdf364668cca9bb5a73f6bc83f8a705', 'both'),
