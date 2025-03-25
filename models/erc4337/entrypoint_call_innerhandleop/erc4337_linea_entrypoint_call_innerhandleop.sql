@@ -20,7 +20,8 @@ SELECT
 FROM {{ source('linea_decoded', 'traces') }}
 WHERE TO_ADDRESS IN 
     ('0x5ff137d4b0fdcd49dca30c7cf57e578a026d2789', 
-    '0x0000000071727de22e5e9d8baf0edac6f37da032')
+    '0x0000000071727de22e5e9d8baf0edac6f37da032',
+    '0x4337084d9e255ff0702461cf8895ce9e3b5ff108')
     AND NAME = 'innerHandleOp'
     AND ERROR IS NULL
     {% if is_incremental() %}
