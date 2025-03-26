@@ -7,11 +7,11 @@
 
 SELECT name, address, category
 FROM (VALUES
-('$AF', '0x6c90A582C166F59dE91f97fA7Aef7315A968B342', 'ERC20'),
-('AlfaFrens RewardController', '0x1Fd7AEe0321e31C7c47C4DA183dc1054E1196b5f', 'SocialFi'),
-('AlfaFrens ChannelFactory', '0x920390CCc401E63B69a92390DEc0C1f3E881D7F4', 'SocialFi'),
-('AFSwap', '0x91F9b8fEAd04a2b04a04eEdB02f106cEE565Cc64', 'Claim'),
-('AFSwap', '0xBcDE2A24b3F2EF1aE3E1aB077E7dDFD3FD85F579', 'Airdrop'),
+('$AF', '0x6c90a582c166f59de91f97fa7aef7315a968b342', 'ERC20'),
+('AlfaFrens RewardController', '0x1fd7aee0321e31c7c47c4da183dc1054e1196b5f', 'SocialFi'),
+('AlfaFrens ChannelFactory', '0x920390ccc401e63b69a92390dec0c1f3e881d7f4', 'SocialFi'),
+('AFSwap', '0x91f9b8fead04a2b04a04eedb02f106cee565cc64', 'Claim'),
+('AFSwap', '0xbcde2a24b3f2ef1ae3e1ab077e7ddfd3fd85f579', 'Airdrop'),
 ('$G1', '0xe36bd65609c08cd17b53520293523cf4560533d0', 'ERC20'),
 ('$USDC', '0x2791bca1f2de4661ed88a30c99a7a9449aa84174', 'ERC20'),
 ('$USDC', '0x7f5c764cbc14f9669b88837ca1490cca17c31607', 'ERC20'),
