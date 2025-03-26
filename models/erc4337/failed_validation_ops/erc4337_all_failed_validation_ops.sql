@@ -24,3 +24,5 @@ UNION ALL
 SELECT  *, 'celo' AS chain FROM {{ ref('erc4337_celo_failed_validation_ops') }}
 UNION ALL
 SELECT  *, 'arbitrum_nova' AS chain FROM {{ ref('erc4337_arbitrum_nova_failed_validation_ops') }}
+UNION ALL
+SELECT  *, 'gnosis' AS chain FROM {{ ref('erc4337_gnosis_failed_validation_ops') }}
