@@ -253,5 +253,6 @@ FROM (VALUES
 ('Send', '0xeab49138ba2ea6dd776220fe26b7b8e446638956', 'ERC20'), -- SendToken
 ('Send', '0x614f5273fdb63c1e1972fe1457ce77df1ca440a6', 'rewards'), -- SendMerkleDrop V0
 ('Send', '0x2c1630cd8f40d0458b7b5849e6cc2904a7d18a57', 'rewards'), -- SendMerkleDrop
-('Send', '0x36f43082d01df4801af2d95aeed1a0200c5510ae', 'name service') -- SendtagCheckout
+('Send', '0x36f43082d01df4801af2d95aeed1a0200c5510ae', 'name service'), -- SendtagCheckout
+('KresusVaultFactory', '0xf5e92c74e20e03403f7f366e94eec7f62530d483', 'factory')
 ) AS x (name, address, category)
