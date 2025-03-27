@@ -45,6 +45,7 @@ FROM (VALUES
 ('zerodev_kernel', '0xd703aae79538628d27099b8c4f621be4ccd142d5'),
 ('coinbase_smart_wallet', '0x0ba5ed0c6aa8c49038f819e587e2633c4a9f428a'),
 ('lumx', '0x2e1c14daadefc4a85eaec81dacba27cd455a0b66'),
-('Send', '0x008c9561857b6555584d20ac55110335759aa2c2'),
-('splits_smart_vault', '0x8e6af8ed94e87b4402d0272c5d6b0d47f0483e7c')
+('send', '0x008c9561857b6555584d20ac55110335759aa2c2'),
+('splits_smart_vault', '0x8e6af8ed94e87b4402d0272c5d6b0d47f0483e7c'),
+('kresus_vault', '0xf5e92c74e20e03403f7f366e94eec7f62530d483')
 ) AS x (name, address)
