@@ -29,6 +29,33 @@ To add a label you have to make a pull request to this repo. Once your label is 
 
 6. Once your PR has been merged, please give 24 hours for the front-end team to make any needed changes on the BundleBear dashboard site.
 
+### Sponsors:
+
+If you find BundleBear useful or use it for work, please consider sponsoring BundleBear. Thank you 🙏
+
+<p>
+  <a href="https://ethereum.org/en/foundation">
+    <picture>
+      <img alt="ethereum foundation logo" src="https://github.com/Jam516/bundlebear-app/blob/main/public/ethereum-foundation-logo.png" width="auto" height="70">
+    </picture>
+  </a>
+</p>
+
+<p>
+  <a href="https://www.pimlico.io">
+    <picture>
+      <img alt="pimlico logo" src="https://github.com/Jam516/bundlebear-app/blob/main/public/pimlico-logo.png" width="auto" height="50">
+    </picture>
+  </a>
+</p>
+<p>
+  <a href="https://www.biconomy.io">
+    <picture>
+      <img alt="biconomy logo" src="https://github.com/Jam516/bundlebear-app/blob/main/public/biconomy-logo.png" width="auto" height="50">
+    </picture>
+  </a>
+</p>
+
 ### Resources:
 - Read the [4337 proposal](https://eips.ethereum.org/EIPS/eip-4337)
 - Learn more about [4337 data analysis](https://read.cryptodatabytes.com/p/web3-sql-weekly-8-analyzing-account)
