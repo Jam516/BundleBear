@@ -9,6 +9,9 @@ SELECT name, address
 FROM (VALUES
 ('biconomy', '0x000000f9ee1842bb72f6bbdd75e6d3d4e3e9594c'),
 ('biconomy', '0x000000a56aaca3e9a4c479ea6b6cd0dbcb6634f5'),
+('biconomy', '0x000000001d1d5004a02bafab9de2d6ce5b7b13de'),
+('biconomy', '0x000000c3a93d2c5e02cb053ac675665b1c4217f9'),
+('biconomy', '0x000000226cada0d8b36034f5d5c06855f59f6f3a'),
 ('zerodev_kernel', '0xaee9762ce625e0a8f7b184670fb57c37bfe1d0f1'),
 ('zerodev_kernel', '0x4e4946298614fc299b50c947289f4ad0572cb9ce'),
 ('zerodev_kernel', '0x19b03a419124b77a7659a0fdab7903c6f40183e5'),
