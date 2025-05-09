@@ -48,6 +48,7 @@ FROM (VALUES
 ('circle', '0xa233b124d7b9cff2d38cb62319e1a3f79144b490'),
 ('circle', '0xf61023061ed45fa9eac4d2670649ce1fd37ce536'),
 ('circle', '0x0000000df7e6c9dc387cafc5ecbfa6c3a6179add'),
+('circle', '0xf3d5e80c34aee1800ab3f1bd74b1086f69c4d227'),
 ('nani', '0x000000000000dd366cc2e4432bb998e41dfd47c7'),
 ('nani', '0x0000000000009f1e546fc4a8f68eb98031846cb8'),
 ('zerodev_kernel', '0xd703aae79538628d27099b8c4f621be4ccd142d5'),
