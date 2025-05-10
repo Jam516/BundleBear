@@ -17,7 +17,7 @@ WITH authority_daily_states AS (
       ORDER BY NONCE DESC, BLOCK_TIME DESC
     ) AS daily_rank
   FROM 
-    {{ ref('erc7702_all_authorizations') }}
+    {{ ref('eip7702_all_authorizations') }}
   WHERE CHAIN_ID != 0
 ),
 
