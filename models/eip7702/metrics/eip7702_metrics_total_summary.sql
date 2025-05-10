@@ -20,5 +20,5 @@ SELECT
   TX_HASH,
   ROW_NUMBER() OVER (PARTITION BY AUTHORITY ORDER BY NONCE DESC, BLOCK_TIME DESC) as rn
 FROM 
-  {{ ref('erc7702_all_authorizations') }}
+  {{ ref('eip7702_all_authorizations') }}
 )
