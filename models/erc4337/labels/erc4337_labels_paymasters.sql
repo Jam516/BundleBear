@@ -43,6 +43,7 @@ FROM (VALUES
 ('circle', '0x03df76c8c30a88f424cf3cbbc36a1ca02763103b', 'verifying'),
 ('circle', '0x1f5ec0b664501d046c2f1487839208ef95a093fe', 'verifying'),
 ('circle', '0x6c973ebe80dcd8660841d4356bf15c32460271c9', 'token'),
+('circle', '0x0578cfb241215b77442a541325d6a4e6dfe700ec', 'token'),
 ('particle', '0x23b944a93020a9c7c414b1adecdb2fd4cd4e8184', 'verifying'),
 ('etherspot', '0x7f690e93cecfca5a31e6e1df50a33f6d3059048c', 'verifying'),
 ('etherspot', '0x26fec24b0d467c9de105217b483931e8f944ff50', 'verifying'),
