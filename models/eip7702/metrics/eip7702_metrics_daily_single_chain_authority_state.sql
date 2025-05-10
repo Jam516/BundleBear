@@ -59,7 +59,7 @@ date_spine AS (
 -- Step 5: Get unique chains for cross join
 chains AS (
   SELECT DISTINCT CHAIN
-  FROM BUNDLEBEAR.DBT_KOFI.ERC7702_ALL_AUTHORIZATIONS
+  FROM {{ ref('eip7702_all_authorizations') }}
 ),
 
 -- Step 6: Create day-chain combinations
