@@ -6,7 +6,7 @@ The SQL queries in this [dbt](https://docs.getdbt.com/docs/introduction) project
 
 ### How to contribute to the Operator Registry:
 
-The Operator Registry stores labels for the contracts and EOAs of ERC-4337 bundlers, paymasters, factories and apps. 
+The Operator Registry stores labels for the addresses of ERC-4337 and EIP-7702 operators (bundlers, paymasters, factories, apps and authorized contracts). 
 
 To add a label you have to make a pull request to this repo. Once your label is in the dataset, the BundleBear team will update the BundleBear [dashboard](https://www.bundlebear.com/overview/all) so that your app or infrastructure provider is properly represented there.
 
@@ -14,14 +14,15 @@ To add a label you have to make a pull request to this repo. Once your label is 
 
 2. Start a new branch in your forked repo.
 
-3. Edit the appropriate label query in the [BundleBear/models/erc4337/labels](https://github.com/Jam516/BundleBear/tree/main/models/erc4337/labels) folder. The queries are as follows
+3. Edit the appropriate label query in the [BundleBear/models/erc4337/labels](https://github.com/Jam516/BundleBear/tree/main/models/erc4337/labels) or [BundleBear/models/eip4337/labels](https://github.com/Jam516/BundleBear/tree/main/models/eip7702/labels) folder. The queries are as follows
 
     - [BundleBear/models/erc4337/labels/erc4337_labels_apps.sql](https://github.com/Jam516/BundleBear/blob/main/models/erc4337/labels/erc4337_labels_apps.sql) = Edit this to label a new app contract
     - [BundleBear/models/erc4337/labels/erc4337_labels_bundlers.sql](https://github.com/Jam516/BundleBear/blob/main/models/erc4337/labels/erc4337_labels_bundlers.sql) = Edit this to label a new bundler EOA
     - [BundleBear/models/erc4337/labels/erc4337_labels_factories.sql](https://github.com/Jam516/BundleBear/blob/main/models/erc4337/labels/erc4337_labels_factories.sql) = Edit this to label a new factory contract
     - [BundleBear/models/erc4337/labels/erc4337_labels_paymasters.sql](https://github.com/Jam516/BundleBear/blob/main/models/erc4337/labels/erc4337_labels_paymasters.sql) = Edit this to label a new paymaster contract
+    - [BundleBear/models/eip7702/labels/eip7702_labels_authorized_contracts.sql](https://github.com/Jam516/BundleBear/blob/main/models/eip7702/labels/eip7702_labels_authorized_contracts.sql) = Edit this to label a new EIP-7702 authorized contract
 
-    Note: **All addresses need to be in lowercase!**
+    #### Note: All addresses need to be in lowercase!!
 
 4. Make a Pull Request on your new branch, to the main BundleBear repo, with a brief explanation of what you changed.
 
@@ -59,3 +60,4 @@ If you find BundleBear useful or use it for work, please consider sponsoring Bun
 ### Resources:
 - Read the [4337 proposal](https://eips.ethereum.org/EIPS/eip-4337)
 - Learn more about [4337 data analysis](https://read.cryptodatabytes.com/p/web3-sql-weekly-8-analyzing-account)
+- Read the [7702 proposal](https://eips.ethereum.org/EIPS/eip-7702)
