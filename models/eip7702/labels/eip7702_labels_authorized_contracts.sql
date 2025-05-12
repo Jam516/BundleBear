@@ -7,9 +7,9 @@
 
 SELECT name, address
 FROM (VALUES
-('WhiteBit Account', '0x000000f9ee1842bb72f6bbdd75e6d3d4e3e9594c'),
-('Metamask 7702Delegator', '0x000000a56aaca3e9a4c479ea6b6cd0dbcb6634f5'),
-('Ambire 7702Account', '0x000000001d1d5004a02bafab9de2d6ce5b7b13de'),
-('Simple 7702Account', '0x000000c3a93d2c5e02cb053ac675665b1c4217f9'),
-('OKX 7702Wallet', '0x000000226cada0d8b36034f5d5c06855f59f6f3a')
+('WhiteBit Account', '0xcda3577ca7ef65f6b7201e9bd80375f5628d15f7'),
+('Metamask 7702Delegator', '0x63c0c19a282a1b52b07dd5a65b58948a07dae32b'),
+('Ambire 7702Account', '0x5a7fc11397e9a8ad41bf10bf13f22b0a63f96f6d'),
+('Simple 7702Account', '0xe6cae83bde06e4c305530e199d7217f42808555b'),
+('OKX 7702Wallet', '0x80296ff8d1ed46f8e3c7992664d13b833504c2bb')
 ) AS x (name, address)
