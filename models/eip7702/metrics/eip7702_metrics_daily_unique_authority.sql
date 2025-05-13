@@ -14,7 +14,6 @@ WITH authority_state_changes AS (
     DATE_TRUNC('DAY', BLOCK_TIME) AS change_date
   FROM 
     {{ ref('eip7702_all_authorizations') }}
---   WHERE CHAIN_ID != 0 --CHAIN_ID 0 auths still require a set code txn on every chain. so its really just another addition to the count of the executed chain.
   QUALIFY ROW_NUMBER() OVER (
     PARTITION BY AUTHORITY, CHAIN, DATE_TRUNC('DAY', BLOCK_TIME) 
     ORDER BY NONCE DESC, BLOCK_TIME DESC
@@ -56,31 +55,31 @@ day_chain_combinations AS (
     c.CHAIN
   FROM date_spine d
   CROSS JOIN chains c
+),
+
+daily_chain_wallets AS (
+  SELECT
+    dc.day,
+    dc.CHAIN,
+    at.AUTHORITY,
+    at.AUTHORIZED_CONTRACT
+  FROM 
+    day_chain_combinations dc
+  LEFT JOIN
+    authority_timeline at
+  ON
+    dc.day >= at.change_date
+    AND (dc.day < at.next_change_date OR at.next_change_date IS NULL)
+    AND dc.CHAIN = at.CHAIN
+  WHERE
+    at.AUTHORIZED_CONTRACT != '0x0000000000000000000000000000000000000000'
+-- can adapt this for use in my top auth contracts over time chart
 )
 
--- Step 6: Join with authority timelines and calculate metrics
 SELECT
-  dc.day,
-  dc.CHAIN,
-  COUNT(DISTINCT CASE 
-    WHEN at.AUTHORIZED_CONTRACT != '0x0000000000000000000000000000000000000000' 
-    THEN at.AUTHORITY 
-  END) AS live_smart_wallets,
-  COUNT(DISTINCT CASE 
-    WHEN at.AUTHORIZED_CONTRACT != '0x0000000000000000000000000000000000000000' 
-    THEN at.AUTHORIZED_CONTRACT 
-  END) AS live_authorized_contracts
+day,
+COUNT(DISTINCT AUTHORITY) AS live_smart_wallets,
+COUNT(DISTINCT AUTHORIZED_CONTRACT) AS live_authorized_contracts
 FROM 
-  day_chain_combinations dc
-LEFT JOIN
-  authority_timeline at
-ON
-  dc.day >= at.change_date
-  AND (dc.day < at.next_change_date OR at.next_change_date IS NULL)
-  AND dc.CHAIN = at.CHAIN
-GROUP BY
-  dc.day,
-  dc.CHAIN
-ORDER BY
-  dc.day,
-  dc.CHAIN
+daily_chain_wallets
+GROUP BY 1
