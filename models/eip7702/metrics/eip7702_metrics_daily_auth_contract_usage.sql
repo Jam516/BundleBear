@@ -74,7 +74,6 @@ daily_chain_wallets AS (
     AND dc.CHAIN = at.CHAIN
   WHERE
     at.AUTHORIZED_CONTRACT != '0x0000000000000000000000000000000000000000'
--- can adapt this for use in my top auth contracts over time chart
 ),
 
 -- Step 7: Chain-specific metrics
