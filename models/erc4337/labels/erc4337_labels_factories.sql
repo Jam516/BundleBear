@@ -55,5 +55,6 @@ FROM (VALUES
 ('lumx', '0x2e1c14daadefc4a85eaec81dacba27cd455a0b66'),
 ('send', '0x008c9561857b6555584d20ac55110335759aa2c2'),
 ('splits_smart_vault', '0x8e6af8ed94e87b4402d0272c5d6b0d47f0483e7c'),
-('kresus_vault', '0xf5e92c74e20e03403f7f366e94eec7f62530d483')
+('kresus_vault', '0xf5e92c74e20e03403f7f366e94eec7f62530d483'),
+('ambire', '0x26ce6745a633030a6fac5e64e41d21fb6246dc2d')
 ) AS x (name, address)
