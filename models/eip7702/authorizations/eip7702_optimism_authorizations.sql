@@ -22,7 +22,6 @@ FROM
 WHERE 
     t.AUTHORIZATION_LIST IS NOT NULL
     AND ARRAY_SIZE(t.AUTHORIZATION_LIST) > 0
-    AND RECEIPT_STATUS = 1
     {% if is_incremental() %}
     AND t.BLOCK_TIMESTAMP >= CURRENT_DATE() - interval '3 day' 
     {% endif %}
