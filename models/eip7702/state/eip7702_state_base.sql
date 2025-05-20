@@ -1,7 +1,9 @@
 {{ config
 (
     materialized = 'table',
-    copy_grants=true
+    copy_grants=true,
+    cluster_by = ['day', 'chain'],
+    unique_key = ['day', 'chain', 'authority']
 )
 }}
 
@@ -57,18 +59,14 @@ day_chain_combinations AS (
   CROSS JOIN chains c
 )
 
--- Step 6: Join with authority timelines and calculate metrics
+-- Step 6: Join with authority timelines to create daily state
 SELECT
   dc.day,
   dc.CHAIN,
-  COUNT(DISTINCT CASE 
-    WHEN at.AUTHORIZED_CONTRACT != '0x0000000000000000000000000000000000000000' 
-    THEN at.AUTHORITY 
-  END) AS live_smart_wallets,
-  COUNT(DISTINCT CASE 
-    WHEN at.AUTHORIZED_CONTRACT != '0x0000000000000000000000000000000000000000' 
-    THEN at.AUTHORIZED_CONTRACT 
-  END) AS live_authorized_contracts
+  at.AUTHORITY,
+  at.AUTHORIZED_CONTRACT,
+  CASE WHEN at.AUTHORIZED_CONTRACT != '0x0000000000000000000000000000000000000000' 
+       THEN TRUE ELSE FALSE END AS is_smart_wallet
 FROM 
   day_chain_combinations dc
 LEFT JOIN
@@ -77,9 +75,5 @@ ON
   dc.day >= at.change_date
   AND (dc.day < at.next_change_date OR at.next_change_date IS NULL)
   AND dc.CHAIN = at.CHAIN
-GROUP BY
-  dc.day,
-  dc.CHAIN
-ORDER BY
-  dc.day,
-  dc.CHAIN
+WHERE
+  at.AUTHORITY IS NOT NULL  -- Only include days where we have authority data

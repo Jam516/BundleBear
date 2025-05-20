@@ -23,8 +23,9 @@ FROM
 
 , state AS (
 SELECT LIVE_SMART_WALLETS
-FROM {{ ref('eip7702_metrics_daily_unique_authority') }}
+FROM {{ ref('eip7702_metrics_daily_authority_state') }}
 WHERE DAY = CURRENT_DATE()
+AND CHAIN = 'cross-chain'
 )
 
 SELECT 
