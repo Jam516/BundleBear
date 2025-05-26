@@ -6,7 +6,7 @@
 )
 }}
 
-SELECT 
+SELECT DISTINCT
     t.BLOCK_TIMESTAMP AS block_time,
     date_trunc('day', t.BLOCK_TIMESTAMP) AS block_date,
     date_trunc('week', t.BLOCK_TIMESTAMP) AS block_week,
