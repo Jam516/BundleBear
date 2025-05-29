@@ -59,5 +59,10 @@ FROM (VALUES
 ('coinbase', '0xdcbe0c1a00e4cf24ae77c52125e6e6b4f7c6db4e', 'both'),
 ('send', '0x592e1224d203be4214b15e205f6081fbbacfcd2d', 'token'),
 ('send', '0x8a77ae0c07047c5b307b2319a8f4bd9d3604ddd8', 'verifying'),
-('ambire', '0xa8b267c68715fa1dca055993149f30217b572cf0', 'verifying')
+('ambire', '0xa8b267c68715fa1dca055993149f30217b572cf0', 'verifying'),
+('thirdweb', '0xb2aa3511a31327d47d562c292d8b445a900b2abf', 'verifying'),
+('thirdweb', '0xbd0334ac7fada28ccd27fa09838e9ea4c39117db', 'verifying'),
+('thirdweb', '0x2222f2738be6bb7aa0bfe4aeeaf2908172cf5539', 'token'),
+('thirdweb', '0x3fea3c5744d715ff46e91c4e5c9a94426dff2af9', 'token'),
+('thirdweb', '0x9eb8cf7fba5ed9eedcc97a0d52254cc0e9b1ac25', 'token')
 ) AS x (name, address, type)
