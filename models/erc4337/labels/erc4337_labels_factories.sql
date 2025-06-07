@@ -37,6 +37,8 @@ FROM (VALUES
 ('alchemy', '0x000000000000c5a9089039570dd36455b5c07383'),
 ('alchemy', '0x0000000000006e2f9d80caec0da6500f005eb25'),
 ('etherspot', '0x7f6d8f107fe8551160bd5351d5f1514a6ad5d40e'),
+('etherspot', '0x2A40091f044e48DEB5C0FCbc442E443F3341B451'),
+('etherspot', '0x38CC0EDdD3a944CA17981e0A19470d2298B8d43a'),
 ('thirdweb_default', '0x85e23b94e7f5e9cc1ff78bce78cfb15b81f0df00'),
 ('thirdweb_default', '0x4be0ddfebca9a5a4a617dee4dece99e7c862dceb'),
 ('thirdweb_managedaccount', '0x463effb51873c7720c810ac7fb2e145ec2f8cc60'),
