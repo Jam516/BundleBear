@@ -49,6 +49,7 @@ FROM (VALUES
 ('CrimeEnjoyor', '0xf3df663c15710b98f83e48c010b9cd731ae345ca'),
 ('CrimeEnjoyor', '0x3220bf967f84160905e4d4326f7dbcd0a2f5a5bf'),
 ('CrimeEnjoyor', '0x1ee8e3b6ca95606e21be70cff6a0bd24c134b96f'),
+('CrimeEnjoyor', '0xcefd060da801a3f004d6b307f4cab943d1c9b45b'),
 ('CrimeEnjoyor', '0x68ae6c736ae31bbab8d8b712cdc1f552e7de7351'),
 ('CrimeEnjoyor', '0x325b2bdddd7ea1335acee94bfdb1ea3130d08e07'),
 ('CrimeEnjoyor', '0x6a37601de01b14f80073471d58b958db5397705c'),
