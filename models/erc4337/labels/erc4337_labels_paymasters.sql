@@ -62,8 +62,8 @@ FROM (VALUES
 ('ambire', '0xa8b267c68715fa1dca055993149f30217b572cf0', 'verifying'),
 ('thirdweb', '0xb2aa3511a31327d47d562c292d8b445a900b2abf', 'verifying'),
 ('thirdweb', '0xbd0334ac7fada28ccd27fa09838e9ea4c39117db', 'verifying'),
-('thirdweb', '0x6442f4729Ee8c890D310EF92845d43184A12ee6a', 'verifying'),
-('thirdweb', '0x5fa66dFe8a3983E55071e8C4631Ab43b5f33a4aB', 'verifying'),
+('thirdweb', '0x6442f4729ee8c890d310ef92845d43184a12ee6a', 'verifying'),
+('thirdweb', '0x5fa66dfe8a3983e55071e8c4631ab43b5f33a4ab', 'verifying'),
 ('thirdweb', '0x2222f2738be6bb7aa0bfe4aeeaf2908172cf5539', 'token'),
 ('thirdweb', '0x3fea3c5744d715ff46e91c4e5c9a94426dff2af9', 'token'),
 ('thirdweb', '0x9eb8cf7fba5ed9eedcc97a0d52254cc0e9b1ac25', 'token')
