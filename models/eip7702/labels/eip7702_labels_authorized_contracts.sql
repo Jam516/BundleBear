@@ -24,6 +24,14 @@ FROM (VALUES
 ('Porto', '0x664ab8c20b629422f5398e58ff8989e68b26a4e6'),
 ('Coinbase Wallet', '0x7702cb554e6bfb442cb743a7df23154544a7176c'),
 ('Fireblocks', '0x0000fb7702036ff9f76044a501ac1aa74cbab16b'),
+
+('batchexecutor', '0x5d6ebddd42f3668073b2707b763a201872d6eca0'),
+('tokensender', '0xf6ae00d4c8605133d756858d8f2d8fc51214c1f3'),
+('tokensender', '0x4a70c8e1a4319ab5ae982e96eccc1abb8cffa7ef'),
+('batchcallandsponsor', '0x775c8d470cc8d4530b8f233322480649f4fab758'),
+('basiceoabatchexecutor', '0x00000000bebedb7c30ee418158e26e31a5a8f3e2'),
+('otim', '0x23e5f9c457a69ce776d20a8fe812a6701d66fce8'),
+
 ('CrimeEnjoyor', '0x349c41a8e164a243203605dbd07889d201174d77'),
 ('CrimeEnjoyor', '0x5c0935ac050e939565c3e42a6882074ebb3eabda'),
 ('CrimeEnjoyor', '0x6ae436a71612c5875c4d322ee112bf34e64cd6e1'),
@@ -57,16 +65,33 @@ FROM (VALUES
 ('CrimeEnjoyor2', '0xa03fc3c62d26253b3ec3076cb871afa3b5fa60ab'),
 ('CrimeEnjoyor2', '0x92fedc9677f7f580e78d5a54bdf7f1d8e60787af'),
 ('CrimeEnjoyor2', '0x3c37ed637a5bd169eb0f543fdb449d48c1012dd2'),
+('CrimeEnjoyor2', '0x6b7879a5d747e30a3adb37a9e41c046928fce933'),
+('CrimeEnjoyor2', '0x8799a9fa7da4fb3745342e15c6b12f6ff63c2b0a'),
+('CrimeEnjoyor2', '0x540fe9bec2470e93aa911906eb560ad6647612c2'),
+('CrimeEnjoyor', '0xfde6b0b682d7c99559fd66fbd4ac425301a03ec5'),
+
 ('AdvancedCrimeEnjoyor', '0xb6785b782571980b3ddb5d40659f4861ff15aa02'),
 ('AdvancedCrimeEnjoyor', '0x06100887d8c541524c6697c3506885372f970f19'),
-('AdvancedCrimeEnjoyor', '0x00512d0000e0c24900008f3fd3e12600b5bd00b0'),
+('FlexibleAdvancedCrimeEnjoyor', '0x00512d0000e0c24900008f3fd3e12600b5bd00b0'),
 ('AdvancedCrimeEnjoyor', '0x0c9900ae00ca9071dae00084006400003900cba7'),
+
 ('OtherCrime', '0xcd3ca48e3dca2d5b5969a4fa490e9b569be90aba'),
+('OtherCrime', '0x89046d34e70a65acab2152c26a0c8e493b5ba629'),
+('OtherCrime', '0x163193c89de836e82bb121bd0dbcaba7e8ba67dc'),
+('OtherCrime', '0x1f07336d35c9a70ed086f6aa3c4c0bd1266e6f63'),
+('OtherCrime', '0x930fcc37d6042c79211ee18a02857cb1fd7f0d0b'),
+('OtherCrime', '0x9eece72f8313d81d9172ec68e1dcb6c1cfd60961'),
+('OtherCrime', '0x289c9c58355e1a7d2b0ad4a5e8f2c3c961b48ae9'),
+('OtherCrime', '0xeb4ef8f8c42b5dd98a3d2b630a3519e90199208b'),
+('OtherCrime', '0xb7349b3481ca70c7cb7176c5ed1aa95a35abc397'),
+('OtherCrime', '0xf3e6e6ed97b2df9241007026ad4ee9d094e13695'),
+('OtherCrime', '0x3b76b2e000697c168ada827bbdc303dd0acf80d8'),
+('OtherCrime', '0xe51ed17a26a0e88c5ca7b962a2271dea4548ca13'),
+('OtherCrime', '0xc114047bc1d01daf82601da712e68cf63f8b90d8'),
+
 ('NewCrime', '0x8c8cf04ab3cd05da672f19c387252601638c680a'),
-('CrimeEnjoyor', '0xfde6b0b682d7c99559fd66fbd4ac425301a03ec5'),
-('NewCrime', '0x289c9c58355e1a7d2b0ad4a5e8f2c3c961b48ae9'),
 ('NewCrime', '0x5f0393396359b58366049e7b11aa786de4c473fd'),
 ('NewCrime', '0x231d759614d80bcf0ae4278156fec576de8009ff'),
-('Multicall3', '0xca11bde05977b3631167028862be2a173976ca11'),
-('NewCrime', '0x89046d34e70a65acab2152c26a0c8e493b5ba629')
+
+('Multicall3', '0xca11bde05977b3631167028862be2a173976ca11')
 ) AS x (name, address)
