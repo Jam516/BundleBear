@@ -71,17 +71,17 @@ SELECT
       end as paymaster_type
     , case 
         when INPUT != '0x' then TO_ADDRESS
-        when (INPUT = '0x' AND common.udfs.js_hextoint_secure(SUBSTRING(executeCall, 75, 64))/1e18 > 0) then 'direct_transfer'
+        when (INPUT = '0x' AND common.udfs.js_hextoint_secure(SUBSTRING(executeCall, 75, 64))::BIGINT/1e18 > 0) then 'direct_transfer'
         else 'empty_call' 
         end as called_contract
     , case 
         when INPUT != '0x' then COALESCE(TEXT_SIGNATURE_SHORT, LEFT(INPUT,10))
-        when (INPUT = '0x' AND common.udfs.js_hextoint_secure(SUBSTRING(executeCall, 75, 64))/1e18 > 0) then 'eth_transfer'
+        when (INPUT = '0x' AND common.udfs.js_hextoint_secure(SUBSTRING(executeCall, 75, 64))::BIGINT/1e18 > 0) then 'eth_transfer'
         else 'empty_call' end as function_called
     , output_actualGasCost as actualgascost
     , output_actualGasCost * p.PRICE as actualgascost_usd
     , case when INPUT != '0x' then 0
-      else common.udfs.js_hextoint_secure(SUBSTRING(executeCall, 75, 64))/1e18 
+      else common.udfs.js_hextoint_secure(SUBSTRING(executeCall, 75, 64))::BIGINT/1e18 
       end as value
 FROM op 
 INNER JOIN {{ source('common_prices', 'hourly') }} p 
