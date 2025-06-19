@@ -11,7 +11,7 @@ with op as (
             op.sender
             , op.paymaster
             , op.op_hash
-            , common.udfs.js_hextoint_secure(op.output)/1e18 as output_actualGasCost
+            , common.udfs.js_hextoint_secure(op.output)::BIGINT/1e18 as output_actualGasCost
             , op.tx_hash
             , op.block_time
             , op.call_trace_address
