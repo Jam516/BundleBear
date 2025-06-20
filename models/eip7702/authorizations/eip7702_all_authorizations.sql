@@ -16,3 +16,5 @@ UNION ALL
 SELECT  *, 'optimism' AS chain FROM {{ ref('eip7702_optimism_authorizations') }}
 UNION ALL
 SELECT  *, 'worldchain' AS chain FROM {{ ref('eip7702_worldchain_authorizations') }}
+UNION ALL
+SELECT  *, 'arbitrum' AS chain FROM {{ ref('eip7702_arbitrum_authorizations') }}
