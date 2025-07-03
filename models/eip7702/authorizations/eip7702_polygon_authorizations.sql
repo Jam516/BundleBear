@@ -17,7 +17,7 @@ SELECT DISTINCT
     a.value:address::STRING AS authorized_contract,
     a.value:authority::STRING AS authority
 FROM 
-    {{ source('worldchain_raw', 'transactions') }} t,
+    {{ source('polygon_raw', 'transactions') }} t,
     LATERAL FLATTEN(input => t.AUTHORIZATION_LIST) a
 WHERE 
     t.TRANSACTION_TYPE =4

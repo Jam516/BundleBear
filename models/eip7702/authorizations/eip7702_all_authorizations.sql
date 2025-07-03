@@ -15,8 +15,8 @@ SELECT  *, 'gnosis' AS chain FROM {{ ref('eip7702_gnosis_authorizations') }}
 UNION ALL
 SELECT  *, 'optimism' AS chain FROM {{ ref('eip7702_optimism_authorizations') }}
 UNION ALL
-SELECT  *, 'worldchain' AS chain FROM {{ ref('eip7702_worldchain_authorizations') }}
-UNION ALL
 SELECT  *, 'arbitrum' AS chain FROM {{ ref('eip7702_arbitrum_authorizations') }}
 UNION ALL
 SELECT  *, 'unichain' AS chain FROM {{ ref('eip7702_unichain_authorizations') }}
+UNION ALL
+SELECT  *, 'polygon' AS chain FROM {{ ref('eip7702_polygon_authorizations') }}
