@@ -26,6 +26,7 @@ with op as (
             {% if not is_incremental() %}
             AND tx.BLOCK_TIMESTAMP >= to_timestamp('2023-01-27', 'yyyy-MM-dd') -- first mainnet entrypoint live
             {% endif %}
+            AND op.output != ''
     )
 
     , joined as (
