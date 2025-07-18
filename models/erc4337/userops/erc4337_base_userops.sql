@@ -27,6 +27,7 @@ with op as (
             AND tx.BLOCK_TIMESTAMP >= to_timestamp('2023-01-27', 'yyyy-MM-dd') -- first mainnet entrypoint live
             {% endif %}
             AND op.output != ''
+            AND common.udfs.js_hextoint_secure(op.output) != 'Infinity'
     )
 
     , joined as (
