@@ -28,6 +28,7 @@ with op as (
             {% endif %}
             AND op.output != ''
             AND common.udfs.js_hextoint_secure(op.output) != 'Infinity'
+            AND TRY_CAST(common.udfs.js_hextoint_secure(op.output) AS FLOAT) < 1e30
     )
 
     , joined as (
