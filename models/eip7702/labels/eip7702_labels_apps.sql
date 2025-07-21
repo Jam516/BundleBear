@@ -18,6 +18,8 @@ FROM (VALUES
 ('Uniswap', '0x4752ba5dbc23f44d87826276bf6fd6b1c372ad24'),
 ('OKX Swap', '0x9b9efa5efa731ea9bbb0369e91fa17abf249cfd4'),
 ('Relay', '0xa5f565650890fba1824ee0f21ebbbf660a179934'),
+('Relay', '0xbbbfd134e9b44bfb5123898ba36b01de7ab93d98'),
+('Relay', '0xf5042e6ffac5a625d4e7848e0b01373d8eb9e222'),
 ('Layer3 CUBE', '0x1195cf65f83b3a5768f3c496d3a05ad6412c64b7'),
 ('Relay', '0xaaaaaaae92cc1ceef79a038017889fdd26d23d4d'),
 ('Opensea', '0x0000000000000068f116a894984e2db1123eb395'),
