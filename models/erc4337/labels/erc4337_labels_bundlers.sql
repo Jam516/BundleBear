@@ -76,6 +76,8 @@ SELECT name, address FROM (VALUES
 ('etherspot', '0x7c1c87d06f88786d4da52a0e81f82aea9d90e1ec'),
 ('etherspot', '0xc360e1da5b9bdb9a8879a0cfa1180556426e2305'),
 ('etherspot', '0x8ca6ea81f866dd3b75a09dfef12638a2f6d9d111'),
+('etherspot', '0xc5942662ec622cf86f4200f4cf2cb16f929d8060'),
+('etherspot', '0x03113ee802caa8286c9413b05905e9fa9f39c7ee'),
 ('alchemy', '0xe9ee9dbbe5009f3b6e11c219b183459965199f0d'),
 ('alchemy', '0xf597c5296cb15faad89d9832a847436bd0c5f3e7'),
 ('alchemy', '0xb4a22b47b620b11479e41e39320e2f82f017754d'),
