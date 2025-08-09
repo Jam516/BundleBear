@@ -28,5 +28,6 @@ FROM (VALUES
 ('PancakeSwap', '0x1b81d678ffb9c0263b24a97847620c99d213eb14'),
 ('PancakeSwap', '0x13f4ea83d0bd40e75c8222255bc855a974568dd4'),
 ('PancakeSwap', '0xd9c500dff816a1da21a48a732d3498bf09dc9aeb'),
-('PancakeSwap', '0x10ed43c718714eb63d5aa57b78b54704e256024e')
+('PancakeSwap', '0x10ed43c718714eb63d5aa57b78b54704e256024e'),
+('Festify', '0xae4a3ccb094b1e475ca8b83bcba5508a30ebf1c0')
 ) AS x (name, address)
