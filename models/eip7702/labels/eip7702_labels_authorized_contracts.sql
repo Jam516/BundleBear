@@ -114,5 +114,6 @@ FROM (VALUES
 ('OtherCrime', '0x5f0393396359b58366049e7b11aa786de4c473fd'),
 ('OtherCrime', '0x231d759614d80bcf0ae4278156fec576de8009ff'),
 
-('Multicall3', '0xca11bde05977b3631167028862be2a173976ca11')
+('Multicall3', '0xca11bde05977b3631167028862be2a173976ca11'),
+('Festify',    '0xc0d6774c6eafb48dd48d7e39de25d1ddbce1d689')
 ) AS x (name, address)
