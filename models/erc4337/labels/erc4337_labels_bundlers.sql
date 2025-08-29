@@ -6,6 +6,18 @@
 }}
 
 SELECT name, address FROM (VALUES
+('gelato', '0xc4e7263dd870a29f1cfe438d1a7db48547b16888'),
+('gelato', '0xba9a3c0a22baebe8c4926227bde32d6edc0d5d28'),
+('gelato', '0x417b4adc279743fc49f047c323fc668db9e600d8'),
+('gelato', '0xb3aa47edbc9a1178b56bb55d1a9e3821845870e8'),
+('gelato', '0x620d7e459cffcdc56a874536dc19147de801a4a1'),
+('gelato', '0x8de14e014402c0677b075a69122f94c0425cc179'),
+('gelato', '0x61d8838f9a00250c9af13d622da7c08c372ee587'),
+('gelato', '0xa4c4af83c5e04bb9cb9e3dba5cbee0217030ce89'),
+('gelato', '0xb3a1956cff1ecc8054b81b0c83b9847cb71384b8'),
+('gelato', '0x61d8838f9a00250c9af13d622da7c08c372ee587'),
+('gelato', '0xa4c4af83c5e04bb9cb9e3dba5cbee0217030ce89'),
+('gelato', '0xb3a1956cff1ecc8054b81b0c83b9847cb71384b8'),
 ('particle', '0x007113d2a4f56a64bd3822e4746badefb8e89830'),
 ('particle', '0x027037e2d7199c856f78a22e6c5bd60188c6034e'),
 ('particle', '0x032160d97a923a3b55c98e04c871212ac8a48974'),

@@ -7,6 +7,7 @@
 
 SELECT name, address
 FROM (VALUES
+('Gelato', '0x5af42746a8af42d8a4708df238c53f1f71abf0e0'),
 ('WhiteBit Account', '0xcda3577ca7ef65f6b7201e9bd80375f5628d15f7'),
 ('WhiteBit Account', '0x79cf9e04ad9aeb210768c22c228673aed6cd24c4'),
 ('WhiteBit Account', '0x4b3a543dc60a09974007d6937cd952e3a0188929'),
