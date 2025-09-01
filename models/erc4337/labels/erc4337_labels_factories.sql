@@ -55,6 +55,7 @@ FROM (VALUES
 ('nani', '0x0000000000009f1e546fc4a8f68eb98031846cb8'),
 ('zerodev_kernel', '0xd703aae79538628d27099b8c4f621be4ccd142d5'),
 ('coinbase_smart_wallet', '0x0ba5ed0c6aa8c49038f819e587e2633c4a9f428a'),
+('coinbase_smart_wallet', '0xba5ed110efdba3d005bfc882d75358acbbb85842'),
 ('lumx', '0x2e1c14daadefc4a85eaec81dacba27cd455a0b66'),
 ('send', '0x008c9561857b6555584d20ac55110335759aa2c2'),
 ('splits_smart_vault', '0x8e6af8ed94e87b4402d0272c5d6b0d47f0483e7c'),
