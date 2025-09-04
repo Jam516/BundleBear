@@ -22,9 +22,11 @@ with op as (
             ON op.block_time = tx.BLOCK_TIMESTAMP AND op.tx_hash = tx.HASH
             {% if is_incremental() %}
             AND tx.BLOCK_TIMESTAMP >= CURRENT_TIMESTAMP() - interval '3 day' 
+            AND op.block_time >= CURRENT_TIMESTAMP() - interval '3 day' 
             {% endif %}
             {% if not is_incremental() %}
             AND tx.BLOCK_TIMESTAMP >= to_timestamp('2023-04-01', 'yyyy-MM-dd') -- first gnosis entrypoint live
+            AND op.block_time >= to_timestamp('2023-04-01', 'yyyy-MM-dd')
             {% endif %}
     )
 
@@ -77,7 +79,7 @@ SELECT
               CASE 
                 WHEN TRY_TO_DOUBLE(common.udfs.js_hextoint_secure(SUBSTRING(executeCall, 75, 64))) > 1e30 THEN 0
                 WHEN TRY_TO_DOUBLE(common.udfs.js_hextoint_secure(SUBSTRING(executeCall, 75, 64))) IS NULL THEN 0
-                ELSE TRY_TO_DECIMAL(common.udfs.js_hextoint_secure(SUBSTRING(executeCall, 75, 64)), 38, 0)::BIGINT/1e18
+                ELSE TRY_TO_DOUBLE(common.udfs.js_hextoint_secure(SUBSTRING(executeCall, 75, 64)))/1e18
               END > 0) then 'direct_transfer'
         else 'empty_call' 
         end as called_contract
@@ -88,7 +90,7 @@ SELECT
               CASE 
                 WHEN TRY_TO_DOUBLE(common.udfs.js_hextoint_secure(SUBSTRING(executeCall, 75, 64))) > 1e30 THEN 0
                 WHEN TRY_TO_DOUBLE(common.udfs.js_hextoint_secure(SUBSTRING(executeCall, 75, 64))) IS NULL THEN 0
-                ELSE TRY_TO_DECIMAL(common.udfs.js_hextoint_secure(SUBSTRING(executeCall, 75, 64)), 38, 0)::BIGINT/1e18
+                ELSE TRY_TO_DOUBLE(common.udfs.js_hextoint_secure(SUBSTRING(executeCall, 75, 64)))/1e18
               END > 0) then 'eth_transfer'
         else 'empty_call' end as function_called
     , output_actualGasCost as actualgascost
@@ -99,7 +101,7 @@ SELECT
         CASE 
           WHEN TRY_TO_DOUBLE(common.udfs.js_hextoint_secure(SUBSTRING(executeCall, 75, 64))) > 1e30 THEN NULL  -- Return NULL for unrealistic values
           WHEN TRY_TO_DOUBLE(common.udfs.js_hextoint_secure(SUBSTRING(executeCall, 75, 64))) IS NULL THEN NULL
-          ELSE TRY_TO_DECIMAL(common.udfs.js_hextoint_secure(SUBSTRING(executeCall, 75, 64)), 38, 0)::BIGINT/1e18
+          ELSE TRY_TO_DOUBLE(common.udfs.js_hextoint_secure(SUBSTRING(executeCall, 75, 64)))/1e18
         END
       end as value
 FROM op 
