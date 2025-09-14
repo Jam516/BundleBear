@@ -5,32 +5,48 @@
 )
 }}
 
-WITH actions AS (
-SELECT 
-COUNT(*) AS NUM_AUTHORIZATIONS,
-COUNT(DISTINCT AUTHORIZED_CONTRACT) AS NUM_AUTHORIZED_CONTRACTS,
-COUNT(DISTINCT TX_HASH) AS NUM_SET_CODE_TXNS
-FROM (
-SELECT 
-  AUTHORITY,
-  AUTHORIZED_CONTRACT,
-  TX_HASH,
-  ROW_NUMBER() OVER (PARTITION BY AUTHORITY ORDER BY NONCE DESC, BLOCK_TIME DESC) as rn
-FROM 
-  {{ ref('eip7702_all_authorizations') }}
-)
+WITH latest_date AS (
+    SELECT MAX(day) AS max_date 
+    FROM bundlebear.dbt_kofi.eip7702_metrics_daily_authority_state
+),
+
+authorizations_summary AS (
+    SELECT 
+        chain,
+        COUNT(*) AS num_authorizations,
+        COUNT(DISTINCT tx_hash) AS num_set_code_txns
+    FROM bundlebear.dbt_kofi.eip7702_all_authorizations
+    GROUP BY chain
+),
+
+state_summary AS (
+    SELECT 
+        chain,
+        live_smart_wallets
+    FROM bundlebear.dbt_kofi.eip7702_metrics_daily_authority_state
+    WHERE day = (SELECT max_date FROM latest_date)
 )
 
-, state AS (
-SELECT LIVE_SMART_WALLETS
-FROM {{ ref('eip7702_metrics_daily_authority_state') }}
-WHERE DAY = CURRENT_DATE()
-AND CHAIN = 'cross-chain'
-)
-
+-- Cross-chain aggregate
 SELECT 
-LIVE_SMART_WALLETS,
-NUM_AUTHORIZATIONS,
-NUM_AUTHORIZED_CONTRACTS,
-NUM_SET_CODE_TXNS
-FROM actions, state
+    'all' AS chain,
+    s.live_smart_wallets,
+    SUM(a.num_authorizations) AS num_authorizations,
+    SUM(a.num_set_code_txns) AS num_set_code_txns
+FROM authorizations_summary a
+CROSS JOIN state_summary s
+WHERE s.chain = 'cross-chain'
+GROUP BY s.live_smart_wallets
+
+UNION ALL
+
+-- Per-chain detail
+SELECT 
+    a.chain,
+    s.live_smart_wallets,
+    a.num_authorizations,
+    a.num_set_code_txns
+FROM authorizations_summary a
+INNER JOIN state_summary s
+    ON a.chain = s.chain
+WHERE s.chain != 'cross-chain'
