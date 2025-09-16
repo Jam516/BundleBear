@@ -16,6 +16,7 @@ WITH authority_state_changes AS (
     DATE_TRUNC('DAY', BLOCK_TIME) AS change_date
   FROM 
     {{ ref('eip7702_all_authorizations') }}
+  WHERE is_valid = True
   QUALIFY ROW_NUMBER() OVER (
     PARTITION BY AUTHORITY, CHAIN, DATE_TRUNC('DAY', BLOCK_TIME) 
     ORDER BY NONCE DESC, BLOCK_TIME DESC
