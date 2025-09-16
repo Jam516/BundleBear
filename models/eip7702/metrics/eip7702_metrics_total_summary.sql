@@ -16,6 +16,7 @@ authorizations_summary AS (
         COUNT(*) AS num_authorizations,
         COUNT(DISTINCT tx_hash) AS num_set_code_txns
     FROM bundlebear.dbt_kofi.eip7702_all_authorizations
+    WHERE IS_VALID = True
     GROUP BY chain
 ),
 

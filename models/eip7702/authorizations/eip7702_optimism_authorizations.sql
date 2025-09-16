@@ -12,10 +12,11 @@ SELECT DISTINCT
     date_trunc('week', t.BLOCK_TIMESTAMP) AS block_week,
     date_trunc('month', t.BLOCK_TIMESTAMP) AS block_month,
     t.HASH AS tx_hash,
-    COMMON.UDFS.JS_HEXTOINT_SECURE(REPLACE(a.value:chainId::STRING, '0x', '')) AS chain_id,
-    COMMON.UDFS.JS_HEXTOINT_SECURE(REPLACE(a.value:nonce::STRING, '0x', '')) AS nonce,
+    a.value:chain_id::INTEGER AS chain_id,
+    a.value:nonce::INTEGER AS nonce,
     a.value:address::STRING AS authorized_contract,
-    a.value:authority::STRING AS authority
+    a.value:authority::STRING AS authority,
+    a.value:is_valid::BOOLEAN AS is_valid
 FROM 
     {{ source('optimism_raw', 'transactions') }} t,
     LATERAL FLATTEN(input => t.AUTHORIZATION_LIST) a
