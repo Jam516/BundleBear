@@ -2,7 +2,7 @@
 (
     materialized = 'incremental',
     partition_by = ['block_date'],
-    unique_key = ['block_date','tx_hash', 'nonce', 'authorized_contract', 'authority']
+    unique_key = ['block_date','tx_hash', 'nonce', 'authorized_contract', 'authority','is_valid']
 )
 }}
 
