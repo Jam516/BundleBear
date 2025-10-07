@@ -80,7 +80,7 @@ WITH day_metrics AS (
         SELECT 
         TO_VARCHAR(DATE, 'YYYY-MM-DD') as DATE, 
         CHAIN,
-        'day' AS TIMEFRAME,
+        'week' AS TIMEFRAME,
         CASE WHEN RN <= 5 THEN PROVIDER ELSE 'Other' END AS PROVIDER,
         SUM(NUM_ACCOUNTS) AS NUM_ACCOUNTS
         FROM 
@@ -105,7 +105,7 @@ WITH day_metrics AS (
         SELECT 
         TO_VARCHAR(DATE, 'YYYY-MM-DD') as DATE, 
         'all' AS CHAIN,
-        'day' AS TIMEFRAME,
+        'week' AS TIMEFRAME,
         CASE WHEN RN <= 5 THEN PROVIDER ELSE 'Other' END AS PROVIDER,
         SUM(NUM_ACCOUNTS) AS NUM_ACCOUNTS
         FROM 
@@ -137,7 +137,7 @@ WITH day_metrics AS (
         SELECT 
         TO_VARCHAR(DATE, 'YYYY-MM-DD') as DATE, 
         CHAIN,
-        'day' AS TIMEFRAME,
+        'month' AS TIMEFRAME,
         CASE WHEN RN <= 5 THEN PROVIDER ELSE 'Other' END AS PROVIDER,
         SUM(NUM_ACCOUNTS) AS NUM_ACCOUNTS
         FROM 
@@ -162,7 +162,7 @@ WITH day_metrics AS (
         SELECT 
         TO_VARCHAR(DATE, 'YYYY-MM-DD') as DATE, 
         'all' AS CHAIN,
-        'day' AS TIMEFRAME,
+        'month' AS TIMEFRAME,
         CASE WHEN RN <= 5 THEN PROVIDER ELSE 'Other' END AS PROVIDER,
         SUM(NUM_ACCOUNTS) AS NUM_ACCOUNTS
         FROM 
