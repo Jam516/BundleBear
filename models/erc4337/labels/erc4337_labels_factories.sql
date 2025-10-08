@@ -17,6 +17,7 @@ FROM (VALUES
 ('zerodev_kernel', '0x19b03a419124b77a7659a0fdab7903c6f40183e5'),
 ('zerodev_kernel', '0x5de4839a76cf55d0c90e2061ef4386d962e15ae3'),
 ('zerodev_kernel', '0x33ddf684dcc6937ffe59d8405aa80c41fb518c5c'),
+('zerodev_kernel', '0xaac5d4240af87249b3f71bc8e4a2cae074a3e419'),
 ('blocto', '0xf7ccfaee69cd8a0b3a62c2a0f35f95cc7e588183'),
 ('banana', '0x8e5ffc77d0906618a8ed73db34f92ea0251b327b'),
 ('fun.xyz', '0xda2ba73e0dd91d8bbb72dc10655b691295bdf985'),
@@ -60,5 +61,7 @@ FROM (VALUES
 ('send', '0x008c9561857b6555584d20ac55110335759aa2c2'),
 ('splits_smart_vault', '0x8e6af8ed94e87b4402d0272c5d6b0d47f0483e7c'),
 ('kresus_vault', '0xf5e92c74e20e03403f7f366e94eec7f62530d483'),
+('jasper_vault', '0x402949029f11bb31cebde6ca7e2d8cecceb00a2f'),
+('wifi_map', '0x716da900292ab6a2a037cefec892e1a6f2ae6036'),
 ('ambire', '0x26ce6745a633030a6fac5e64e41d21fb6246dc2d')
 ) AS x (name, address)
