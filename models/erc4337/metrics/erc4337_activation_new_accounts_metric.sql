@@ -24,7 +24,7 @@ WITH day_metrics AS (
         TO_VARCHAR(DATE, 'YYYY-MM-DD') as DATE, 
         CHAIN,
         'day' AS TIMEFRAME,
-        CASE WHEN RN <= 5 THEN PROVIDER ELSE 'Other' END AS PROVIDER,
+        CASE WHEN RN <= 9 THEN PROVIDER ELSE 'Other' END AS PROVIDER,
         SUM(NUM_ACCOUNTS) AS NUM_ACCOUNTS
         FROM 
         RankedProjects
@@ -49,7 +49,7 @@ WITH day_metrics AS (
         TO_VARCHAR(DATE, 'YYYY-MM-DD') as DATE, 
         'all' AS CHAIN,
         'day' AS TIMEFRAME,
-        CASE WHEN RN <= 5 THEN PROVIDER ELSE 'Other' END AS PROVIDER,
+        CASE WHEN RN <= 9 THEN PROVIDER ELSE 'Other' END AS PROVIDER,
         SUM(NUM_ACCOUNTS) AS NUM_ACCOUNTS
         FROM 
         RankedProjects
@@ -81,7 +81,7 @@ WITH day_metrics AS (
         TO_VARCHAR(DATE, 'YYYY-MM-DD') as DATE, 
         CHAIN,
         'week' AS TIMEFRAME,
-        CASE WHEN RN <= 5 THEN PROVIDER ELSE 'Other' END AS PROVIDER,
+        CASE WHEN RN <= 9 THEN PROVIDER ELSE 'Other' END AS PROVIDER,
         SUM(NUM_ACCOUNTS) AS NUM_ACCOUNTS
         FROM 
         RankedProjects
@@ -106,7 +106,7 @@ WITH day_metrics AS (
         TO_VARCHAR(DATE, 'YYYY-MM-DD') as DATE, 
         'all' AS CHAIN,
         'week' AS TIMEFRAME,
-        CASE WHEN RN <= 5 THEN PROVIDER ELSE 'Other' END AS PROVIDER,
+        CASE WHEN RN <= 9 THEN PROVIDER ELSE 'Other' END AS PROVIDER,
         SUM(NUM_ACCOUNTS) AS NUM_ACCOUNTS
         FROM 
         RankedProjects
@@ -138,7 +138,7 @@ WITH day_metrics AS (
         TO_VARCHAR(DATE, 'YYYY-MM-DD') as DATE, 
         CHAIN,
         'month' AS TIMEFRAME,
-        CASE WHEN RN <= 5 THEN PROVIDER ELSE 'Other' END AS PROVIDER,
+        CASE WHEN RN <= 9 THEN PROVIDER ELSE 'Other' END AS PROVIDER,
         SUM(NUM_ACCOUNTS) AS NUM_ACCOUNTS
         FROM 
         RankedProjects
@@ -163,7 +163,7 @@ WITH day_metrics AS (
         TO_VARCHAR(DATE, 'YYYY-MM-DD') as DATE, 
         'all' AS CHAIN,
         'month' AS TIMEFRAME,
-        CASE WHEN RN <= 5 THEN PROVIDER ELSE 'Other' END AS PROVIDER,
+        CASE WHEN RN <= 9 THEN PROVIDER ELSE 'Other' END AS PROVIDER,
         SUM(NUM_ACCOUNTS) AS NUM_ACCOUNTS
         FROM 
         RankedProjects
