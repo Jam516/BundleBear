@@ -23,6 +23,8 @@ FROM (VALUES
 ('Alchemy', '0x69007702764179f14f51cdce752f4f775d74e139'),
 ('Thirdweb', '0xbac7e770af15d130cd72838ff386f14fbf3e9a3d'),
 ('Thirdweb', '0xd6999651fc0964b9c6b444307a0ab20534a66560'),
+('Thirdweb', '0x4670d851672cb6e3ab4faea0a18dc08edea01d5e'),
+('Thirdweb', '0x3e515544f8d8293b0a353e10ff3b7ca03b52f35b'),
 ('Zerodev', '0xd6cedde84be40893d153be9d467cd6ad37875b28'),
 ('Porto', '0x664ab8c20b629422f5398e58ff8989e68b26a4e6'),
 ('Porto', '0x8c0466a6c046395c8999227b288883cf7dc9f5de'),
