@@ -1,0 +1,13 @@
+{{ config(
+    materialized = 'table',
+    copy_grants=true
+) }}
+
+SELECT
+    SENDER,
+    CHAIN,
+    BLOCK_TIME,
+    CALLED_CONTRACT,
+    OP_HASH
+FROM BUNDLEBEAR.DBT_KOFI.ERC4337_ALL_USEROPS
+QUALIFY ROW_NUMBER() OVER (PARTITION BY CHAIN, SENDER ORDER BY BLOCK_TIME ASC) = 1
