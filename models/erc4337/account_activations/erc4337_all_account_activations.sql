@@ -1,20 +1,10 @@
 {{ config
 (
-    materialized = 'table',
+    materialized = 'incremental',
+    unique_key = ['chain', 'sender'],
     copy_grants=true
 )
 }}
-
-WITH first_userops AS (
-    SELECT
-        SENDER,
-        CHAIN,
-        BLOCK_TIME,
-        CALLED_CONTRACT,
-        OP_HASH
-    FROM BUNDLEBEAR.DBT_KOFI.ERC4337_ALL_USEROPS
-    QUALIFY ROW_NUMBER() OVER (PARTITION BY CHAIN, SENDER ORDER BY BLOCK_TIME ASC) = 1
-)
 
 SELECT
     DATE_TRUNC('day', u.BLOCK_TIME) AS DATE,
@@ -32,7 +22,7 @@ SELECT
         ELSE 'unknown'
     END AS PROVIDER,
     u.SENDER
-FROM first_userops u
+FROM {{ ref('erc4337_all_first_userops') }} u
 LEFT JOIN BUNDLEBEAR.DBT_KOFI.ERC4337_ALL_ACCOUNT_CREATE_TRACES d
     ON u.SENDER = d.ACCOUNT_ADDRESS
     AND u.CHAIN = d.CHAIN
@@ -41,3 +31,6 @@ LEFT JOIN BUNDLEBEAR.DBT_KOFI.EIP7702_ACTIONS a
     AND a.CHAIN = u.CHAIN
 LEFT JOIN BUNDLEBEAR.DBT_KOFI.EIP7702_LABELS_AUTHORIZED_CONTRACTS al
     ON al.ADDRESS = a.AUTHORIZED_CONTRACT
+{% if is_incremental() %}
+WHERE u.BLOCK_TIME >= CURRENT_TIMESTAMP() - INTERVAL '3 day'
+{% endif %}
