@@ -106,6 +106,7 @@ SELECT
           ELSE TRY_TO_DOUBLE(common.udfs.js_hextoint_secure(SUBSTRING(executeCall, 75, 64)))/1e18
         END
       end as value
+    , executeCall as callData
 FROM op 
 INNER JOIN {{ source('common_prices', 'hourly') }} p 
     ON p.TIMESTAMP = date_trunc('hour', block_time)
