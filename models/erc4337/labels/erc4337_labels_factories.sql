@@ -67,5 +67,5 @@ FROM (VALUES
 ('jasper_vault', '0x402949029f11bb31cebde6ca7e2d8cecceb00a2f'),
 ('wifi_map', '0x716da900292ab6a2a037cefec892e1a6f2ae6036'),
 ('ambire', '0x26ce6745a633030a6fac5e64e41d21fb6246dc2d'),
-('metamask', '0x69aa2f9fe1572f1b640e1bbc512f5c3a734fc77c'),
+('metamask', '0x69aa2f9fe1572f1b640e1bbc512f5c3a734fc77c')
 ) AS x (name, address)
