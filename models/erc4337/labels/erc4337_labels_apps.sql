@@ -261,5 +261,17 @@ FROM (VALUES
 ('Send', '0x36f43082d01df4801af2d95aeed1a0200c5510ae', 'name service'), -- SendtagCheckout
 ('KresusVaultFactory', '0xf5e92c74e20e03403f7f366e94eec7f62530d483', 'factory'),
 ('NFTs2Me', '0x00000000001594c61dd8a6804da9ab58ed2483ce', 'factory'),
-('Zora Coin Factory', '0x777777751622c0d3258f214f9df38e35bf45baf3', 'factory')
+('Zora Coin Factory', '0x777777751622c0d3258f214f9df38e35bf45baf3', 'factory'),
+('Ethos Attestation', '0x27499d9a439d1c7b4538f247625cc7aa159d3c14', 'social'),
+('Ethos Broker', '0x5fab43b6e906f05d5d5e9d4b0582dd7b4eedc7e7', 'social'),
+('Ethos Discussion', '0x2820b3ab3543adb80810f11f2651f0dd9a04e801', 'social'),
+('Ethos ListingPass', '0xada5a6e455cb93e8a934d09eb564ff465d923c54', 'NFT'),
+('Ethos Profile', '0x209820b843900ef77bd639455cde15f38a252a36', 'social'),
+('Ethos Project', '0x8b92d27846559abd7cee0c01435a35f3d7731c35', 'social'),
+('Ethos Review', '0x6d3a8fd5cf89f9a429bfadfd970968f646aff325', 'social'),
+('Ethos Slash', '0xb2c41deba270e1ea6abbe0e2fa70432630634a59', 'social'),
+('Ethos Vote', '0x89e6ff2ce8318433e011d848d8a35fbfee60c2ed', 'social'),
+('Ethos Vouch', '0xd89e6b7687f862dd6d24b3b2d4d0dec6a89a6fdd', 'social'),
+('Ethos ReputationMarket', '0xc26f339f4e46c776853b1c190ec17173dbe059bf', 'prediction'),
+('Ethos ReverseAuction', '0xd56695235933ce2d9de477467b44378322ecd194', 'auction')
 ) AS x (name, address, category)
