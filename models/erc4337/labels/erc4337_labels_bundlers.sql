@@ -3277,5 +3277,7 @@ SELECT name, address FROM (VALUES
 ('thirdweb', '0xb74160d0d922c0108f65c05feb4ed9143df0df23'),
 ('thirdweb', '0x7d514b6aecbfda467a2850eff9ce5ebecda682a8'),
 ('thirdweb', '0x2a297018c1075e7caf80e23fc17cc84bfde983c2'),
-('thirdweb', '0x746c6f566d0aa3e36bfc96e3c151be66e50363cb')
+('thirdweb', '0x746c6f566d0aa3e36bfc96e3c151be66e50363cb'),
+('TokenPocket', '0xda87a28fcd476d42385b07dfc1d4da7af2aa1775'),
+('TokenPocket', '0x95C93D3e0D387D0bf0BD3C1861092ca85B219826')
 ) AS x (name, address)
