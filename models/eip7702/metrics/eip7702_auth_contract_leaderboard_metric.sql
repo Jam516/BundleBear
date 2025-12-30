@@ -6,27 +6,55 @@
 }}
 
 WITH latest_date AS (
-    SELECT MAX(DAY) AS max_day
-    FROM BUNDLEBEAR.DBT_KOFI.EIP7702_METRICS_DAILY_AUTH_CONTRACT_USAGE
+    SELECT MAX(day) AS max_day 
+    FROM {{ ref('eip7702_state_base') }}
+),
+
+-- Per-chain metrics
+chain_metrics AS (
+    SELECT 
+        s.CHAIN,
+        COALESCE(l.NAME, s.AUTHORIZED_CONTRACT) AS AUTHORIZED_CONTRACT,
+        COUNT(DISTINCT s.AUTHORITY) AS NUM_WALLETS
+    FROM {{ ref('eip7702_state_base') }} s
+    LEFT JOIN {{ ref('eip7702_labels_authorized_contracts') }} l
+        ON s.AUTHORIZED_CONTRACT = l.ADDRESS
+    CROSS JOIN latest_date ld
+    WHERE s.DAY = ld.max_day
+      AND s.IS_SMART_WALLET = True
+    GROUP BY 1, 2
+),
+
+-- Cross-chain metrics (deduplicated across chains)
+cross_chain_metrics AS (
+    SELECT 
+        'all' AS CHAIN,
+        COALESCE(l.NAME, s.AUTHORIZED_CONTRACT) AS AUTHORIZED_CONTRACT,
+        COUNT(DISTINCT s.AUTHORITY) AS NUM_WALLETS
+    FROM {{ ref('eip7702_state_base') }} s
+    LEFT JOIN {{ ref('eip7702_labels_authorized_contracts') }} l
+        ON s.AUTHORIZED_CONTRACT = l.ADDRESS
+    CROSS JOIN latest_date ld
+    WHERE s.DAY = ld.max_day
+      AND s.IS_SMART_WALLET = True
+    GROUP BY 2
+),
+
+combined AS (
+    SELECT * FROM chain_metrics
+    UNION ALL
+    SELECT * FROM cross_chain_metrics
+),
+
+ranked AS (
+    SELECT 
+        CHAIN,
+        AUTHORIZED_CONTRACT,
+        NUM_WALLETS,
+        ROW_NUMBER() OVER (PARTITION BY CHAIN ORDER BY NUM_WALLETS DESC) AS rn
+    FROM combined
 )
 
-SELECT 
-CHAIN2 AS CHAIN,
-AUTHORIZED_CONTRACT,
-NUM_WALLETS
-FROM (
-SELECT
-CASE WHEN CHAIN = 'cross-chain' THEN 'all'
-        ELSE CHAIN
-END AS CHAIN2,
-COALESCE(l.NAME, AUTHORIZED_CONTRACT) AS AUTHORIZED_CONTRACT,
-SUM(NUM_WALLETS) AS NUM_WALLETS,
-ROW_NUMBER() OVER (PARTITION BY CHAIN2 ORDER BY SUM(NUM_WALLETS) DESC) AS rn
-FROM BUNDLEBEAR.DBT_KOFI.EIP7702_METRICS_DAILY_AUTH_CONTRACT_USAGE u
-LEFT JOIN BUNDLEBEAR.DBT_KOFI.EIP7702_LABELS_AUTHORIZED_CONTRACTS l
-ON u.AUTHORIZED_CONTRACT =l.ADDRESS
-INNER JOIN latest_date ld 
-ON u.DAY = ld.max_day
-GROUP BY 1,2
-)
+SELECT CHAIN, AUTHORIZED_CONTRACT, NUM_WALLETS
+FROM ranked
 WHERE rn <= 15
