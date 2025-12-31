@@ -1,7 +1,8 @@
 {{ config
 (
-    materialized = 'table',
-    copy_grants=true
+    materialized = 'incremental',
+    copy_grants=true,
+    unique_key = ['day', 'chain']
 )
 }}
 
@@ -13,6 +14,9 @@ SELECT
   COUNT(DISTINCT CASE WHEN is_smart_wallet THEN AUTHORIZED_CONTRACT END) AS live_authorized_contracts
 FROM 
   {{ ref('eip7702_state_base') }}
+{% if is_incremental() %}
+WHERE day >= CURRENT_TIMESTAMP() - interval '3 day' 
+{% endif %}
 GROUP BY 1, 2
 ),
 
@@ -24,6 +28,9 @@ cross_chain_metrics AS (
   COUNT(DISTINCT CASE WHEN is_smart_wallet THEN AUTHORIZED_CONTRACT END) AS live_authorized_contracts
 FROM 
   {{ ref('eip7702_state_base') }}
+{% if is_incremental() %}
+WHERE day >= CURRENT_TIMESTAMP() - interval '3 day' 
+{% endif %}
 GROUP BY 1, 2
 )
 
