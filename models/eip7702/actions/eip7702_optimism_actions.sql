@@ -18,11 +18,15 @@ CALLED_CONTRACT AS TO_ADDRESS,
 AUTHORIZED_CONTRACT,
 VALUE,
 u.CHAIN,
-OP_HASH
+OP_HASH,
+CASE WHEN FUNCTION_CALLED = 'eth_transfer' THEN 1
+ELSE 0
+END as is_eth_transfer
 FROM {{ ref('erc4337_all_userops') }} u
 INNER JOIN {{ ref('eip7702_state_base') }} s
 ON u.SENDER = s.AUTHORITY
-AND DATE_TRUNC('day',BLOCK_TIME) = s.DAY
+AND DATE_TRUNC('day', BLOCK_TIME) >= s.START_DAY
+AND (s.END_DAY IS NULL OR DATE_TRUNC('day', BLOCK_TIME) <= s.END_DAY)
 AND IS_SMART_WALLET = TRUE
 AND u.CHAIN = 'optimism'
 AND u.CHAIN = s.CHAIN
@@ -44,11 +48,15 @@ TO_ADDRESS,
 AUTHORIZED_CONTRACT,
 VALUE,
 s.CHAIN,
-null AS OP_HASH
+null AS OP_HASH,
+CASE WHEN t.INPUT = '0x' THEN 1
+ELSE 0
+END as is_eth_transfer
 FROM {{ source('optimism_raw', 'transactions') }} t
 INNER JOIN {{ ref('eip7702_state_base') }} s
 ON t.FROM_ADDRESS = s.AUTHORITY
-AND DATE_TRUNC('day',BLOCK_TIMESTAMP) = s.DAY
+AND DATE_TRUNC('day', BLOCK_TIMESTAMP) >= s.START_DAY
+AND (s.END_DAY IS NULL OR DATE_TRUNC('day', BLOCK_TIMESTAMP) <= s.END_DAY)
 AND IS_SMART_WALLET = TRUE
 AND s.CHAIN = 'optimism'
 {% if is_incremental() %}
@@ -68,11 +76,15 @@ t.TO_ADDRESS,
 s.AUTHORIZED_CONTRACT,
 t.VALUE,
 s.CHAIN,
-null AS OP_HASH
+null AS OP_HASH,
+CASE WHEN t.INPUT = '0x' THEN 1
+ELSE 0
+END as is_eth_transfer
 FROM {{ source('optimism_raw', 'traces') }} t
 INNER JOIN {{ ref('eip7702_state_base') }} s
 ON t.FROM_ADDRESS = s.AUTHORITY
-AND DATE_TRUNC('day',t.BLOCK_TIMESTAMP) = s.DAY
+AND DATE_TRUNC('day', t.BLOCK_TIMESTAMP) >= s.START_DAY
+AND (s.END_DAY IS NULL OR DATE_TRUNC('day', t.BLOCK_TIMESTAMP) <= s.END_DAY)
 AND s.IS_SMART_WALLET = TRUE
 AND s.CHAIN = 'optimism'
 AND t.CALL_TYPE = 'call'

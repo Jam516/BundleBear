@@ -2,8 +2,8 @@
 (
     materialized = 'table',
     copy_grants=true,
-    cluster_by = ['day', 'chain'],
-    unique_key = ['day', 'chain', 'authority']
+    cluster_by = ['start_day', 'chain'],
+    unique_key = ['start_day', 'chain', 'authority']
 )
 }}
 
@@ -23,7 +23,7 @@ WITH authority_state_changes AS (
   ) = 1  -- Keep only the latest state for each day per chain
 ),
 
--- Step 2: Create a timeline of state changes for each authority by chain
+-- Step 2: Create a timeline of state changes for each authority by chain       
 authority_timeline AS (
   SELECT
     AUTHORITY,
@@ -34,47 +34,21 @@ authority_timeline AS (
       PARTITION BY AUTHORITY, CHAIN
       ORDER BY change_date
     ) AS next_change_date
-  FROM 
+  FROM
     authority_state_changes
-),
-
--- Step 3: Generate date spine from earliest change to today
-date_spine AS (
-  SELECT DATEADD(DAY, SEQ4(), (SELECT MIN(change_date) FROM authority_state_changes)) AS day
-  FROM TABLE(GENERATOR(ROWCOUNT => 1000))
-  QUALIFY day <= CURRENT_DATE()
-),
-
--- Step 4: Get unique chains for cross join
-chains AS (
-  SELECT DISTINCT CHAIN
-  FROM {{ ref('eip7702_all_authorizations') }}
-),
-
--- Step 5: Create day-chain combinations
-day_chain_combinations AS (
-  SELECT
-    d.day,
-    c.CHAIN
-  FROM date_spine d
-  CROSS JOIN chains c
 )
 
--- Step 6: Join with authority timelines to create daily state
+-- Step 3: Build intervals (start_day inclusive, end_day inclusive)
 SELECT
-  dc.day,
-  dc.CHAIN,
-  at.AUTHORITY,
-  at.AUTHORIZED_CONTRACT,
-  CASE WHEN at.AUTHORIZED_CONTRACT != '0x0000000000000000000000000000000000000000' 
+  AUTHORITY,
+  CHAIN,
+  AUTHORIZED_CONTRACT,
+  change_date AS start_day,
+  CASE
+    WHEN next_change_date IS NULL THEN NULL
+    ELSE DATEADD(DAY, -1, next_change_date)
+  END AS end_day,
+  CASE WHEN AUTHORIZED_CONTRACT != '0x0000000000000000000000000000000000000000'
        THEN TRUE ELSE FALSE END AS is_smart_wallet
-FROM 
-  day_chain_combinations dc
-LEFT JOIN
-  authority_timeline at
-ON
-  dc.day >= at.change_date
-  AND (dc.day < at.next_change_date OR at.next_change_date IS NULL)
-  AND dc.CHAIN = at.CHAIN
-WHERE
-  at.AUTHORITY IS NOT NULL  -- Only include days where we have authority data
+FROM
+  authority_timeline
