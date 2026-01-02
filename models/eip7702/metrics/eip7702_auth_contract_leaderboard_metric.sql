@@ -4,10 +4,8 @@
     copy_grants=true
 )
 }}
-
-WITH latest_date AS (
-    SELECT MAX(day) AS max_day 
-    FROM {{ ref('eip7702_state_base') }}
+WITH as_of_day AS (
+    SELECT DATEADD(DAY, -1, CURRENT_DATE()) AS day
 ),
 
 -- Per-chain metrics
@@ -19,23 +17,25 @@ chain_metrics AS (
     FROM {{ ref('eip7702_state_base') }} s
     LEFT JOIN {{ ref('eip7702_labels_authorized_contracts') }} l
         ON s.AUTHORIZED_CONTRACT = l.ADDRESS
-    CROSS JOIN latest_date ld
-    WHERE s.DAY = ld.max_day
+    CROSS JOIN as_of_day ad
+    WHERE ad.day >= s.start_day
+      AND (s.end_day IS NULL OR ad.day <= s.end_day)
       AND s.IS_SMART_WALLET = True
     GROUP BY 1, 2
 ),
 
 -- Cross-chain metrics (deduplicated across chains)
 cross_chain_metrics AS (
-    SELECT 
+    SELECT
         'all' AS CHAIN,
         COALESCE(l.NAME, s.AUTHORIZED_CONTRACT) AS AUTHORIZED_CONTRACT,
         COUNT(DISTINCT s.AUTHORITY) AS NUM_WALLETS
     FROM {{ ref('eip7702_state_base') }} s
     LEFT JOIN {{ ref('eip7702_labels_authorized_contracts') }} l
         ON s.AUTHORIZED_CONTRACT = l.ADDRESS
-    CROSS JOIN latest_date ld
-    WHERE s.DAY = ld.max_day
+    CROSS JOIN as_of_day ad
+    WHERE ad.day >= s.start_day
+      AND (s.end_day IS NULL OR ad.day <= s.end_day)
       AND s.IS_SMART_WALLET = True
     GROUP BY 2
 ),
