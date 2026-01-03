@@ -11,7 +11,9 @@ WITH seg_data AS (
       SELECT
         date_trunc('day', BLOCK_DATE) as DATE,
         CHAIN,
-        COALESCE(ap.NAME, a.TO_ADDRESS, 'Contract Deployment') as PROJECT,
+        CASE WHEN is_eth_transfer = 1 THEN 'Native Token Transfer' 
+            ELSE COALESCE(ap.NAME, a.TO_ADDRESS, 'Contract Deployment') 
+        END as PROJECT,
         COUNT(DISTINCT FROM_ADDRESS) AS NUM_WALLETS,
         ROW_NUMBER() OVER (PARTITION BY DATE, CHAIN ORDER BY NUM_WALLETS DESC) as rank
       FROM BUNDLEBEAR.DBT_KOFI.EIP7702_ACTIONS a
@@ -39,7 +41,9 @@ WITH seg_data AS (
     WITH project_counts AS (
       SELECT
         date_trunc('day', BLOCK_DATE) as DATE,
-        COALESCE(ap.NAME, a.TO_ADDRESS, 'Contract Deployment') as PROJECT,
+        CASE WHEN is_eth_transfer = 1 THEN 'Native Token Transfer' 
+            ELSE COALESCE(ap.NAME, a.TO_ADDRESS, 'Contract Deployment') 
+        END as PROJECT,
         COUNT(DISTINCT FROM_ADDRESS) AS NUM_WALLETS,
         ROW_NUMBER() OVER (PARTITION BY DATE ORDER BY NUM_WALLETS DESC) as rank
       FROM BUNDLEBEAR.DBT_KOFI.EIP7702_ACTIONS a
@@ -74,7 +78,9 @@ WITH seg_data AS (
       SELECT
         date_trunc('week', BLOCK_DATE) as DATE,
         CHAIN,
-        COALESCE(ap.NAME, a.TO_ADDRESS, 'Contract Deployment') as PROJECT,
+        CASE WHEN is_eth_transfer = 1 THEN 'Native Token Transfer' 
+            ELSE COALESCE(ap.NAME, a.TO_ADDRESS, 'Contract Deployment') 
+        END as PROJECT,
         COUNT(DISTINCT FROM_ADDRESS) AS NUM_WALLETS,
         ROW_NUMBER() OVER (PARTITION BY DATE, CHAIN ORDER BY NUM_WALLETS DESC) as rank
       FROM BUNDLEBEAR.DBT_KOFI.EIP7702_ACTIONS a
@@ -102,7 +108,9 @@ WITH seg_data AS (
     WITH project_counts AS (
       SELECT
         date_trunc('week', BLOCK_DATE) as DATE,
-        COALESCE(ap.NAME, a.TO_ADDRESS, 'Contract Deployment') as PROJECT,
+        CASE WHEN is_eth_transfer = 1 THEN 'Native Token Transfer' 
+            ELSE COALESCE(ap.NAME, a.TO_ADDRESS, 'Contract Deployment') 
+        END as PROJECT,
         COUNT(DISTINCT FROM_ADDRESS) AS NUM_WALLETS,
         ROW_NUMBER() OVER (PARTITION BY DATE ORDER BY NUM_WALLETS DESC) as rank
       FROM BUNDLEBEAR.DBT_KOFI.EIP7702_ACTIONS a
@@ -137,7 +145,9 @@ WITH seg_data AS (
       SELECT
         date_trunc('month', BLOCK_DATE) as DATE,
         CHAIN,
-        COALESCE(ap.NAME, a.TO_ADDRESS, 'Contract Deployment') as PROJECT,
+        CASE WHEN is_eth_transfer = 1 THEN 'Native Token Transfer' 
+            ELSE COALESCE(ap.NAME, a.TO_ADDRESS, 'Contract Deployment') 
+        END as PROJECT,
         COUNT(DISTINCT FROM_ADDRESS) AS NUM_WALLETS,
         ROW_NUMBER() OVER (PARTITION BY DATE, CHAIN ORDER BY NUM_WALLETS DESC) as rank
       FROM BUNDLEBEAR.DBT_KOFI.EIP7702_ACTIONS a
@@ -165,7 +175,9 @@ WITH seg_data AS (
     WITH project_counts AS (
       SELECT
         date_trunc('month', BLOCK_DATE) as DATE,
-        COALESCE(ap.NAME, a.TO_ADDRESS, 'Contract Deployment') as PROJECT,
+        CASE WHEN is_eth_transfer = 1 THEN 'Native Token Transfer' 
+            ELSE COALESCE(ap.NAME, a.TO_ADDRESS, 'Contract Deployment') 
+        END as PROJECT,
         COUNT(DISTINCT FROM_ADDRESS) AS NUM_WALLETS,
         ROW_NUMBER() OVER (PARTITION BY DATE ORDER BY NUM_WALLETS DESC) as rank
       FROM BUNDLEBEAR.DBT_KOFI.EIP7702_ACTIONS a
