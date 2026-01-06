@@ -9,7 +9,7 @@ WITH day_all AS (
     SELECT
         date_trunc('day', BLOCK_TIME) AS DATE,
         CHAIN,
-        COUNT(DISTINCT OP_HASH) AS NUM_USEROPS_ALL
+        COUNT(OP_HASH) AS NUM_USEROPS_ALL
     FROM BUNDLEBEAR.DBT_KOFI.ERC4337_ALL_USEROPS
     WHERE
         {% if is_incremental() %}
@@ -25,7 +25,7 @@ day_eip AS (
     SELECT
         date_trunc('day', BLOCK_TIME) AS DATE,
         CHAIN,
-        COUNT(DISTINCT OP_HASH) AS NUM_USEROPS_EIP
+        COUNT(OP_HASH) AS NUM_USEROPS_EIP
     FROM BUNDLEBEAR.DBT_KOFI.EIP7702_ACTIONS
     WHERE TYPE = 'erc-4337 userop'
         AND
@@ -69,7 +69,7 @@ week_all AS (
     SELECT
         date_trunc('week', BLOCK_TIME) AS DATE,
         CHAIN,
-        COUNT(DISTINCT OP_HASH) AS NUM_USEROPS_ALL
+        COUNT(OP_HASH) AS NUM_USEROPS_ALL
     FROM BUNDLEBEAR.DBT_KOFI.ERC4337_ALL_USEROPS
     WHERE
         {% if is_incremental() %}
@@ -85,7 +85,7 @@ week_eip AS (
     SELECT
         date_trunc('week', BLOCK_TIME) AS DATE,
         CHAIN,
-        COUNT(DISTINCT OP_HASH) AS NUM_USEROPS_EIP
+        COUNT(OP_HASH) AS NUM_USEROPS_EIP
     FROM BUNDLEBEAR.DBT_KOFI.EIP7702_ACTIONS
     WHERE TYPE = 'erc-4337 userop'
         AND
@@ -129,7 +129,7 @@ month_all AS (
     SELECT
         date_trunc('month', BLOCK_TIME) AS DATE,
         CHAIN,
-        COUNT(DISTINCT OP_HASH) AS NUM_USEROPS_ALL
+        COUNT(OP_HASH) AS NUM_USEROPS_ALL
     FROM BUNDLEBEAR.DBT_KOFI.ERC4337_ALL_USEROPS
     WHERE
         {% if is_incremental() %}
@@ -145,7 +145,7 @@ month_eip AS (
     SELECT
         date_trunc('month', BLOCK_TIME) AS DATE,
         CHAIN,
-        COUNT(DISTINCT OP_HASH) AS NUM_USEROPS_EIP
+        COUNT(OP_HASH) AS NUM_USEROPS_EIP
     FROM BUNDLEBEAR.DBT_KOFI.EIP7702_ACTIONS
     WHERE TYPE = 'erc-4337 userop'
         AND
