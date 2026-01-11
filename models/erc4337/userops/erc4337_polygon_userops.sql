@@ -50,7 +50,7 @@ with op as (
             {% if is_incremental() %}
             AND t.BLOCK_TIMESTAMP >= CURRENT_TIMESTAMP() - interval '3 day' 
             {% endif %}            
-            AND ARRAY_SIZE(split(t.TRACE_ADDRESS, ',')) > 3
+            AND ARRAY_SIZE(split(t.TRACE_ADDRESS, ',')) >= 3
             AND t.CALL_TYPE != 'delegatecall'
     )
     
