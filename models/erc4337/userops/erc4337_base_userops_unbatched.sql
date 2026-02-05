@@ -6,13 +6,7 @@
 }}
 
 with op as (
-    with cbaccounts as (
-        SELECT account_address
-        FROM {{ ref('erc4337_base_account_deployments') }}
-        WHERE factory_name = 'coinbase_smart_wallet'
-    )
-
-    , base as (
+    with base as (
         SELECT 
             op.sender
             , op.paymaster
@@ -24,8 +18,6 @@ with op as (
             , tx.FROM_ADDRESS as bundler
             , op.executeCall
         FROM {{ ref('erc4337_base_entrypoint_call_innerhandleop') }} op
-        INNER JOIN cbaccounts cb
-            ON cb.account_address = op.sender
         INNER JOIN {{ source('base_raw', 'transactions') }} tx 
             ON op.block_time = tx.BLOCK_TIMESTAMP AND op.tx_hash = tx.HASH
             {% if is_incremental() %}
@@ -52,7 +44,7 @@ with op as (
             ON b.block_time = t.BLOCK_TIMESTAMP
             AND b.tx_hash = t.TRANSACTION_HASH
             AND b.sender = t.FROM_ADDRESS
-            AND split(b.call_trace_address, ',')[0] = split(t.TRACE_ADDRESS, ',')[0] 
+            AND split(b.call_trace_address, ',')[1] = split(t.TRACE_ADDRESS, ',')[1] 
             {% if not is_incremental() %}
             AND t.BLOCK_TIMESTAMP >= to_timestamp('2023-07-01', 'yyyy-MM-dd') 
             {% endif %}
