@@ -44,7 +44,7 @@ with op as (
             ON b.block_time = t.BLOCK_TIMESTAMP
             AND b.tx_hash = t.TRANSACTION_HASH
             AND b.sender = t.FROM_ADDRESS
-            AND split(b.call_trace_address, ',')[1] = split(t.TRACE_ADDRESS, ',')[1] 
+            AND split(b.call_trace_address, ',')[0] = split(t.TRACE_ADDRESS, ',')[0] 
             {% if not is_incremental() %}
             AND t.BLOCK_TIMESTAMP >= to_timestamp('2023-07-01', 'yyyy-MM-dd') 
             {% endif %}
