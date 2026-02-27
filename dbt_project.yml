@@ -35,3 +35,4 @@ models:
   bundlebear:
     # All files under models/ automatically materialized as tables
     +materialized: view
+    # +snowflake_warehouse: "FASTER"
