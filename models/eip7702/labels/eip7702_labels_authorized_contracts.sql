@@ -132,5 +132,5 @@ FROM (VALUES
 
 ('Multicall3', '0xca11bde05977b3631167028862be2a173976ca11'),
 ('Festify',    '0xc0d6774c6eafb48dd48d7e39de25d1ddbce1d689'),
-('Rainbow Wallet', '0x612373d7003d694220f7800eeaf8e3924c0951d3')
+('Rainbow', '0x612373d7003d694220f7800eeaf8e3924c0951d3')
 ) AS x (name, address)
