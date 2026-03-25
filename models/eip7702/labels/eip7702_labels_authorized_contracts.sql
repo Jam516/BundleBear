@@ -131,5 +131,6 @@ FROM (VALUES
 ('Crime', '0x8eac07ec5c61138c5472616e39ccb176ca068c25'),
 
 ('Multicall3', '0xca11bde05977b3631167028862be2a173976ca11'),
-('Festify',    '0xc0d6774c6eafb48dd48d7e39de25d1ddbce1d689')
+('Festify',    '0xc0d6774c6eafb48dd48d7e39de25d1ddbce1d689'),
+('Rainbow', '0x612373d7003d694220f7800eeaf8e3924c0951d3')
 ) AS x (name, address)
