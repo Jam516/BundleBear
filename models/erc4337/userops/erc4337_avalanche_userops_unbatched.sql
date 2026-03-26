@@ -33,8 +33,8 @@ with op as (
             AND op.block_time >= CURRENT_TIMESTAMP() - interval '3 day' 
             {% endif %}
         {% if not is_incremental() %}
-        WHERE tx.BLOCK_TIMESTAMP >= to_timestamp('2023-01-27', 'yyyy-MM-dd') -- first mainnet entrypoint live
-        AND op.block_time >= to_timestamp('2023-01-27', 'yyyy-MM-dd')
+        WHERE tx.BLOCK_TIMESTAMP >= to_timestamp('2024-04-01', 'yyyy-MM-dd') -- first mainnet entrypoint live
+        AND op.block_time >= to_timestamp('2024-04-01', 'yyyy-MM-dd')
         {% endif %}
     )
 
@@ -51,7 +51,7 @@ with op as (
             AND b.sender = t.FROM_ADDRESS
             AND split(b.call_trace_address, ',')[0] = split(t.TRACE_ADDRESS, ',')[0] 
             {% if not is_incremental() %}
-            AND t.BLOCK_TIMESTAMP >= to_timestamp('2023-01-27', 'yyyy-MM-dd') 
+            AND t.BLOCK_TIMESTAMP >= to_timestamp('2024-04-01', 'yyyy-MM-dd') 
             {% endif %}
             {% if is_incremental() %}
             AND t.BLOCK_TIMESTAMP >= CURRENT_TIMESTAMP() - interval '3 day' 
