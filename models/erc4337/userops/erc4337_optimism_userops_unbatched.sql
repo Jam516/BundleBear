@@ -1,7 +1,6 @@
 {{ config
 (
-    materialized = 'incremental',
-    unique_key = ['op_hash', 'tx_hash']
+    materialized = 'incremental'
 )
 }}
 
