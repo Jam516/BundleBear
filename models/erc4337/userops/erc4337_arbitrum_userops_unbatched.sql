@@ -42,7 +42,6 @@ with op as (
              , t.TO_ADDRESS
              , t.INPUT
              , t.TRACE_ADDRESS
-             , row_number() over (partition by b.sender, call_trace_address, tx_hash order by t.TRACE_ADDRESS asc) as first_call
         FROM base b
         INNER JOIN {{ source('arbitrum_raw', 'traces') }} t
             ON b.block_time = t.BLOCK_TIMESTAMP
