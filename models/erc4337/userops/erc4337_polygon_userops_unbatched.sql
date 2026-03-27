@@ -1,7 +1,6 @@
 {{ config
 (
-    materialized = 'incremental',
-    unique_key = ['op_hash', 'tx_hash']
+    materialized = 'incremental'
 )
 }}
 
@@ -43,7 +42,6 @@ with op as (
              , t.TO_ADDRESS
              , t.INPUT
              , t.TRACE_ADDRESS
-             , row_number() over (partition by b.sender, call_trace_address, tx_hash order by t.TRACE_ADDRESS asc) as first_call
         FROM base b
         INNER JOIN {{ source('polygon_raw', 'traces') }} t
             ON b.block_time = t.BLOCK_TIMESTAMP
