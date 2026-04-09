@@ -1,7 +1,8 @@
 {{ config
 (
-    materialized = 'table',
-    copy_grants=true
+    materialized = 'incremental',
+    copy_grants=true,
+    unique_key = ['date', 'timeframe', 'chain', 'bundler_name']
 )
 }}
 
@@ -13,7 +14,11 @@ WITH day_metrics AS (
     BUNDLER_NAME,
     SUM(BUNDLER_REVENUE_USD) AS REVENUE
     FROM BUNDLEBEAR.DBT_KOFI.ERC4337_ALL_ENTRYPOINT_TRANSACTIONS
+    {% if is_incremental() %}
+    WHERE BLOCK_TIME >= DATE_TRUNC('day', CURRENT_DATE()) - INTERVAL '3 day'
+    {% else %}
     WHERE BLOCK_TIME > DATE_TRUNC('month', CURRENT_DATE()) - INTERVAL '24 months'
+    {% endif %}
     AND BUNDLER_REVENUE_USD != 'NaN'
     AND BUNDLER_REVENUE_USD < 1000000
     GROUP BY 1,2,3,4
@@ -26,7 +31,11 @@ WITH day_metrics AS (
     BUNDLER_NAME,
     SUM(BUNDLER_REVENUE_USD) AS REVENUE
     FROM BUNDLEBEAR.DBT_KOFI.ERC4337_ALL_ENTRYPOINT_TRANSACTIONS
+    {% if is_incremental() %}
+    WHERE BLOCK_TIME >= DATE_TRUNC('day', CURRENT_DATE()) - INTERVAL '3 day'
+    {% else %}
     WHERE BLOCK_TIME > DATE_TRUNC('month', CURRENT_DATE()) - INTERVAL '24 months'
+    {% endif %}
     AND BUNDLER_REVENUE_USD != 'NaN'
     AND BUNDLER_REVENUE_USD < 1000000
     GROUP BY 1,2,3,4
@@ -40,7 +49,11 @@ WITH day_metrics AS (
     BUNDLER_NAME,
     SUM(BUNDLER_REVENUE_USD) AS REVENUE
     FROM BUNDLEBEAR.DBT_KOFI.ERC4337_ALL_ENTRYPOINT_TRANSACTIONS
+    {% if is_incremental() %}
+    WHERE BLOCK_TIME >= DATE_TRUNC('week', CURRENT_DATE()) - INTERVAL '3 week'
+    {% else %}
     WHERE BLOCK_TIME > DATE_TRUNC('month', CURRENT_DATE()) - INTERVAL '24 months'
+    {% endif %}
     AND BUNDLER_REVENUE_USD != 'NaN'
     AND BUNDLER_REVENUE_USD < 1000000
     GROUP BY 1,2,3,4
@@ -53,7 +66,11 @@ WITH day_metrics AS (
     BUNDLER_NAME,
     SUM(BUNDLER_REVENUE_USD) AS REVENUE
     FROM BUNDLEBEAR.DBT_KOFI.ERC4337_ALL_ENTRYPOINT_TRANSACTIONS
+    {% if is_incremental() %}
+    WHERE BLOCK_TIME >= DATE_TRUNC('week', CURRENT_DATE()) - INTERVAL '3 week'
+    {% else %}
     WHERE BLOCK_TIME > DATE_TRUNC('month', CURRENT_DATE()) - INTERVAL '24 months'
+    {% endif %}
     AND BUNDLER_REVENUE_USD != 'NaN'
     AND BUNDLER_REVENUE_USD < 1000000
     GROUP BY 1,2,3,4
@@ -67,7 +84,11 @@ WITH day_metrics AS (
     BUNDLER_NAME,
     SUM(BUNDLER_REVENUE_USD) AS REVENUE
     FROM BUNDLEBEAR.DBT_KOFI.ERC4337_ALL_ENTRYPOINT_TRANSACTIONS
+    {% if is_incremental() %}
+    WHERE BLOCK_TIME >= DATE_TRUNC('month', CURRENT_DATE()) - INTERVAL '3 month'
+    {% else %}
     WHERE BLOCK_TIME > DATE_TRUNC('month', CURRENT_DATE()) - INTERVAL '24 months'
+    {% endif %}
     AND BUNDLER_REVENUE_USD != 'NaN'
     AND BUNDLER_REVENUE_USD < 1000000
     GROUP BY 1,2,3,4
@@ -80,7 +101,11 @@ WITH day_metrics AS (
     BUNDLER_NAME,
     SUM(BUNDLER_REVENUE_USD) AS REVENUE
     FROM BUNDLEBEAR.DBT_KOFI.ERC4337_ALL_ENTRYPOINT_TRANSACTIONS
+    {% if is_incremental() %}
+    WHERE BLOCK_TIME >= DATE_TRUNC('month', CURRENT_DATE()) - INTERVAL '3 month'
+    {% else %}
     WHERE BLOCK_TIME > DATE_TRUNC('month', CURRENT_DATE()) - INTERVAL '24 months'
+    {% endif %}
     AND BUNDLER_REVENUE_USD != 'NaN'
     AND BUNDLER_REVENUE_USD < 1000000
     GROUP BY 1,2,3,4

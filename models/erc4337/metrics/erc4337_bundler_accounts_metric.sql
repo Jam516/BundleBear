@@ -1,7 +1,8 @@
 {{ config
 (
-    materialized = 'table',
-    copy_grants=true
+    materialized = 'incremental',
+    copy_grants=true,
+    unique_key = ['date', 'timeframe', 'chain', 'bundler_name']
 )
 }}
 
@@ -13,7 +14,13 @@ WITH day_metrics AS (
     BUNDLER_NAME,
     COUNT(DISTINCT SENDER) AS NUM_ACCOUNTS
     FROM BUNDLEBEAR.DBT_KOFI.ERC4337_ALL_USEROPS
+    {% if is_incremental() %}
+    WHERE BLOCK_TIME >= DATE_TRUNC('day', CURRENT_DATE()) - INTERVAL '3 day'
+    AND BLOCK_TIME < DATE_TRUNC('day', CURRENT_DATE())
+    {% else %}
     WHERE BLOCK_TIME > DATE_TRUNC('month', CURRENT_DATE()) - INTERVAL '24 months'
+    AND BLOCK_TIME < DATE_TRUNC('day', CURRENT_DATE())
+    {% endif %}
     GROUP BY 1,2,3,4
 
     UNION ALL
@@ -24,7 +31,13 @@ WITH day_metrics AS (
     BUNDLER_NAME,
     COUNT(DISTINCT SENDER) AS NUM_ACCOUNTS
     FROM BUNDLEBEAR.DBT_KOFI.ERC4337_ALL_USEROPS
+    {% if is_incremental() %}
+    WHERE BLOCK_TIME >= DATE_TRUNC('day', CURRENT_DATE()) - INTERVAL '3 day'
+    AND BLOCK_TIME < DATE_TRUNC('day', CURRENT_DATE())
+    {% else %}
     WHERE BLOCK_TIME > DATE_TRUNC('month', CURRENT_DATE()) - INTERVAL '24 months'
+    AND BLOCK_TIME < DATE_TRUNC('day', CURRENT_DATE())
+    {% endif %}
     GROUP BY 1,2,3,4
 )
 
@@ -36,7 +49,13 @@ WITH day_metrics AS (
     BUNDLER_NAME,
     COUNT(DISTINCT SENDER) AS NUM_ACCOUNTS
     FROM BUNDLEBEAR.DBT_KOFI.ERC4337_ALL_USEROPS
+    {% if is_incremental() %}
+    WHERE BLOCK_TIME >= DATE_TRUNC('week', CURRENT_DATE()) - INTERVAL '3 week'
+    AND BLOCK_TIME < DATE_TRUNC('week', CURRENT_DATE())
+    {% else %}
     WHERE BLOCK_TIME > DATE_TRUNC('month', CURRENT_DATE()) - INTERVAL '24 months'
+    AND BLOCK_TIME < DATE_TRUNC('week', CURRENT_DATE())
+    {% endif %}
     GROUP BY 1,2,3,4
 
     UNION ALL
@@ -47,7 +66,13 @@ WITH day_metrics AS (
     BUNDLER_NAME,
     COUNT(DISTINCT SENDER) AS NUM_ACCOUNTS
     FROM BUNDLEBEAR.DBT_KOFI.ERC4337_ALL_USEROPS
+    {% if is_incremental() %}
+    WHERE BLOCK_TIME >= DATE_TRUNC('week', CURRENT_DATE()) - INTERVAL '3 week'
+    AND BLOCK_TIME < DATE_TRUNC('week', CURRENT_DATE())
+    {% else %}
     WHERE BLOCK_TIME > DATE_TRUNC('month', CURRENT_DATE()) - INTERVAL '24 months'
+    AND BLOCK_TIME < DATE_TRUNC('week', CURRENT_DATE())
+    {% endif %}
     GROUP BY 1,2,3,4
 )
 
@@ -59,7 +84,13 @@ WITH day_metrics AS (
     BUNDLER_NAME,
     COUNT(DISTINCT SENDER) AS NUM_ACCOUNTS
     FROM BUNDLEBEAR.DBT_KOFI.ERC4337_ALL_USEROPS
+    {% if is_incremental() %}
+    WHERE BLOCK_TIME >= DATE_TRUNC('month', CURRENT_DATE()) - INTERVAL '3 month'
+    AND BLOCK_TIME < DATE_TRUNC('month', CURRENT_DATE())
+    {% else %}
     WHERE BLOCK_TIME > DATE_TRUNC('month', CURRENT_DATE()) - INTERVAL '24 months'
+    AND BLOCK_TIME < DATE_TRUNC('month', CURRENT_DATE())
+    {% endif %}
     GROUP BY 1,2,3,4
 
     UNION ALL
@@ -70,7 +101,13 @@ WITH day_metrics AS (
     BUNDLER_NAME,
     COUNT(DISTINCT SENDER) AS NUM_ACCOUNTS
     FROM BUNDLEBEAR.DBT_KOFI.ERC4337_ALL_USEROPS
+    {% if is_incremental() %}
+    WHERE BLOCK_TIME >= DATE_TRUNC('month', CURRENT_DATE()) - INTERVAL '3 month'
+    AND BLOCK_TIME < DATE_TRUNC('month', CURRENT_DATE())
+    {% else %}
     WHERE BLOCK_TIME > DATE_TRUNC('month', CURRENT_DATE()) - INTERVAL '24 months'
+    AND BLOCK_TIME < DATE_TRUNC('month', CURRENT_DATE())
+    {% endif %}
     GROUP BY 1,2,3,4
 )
 

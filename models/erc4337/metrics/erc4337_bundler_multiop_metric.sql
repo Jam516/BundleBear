@@ -1,7 +1,8 @@
 {{ config
 (
-    materialized = 'table',
-    copy_grants=true
+    materialized = 'incremental',
+    copy_grants=true,
+    unique_key = ['date', 'timeframe', 'chain']
 )
 }}
 
@@ -12,7 +13,11 @@ WITH day_metrics AS (
     'day' AS TIMEFRAME,
     100*COALESCE(SUM(CASE WHEN NUM_USEROPS > 1 THEN 1 ELSE 0 END) / COUNT(*), 0) as pct_multi_userop
     FROM BUNDLEBEAR.DBT_KOFI.ERC4337_ALL_ENTRYPOINT_TRANSACTIONS
+    {% if is_incremental() %}
+    WHERE BLOCK_TIME >= DATE_TRUNC('day', CURRENT_DATE()) - INTERVAL '3 day'
+    {% else %}
     WHERE BLOCK_TIME > DATE_TRUNC('month', CURRENT_DATE()) - INTERVAL '24 months'
+    {% endif %}
     GROUP BY 1,2,3
 
     UNION ALL
@@ -22,7 +27,11 @@ WITH day_metrics AS (
     'day' AS TIMEFRAME,
     100*COALESCE(SUM(CASE WHEN NUM_USEROPS > 1 THEN 1 ELSE 0 END) / COUNT(*), 0) as pct_multi_userop
     FROM BUNDLEBEAR.DBT_KOFI.ERC4337_ALL_ENTRYPOINT_TRANSACTIONS
+    {% if is_incremental() %}
+    WHERE BLOCK_TIME >= DATE_TRUNC('day', CURRENT_DATE()) - INTERVAL '3 day'
+    {% else %}
     WHERE BLOCK_TIME > DATE_TRUNC('month', CURRENT_DATE()) - INTERVAL '24 months'
+    {% endif %}
     GROUP BY 1,2,3
 )
 
@@ -33,7 +42,11 @@ WITH day_metrics AS (
     'week' AS TIMEFRAME,
     100*COALESCE(SUM(CASE WHEN NUM_USEROPS > 1 THEN 1 ELSE 0 END) / COUNT(*), 0) as pct_multi_userop
     FROM BUNDLEBEAR.DBT_KOFI.ERC4337_ALL_ENTRYPOINT_TRANSACTIONS
+    {% if is_incremental() %}
+    WHERE BLOCK_TIME >= DATE_TRUNC('week', CURRENT_DATE()) - INTERVAL '3 week'
+    {% else %}
     WHERE BLOCK_TIME > DATE_TRUNC('month', CURRENT_DATE()) - INTERVAL '24 months'
+    {% endif %}
     GROUP BY 1,2,3
 
     UNION ALL
@@ -43,7 +56,11 @@ WITH day_metrics AS (
     'week' AS TIMEFRAME,
     100*COALESCE(SUM(CASE WHEN NUM_USEROPS > 1 THEN 1 ELSE 0 END) / COUNT(*), 0) as pct_multi_userop
     FROM BUNDLEBEAR.DBT_KOFI.ERC4337_ALL_ENTRYPOINT_TRANSACTIONS
+    {% if is_incremental() %}
+    WHERE BLOCK_TIME >= DATE_TRUNC('week', CURRENT_DATE()) - INTERVAL '3 week'
+    {% else %}
     WHERE BLOCK_TIME > DATE_TRUNC('month', CURRENT_DATE()) - INTERVAL '24 months'
+    {% endif %}
     GROUP BY 1,2,3
 )
 
@@ -54,7 +71,11 @@ WITH day_metrics AS (
     'month' AS TIMEFRAME,
     100*COALESCE(SUM(CASE WHEN NUM_USEROPS > 1 THEN 1 ELSE 0 END) / COUNT(*), 0) as pct_multi_userop
     FROM BUNDLEBEAR.DBT_KOFI.ERC4337_ALL_ENTRYPOINT_TRANSACTIONS
+    {% if is_incremental() %}
+    WHERE BLOCK_TIME >= DATE_TRUNC('month', CURRENT_DATE()) - INTERVAL '3 month'
+    {% else %}
     WHERE BLOCK_TIME > DATE_TRUNC('month', CURRENT_DATE()) - INTERVAL '24 months'
+    {% endif %}
     GROUP BY 1,2,3
 
     UNION ALL
@@ -64,7 +85,11 @@ WITH day_metrics AS (
     'month' AS TIMEFRAME,
     100*COALESCE(SUM(CASE WHEN NUM_USEROPS > 1 THEN 1 ELSE 0 END) / COUNT(*), 0) as pct_multi_userop
     FROM BUNDLEBEAR.DBT_KOFI.ERC4337_ALL_ENTRYPOINT_TRANSACTIONS
+    {% if is_incremental() %}
+    WHERE BLOCK_TIME >= DATE_TRUNC('month', CURRENT_DATE()) - INTERVAL '3 month'
+    {% else %}
     WHERE BLOCK_TIME > DATE_TRUNC('month', CURRENT_DATE()) - INTERVAL '24 months'
+    {% endif %}
     GROUP BY 1,2,3
 )
 
