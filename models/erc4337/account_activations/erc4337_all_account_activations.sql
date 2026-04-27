@@ -6,7 +6,7 @@
 )
 }}
 
-SELECT
+SELECT DISTINCT
     DATE_TRUNC('day', u.BLOCK_TIME) AS DATE,
     u.CHAIN,
     CASE 
