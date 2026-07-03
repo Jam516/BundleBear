@@ -37,6 +37,7 @@ FROM (VALUES
 ('Coinbase Wallet', '0x7702cb554e6bfb442cb743a7df23154544a7176c'),
 ('Fireblocks', '0x0000fb7702036ff9f76044a501ac1aa74cbab16b'),
 ('TokenPocket', '0xcc0c946eecf01a4bc76bc333ea74ceb04756f17b'),
+('TokenPocket', '0x7a956fd329d0c616f2d1dde98bb35694f397df46'),
 ('Cordial', '0x7785a22facd31db653ba4928f1d5b81d093f0b2f'),
 ('Dfns', '0xcea43594f38316f0e01c161d8dabde0a07a1f512'),
 ('Otim', '0x23e5f9c457a69ce776d20a8fe812a6701d66fce8'),
