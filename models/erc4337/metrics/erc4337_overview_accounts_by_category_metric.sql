@@ -1,7 +1,8 @@
 {{ config
 (
-    materialized = 'table',
-    copy_grants=true
+    materialized = 'incremental',
+    copy_grants=true,
+    unique_key = ['date', 'timeframe', 'chain', 'category']
 )
 }}
 
@@ -22,7 +23,11 @@ WITH day_metrics AS (
         SENDER,
         count(OP_HASH) AS NUM_OPS
         FROM BUNDLEBEAR.DBT_KOFI.ERC4337_ALL_USEROPS
+        {% if is_incremental() %}
+        WHERE BLOCK_TIME >= DATE_TRUNC('day', CURRENT_DATE()) - INTERVAL '3 day'
+        {% else %}
         WHERE BLOCK_TIME > DATE_TRUNC('month', CURRENT_DATE()) - INTERVAL '24 months'
+        {% endif %}
         GROUP BY 1,2,3
     )
     GROUP BY 1,2,3,4
@@ -43,7 +48,11 @@ WITH day_metrics AS (
         SENDER,
         count(OP_HASH) AS NUM_OPS
         FROM BUNDLEBEAR.DBT_KOFI.ERC4337_ALL_USEROPS
+        {% if is_incremental() %}
+        WHERE BLOCK_TIME >= DATE_TRUNC('day', CURRENT_DATE()) - INTERVAL '3 day'
+        {% else %}
         WHERE BLOCK_TIME > DATE_TRUNC('month', CURRENT_DATE()) - INTERVAL '24 months'
+        {% endif %}
         GROUP BY 1,2
     )
     GROUP BY 1,2,3,4
@@ -66,7 +75,11 @@ WITH day_metrics AS (
         SENDER,
         count(OP_HASH) AS NUM_OPS
         FROM BUNDLEBEAR.DBT_KOFI.ERC4337_ALL_USEROPS
+        {% if is_incremental() %}
+        WHERE BLOCK_TIME >= DATE_TRUNC('week', CURRENT_DATE()) - INTERVAL '3 week'
+        {% else %}
         WHERE BLOCK_TIME > DATE_TRUNC('month', CURRENT_DATE()) - INTERVAL '24 months'
+        {% endif %}
         GROUP BY 1,2,3
     )
     GROUP BY 1,2,3,4
@@ -87,7 +100,11 @@ WITH day_metrics AS (
         SENDER,
         count(OP_HASH) AS NUM_OPS
         FROM BUNDLEBEAR.DBT_KOFI.ERC4337_ALL_USEROPS
+        {% if is_incremental() %}
+        WHERE BLOCK_TIME >= DATE_TRUNC('week', CURRENT_DATE()) - INTERVAL '3 week'
+        {% else %}
         WHERE BLOCK_TIME > DATE_TRUNC('month', CURRENT_DATE()) - INTERVAL '24 months'
+        {% endif %}
         GROUP BY 1,2
     )
     GROUP BY 1,2,3,4
@@ -110,7 +127,11 @@ WITH day_metrics AS (
         SENDER,
         count(OP_HASH) AS NUM_OPS
         FROM BUNDLEBEAR.DBT_KOFI.ERC4337_ALL_USEROPS
+        {% if is_incremental() %}
+        WHERE BLOCK_TIME >= DATE_TRUNC('month', CURRENT_DATE()) - INTERVAL '3 month'
+        {% else %}
         WHERE BLOCK_TIME > DATE_TRUNC('month', CURRENT_DATE()) - INTERVAL '24 months'
+        {% endif %}
         GROUP BY 1,2,3
     )
     GROUP BY 1,2,3,4
@@ -131,7 +152,11 @@ WITH day_metrics AS (
         SENDER,
         count(OP_HASH) AS NUM_OPS
         FROM BUNDLEBEAR.DBT_KOFI.ERC4337_ALL_USEROPS
+        {% if is_incremental() %}
+        WHERE BLOCK_TIME >= DATE_TRUNC('month', CURRENT_DATE()) - INTERVAL '3 month'
+        {% else %}
         WHERE BLOCK_TIME > DATE_TRUNC('month', CURRENT_DATE()) - INTERVAL '24 months'
+        {% endif %}
         GROUP BY 1,2
     )
     GROUP BY 1,2,3,4

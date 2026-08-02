@@ -1,7 +1,8 @@
 {{ config
 (
-    materialized = 'table',
-    copy_grants=true
+    materialized = 'incremental',
+    copy_grants=true,
+    unique_key = ['date', 'timeframe', 'chain']
 )
 }}
 
@@ -12,6 +13,9 @@ WITH day_metrics AS (
     CHAIN,
     COUNT(DISTINCT tx_hash) as NUM_BUNDLES_FAILED
     FROM BUNDLEBEAR.DBT_KOFI.ERC4337_ALL_FAILED_VALIDATION_OPS
+    {% if is_incremental() %}
+    WHERE BLOCK_TIME >= DATE_TRUNC('day', CURRENT_DATE()) - INTERVAL '3 day'
+    {% endif %}
     GROUP BY 1,2
     ),
     
@@ -21,6 +25,9 @@ WITH day_metrics AS (
     CHAIN,
     COUNT(DISTINCT tx_hash) as NUM_BUNDLES_ALL
     FROM BUNDLEBEAR.DBT_KOFI.ERC4337_ALL_ENTRYPOINT_TRANSACTIONS
+    {% if is_incremental() %}
+    WHERE BLOCK_TIME >= DATE_TRUNC('day', CURRENT_DATE()) - INTERVAL '3 day'
+    {% endif %}
     GROUP BY 1,2
     )
     
@@ -55,6 +62,9 @@ WITH day_metrics AS (
     CHAIN,
     COUNT(DISTINCT tx_hash) as NUM_BUNDLES_FAILED
     FROM BUNDLEBEAR.DBT_KOFI.ERC4337_ALL_FAILED_VALIDATION_OPS
+    {% if is_incremental() %}
+    WHERE BLOCK_TIME >= DATE_TRUNC('week', CURRENT_DATE()) - INTERVAL '3 week'
+    {% endif %}
     GROUP BY 1,2
     ),
     
@@ -64,6 +74,9 @@ WITH day_metrics AS (
     CHAIN,
     COUNT(DISTINCT tx_hash) as NUM_BUNDLES_ALL
     FROM BUNDLEBEAR.DBT_KOFI.ERC4337_ALL_ENTRYPOINT_TRANSACTIONS
+    {% if is_incremental() %}
+    WHERE BLOCK_TIME >= DATE_TRUNC('week', CURRENT_DATE()) - INTERVAL '3 week'
+    {% endif %}
     GROUP BY 1,2
     )
     
@@ -98,6 +111,9 @@ WITH day_metrics AS (
     CHAIN,
     COUNT(DISTINCT tx_hash) as NUM_BUNDLES_FAILED
     FROM BUNDLEBEAR.DBT_KOFI.ERC4337_ALL_FAILED_VALIDATION_OPS
+    {% if is_incremental() %}
+    WHERE BLOCK_TIME >= DATE_TRUNC('month', CURRENT_DATE()) - INTERVAL '3 month'
+    {% endif %}
     GROUP BY 1,2
     ),
     
@@ -107,6 +123,9 @@ WITH day_metrics AS (
     CHAIN,
     COUNT(DISTINCT tx_hash) as NUM_BUNDLES_ALL
     FROM BUNDLEBEAR.DBT_KOFI.ERC4337_ALL_ENTRYPOINT_TRANSACTIONS
+    {% if is_incremental() %}
+    WHERE BLOCK_TIME >= DATE_TRUNC('month', CURRENT_DATE()) - INTERVAL '3 month'
+    {% endif %}
     GROUP BY 1,2
     )
     

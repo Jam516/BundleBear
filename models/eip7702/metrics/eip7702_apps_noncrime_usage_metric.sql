@@ -1,7 +1,8 @@
 {{ config
 (
-    materialized = 'table',
-    copy_grants=true
+    materialized = 'incremental',
+    copy_grants=true,
+    unique_key = ['date', 'timeframe', 'chain', 'project']
 )
 }}
 
@@ -19,7 +20,11 @@ WITH seg_data AS (
         ON a.AUTHORIZED_CONTRACT = l.ADDRESS
       LEFT JOIN BUNDLEBEAR.DBT_KOFI.EIP7702_LABELS_APPS ap 
         ON ap.ADDRESS = a.TO_ADDRESS
+      {% if is_incremental() %}
+      WHERE BLOCK_TIME >= DATE_TRUNC('day', CURRENT_DATE()) - INTERVAL '3 day'
+      {% else %}
       WHERE BLOCK_TIME > DATE_TRUNC('month', CURRENT_DATE()) - INTERVAL '6 months'
+      {% endif %}
         AND BLOCK_TIME < date_trunc('day', CURRENT_DATE())
         AND (l.NAME IS NULL OR l.NAME NOT LIKE '%Crime%')
       GROUP BY 1, 2, 3
@@ -48,7 +53,11 @@ WITH seg_data AS (
         ON a.AUTHORIZED_CONTRACT = l.ADDRESS
       LEFT JOIN BUNDLEBEAR.DBT_KOFI.EIP7702_LABELS_APPS ap 
         ON ap.ADDRESS = a.TO_ADDRESS
+      {% if is_incremental() %}
+      WHERE BLOCK_TIME >= DATE_TRUNC('day', CURRENT_DATE()) - INTERVAL '3 day'
+      {% else %}
       WHERE BLOCK_TIME > DATE_TRUNC('month', CURRENT_DATE()) - INTERVAL '6 months'
+      {% endif %}
         AND BLOCK_TIME < date_trunc('day', CURRENT_DATE())
         AND (l.NAME IS NULL OR l.NAME NOT LIKE '%Crime%')
       GROUP BY 1, 2
@@ -84,7 +93,11 @@ WITH seg_data AS (
         ON a.AUTHORIZED_CONTRACT = l.ADDRESS
       LEFT JOIN BUNDLEBEAR.DBT_KOFI.EIP7702_LABELS_APPS ap 
         ON ap.ADDRESS = a.TO_ADDRESS
+      {% if is_incremental() %}
+      WHERE BLOCK_TIME >= DATE_TRUNC('week', CURRENT_DATE()) - INTERVAL '3 week'
+      {% else %}
       WHERE BLOCK_TIME > DATE_TRUNC('month', CURRENT_DATE()) - INTERVAL '6 months'
+      {% endif %}
         AND BLOCK_TIME < date_trunc('week', CURRENT_DATE())
         AND (l.NAME IS NULL OR l.NAME NOT LIKE '%Crime%')
       GROUP BY 1, 2, 3
@@ -113,7 +126,11 @@ WITH seg_data AS (
         ON a.AUTHORIZED_CONTRACT = l.ADDRESS
       LEFT JOIN BUNDLEBEAR.DBT_KOFI.EIP7702_LABELS_APPS ap 
         ON ap.ADDRESS = a.TO_ADDRESS
+      {% if is_incremental() %}
+      WHERE BLOCK_TIME >= DATE_TRUNC('week', CURRENT_DATE()) - INTERVAL '3 week'
+      {% else %}
       WHERE BLOCK_TIME > DATE_TRUNC('month', CURRENT_DATE()) - INTERVAL '6 months'
+      {% endif %}
         AND BLOCK_TIME < date_trunc('week', CURRENT_DATE())
         AND (l.NAME IS NULL OR l.NAME NOT LIKE '%Crime%')
       GROUP BY 1, 2
@@ -149,7 +166,11 @@ WITH seg_data AS (
         ON a.AUTHORIZED_CONTRACT = l.ADDRESS
       LEFT JOIN BUNDLEBEAR.DBT_KOFI.EIP7702_LABELS_APPS ap 
         ON ap.ADDRESS = a.TO_ADDRESS
+      {% if is_incremental() %}
+      WHERE BLOCK_TIME >= DATE_TRUNC('month', CURRENT_DATE()) - INTERVAL '3 month'
+      {% else %}
       WHERE BLOCK_TIME > DATE_TRUNC('month', CURRENT_DATE()) - INTERVAL '6 months'
+      {% endif %}
         AND BLOCK_TIME < date_trunc('month', CURRENT_DATE())
         AND (l.NAME IS NULL OR l.NAME NOT LIKE '%Crime%')
       GROUP BY 1, 2, 3
@@ -178,7 +199,11 @@ WITH seg_data AS (
         ON a.AUTHORIZED_CONTRACT = l.ADDRESS
       LEFT JOIN BUNDLEBEAR.DBT_KOFI.EIP7702_LABELS_APPS ap 
         ON ap.ADDRESS = a.TO_ADDRESS
+      {% if is_incremental() %}
+      WHERE BLOCK_TIME >= DATE_TRUNC('month', CURRENT_DATE()) - INTERVAL '3 month'
+      {% else %}
       WHERE BLOCK_TIME > DATE_TRUNC('month', CURRENT_DATE()) - INTERVAL '6 months'
+      {% endif %}
         AND BLOCK_TIME < date_trunc('month', CURRENT_DATE())
         AND (l.NAME IS NULL OR l.NAME NOT LIKE '%Crime%')
       GROUP BY 1, 2

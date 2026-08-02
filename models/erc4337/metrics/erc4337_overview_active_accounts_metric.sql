@@ -1,7 +1,8 @@
 {{ config
 (
-    materialized = 'table',
-    copy_grants=true
+    materialized = 'incremental',
+    copy_grants=true,
+    unique_key = ['date', 'timeframe', 'chain']
 )
 }}
 
@@ -12,7 +13,11 @@ TO_VARCHAR(date_trunc('day', BLOCK_TIME), 'YYYY-MM-DD') as DATE,
 chain,
 COUNT(DISTINCT SENDER) as num_accounts
 FROM BUNDLEBEAR.DBT_KOFI.ERC4337_ALL_USEROPS
+{% if is_incremental() %}
+WHERE BLOCK_TIME >= DATE_TRUNC('day', CURRENT_DATE()) - INTERVAL '3 day'
+{% else %}
 WHERE BLOCK_TIME > DATE_TRUNC('month', CURRENT_DATE()) - INTERVAL '24 months'
+{% endif %}
 GROUP BY 1,2,3
 )
 
@@ -23,7 +28,11 @@ TO_VARCHAR(date_trunc('week', BLOCK_TIME), 'YYYY-MM-DD') as DATE,
 chain,
 COUNT(DISTINCT SENDER) as num_accounts
 FROM BUNDLEBEAR.DBT_KOFI.ERC4337_ALL_USEROPS
+{% if is_incremental() %}
+WHERE BLOCK_TIME >= DATE_TRUNC('week', CURRENT_DATE()) - INTERVAL '3 week'
+{% else %}
 WHERE BLOCK_TIME > DATE_TRUNC('month', CURRENT_DATE()) - INTERVAL '24 months'
+{% endif %}
 GROUP BY 1,2,3
 )
 
@@ -34,7 +43,11 @@ TO_VARCHAR(date_trunc('month', BLOCK_TIME), 'YYYY-MM-DD') as DATE,
 chain,
 COUNT(DISTINCT SENDER) as num_accounts
 FROM BUNDLEBEAR.DBT_KOFI.ERC4337_ALL_USEROPS
+{% if is_incremental() %}
+WHERE BLOCK_TIME >= DATE_TRUNC('month', CURRENT_DATE()) - INTERVAL '3 month'
+{% else %}
 WHERE BLOCK_TIME > DATE_TRUNC('month', CURRENT_DATE()) - INTERVAL '24 months'
+{% endif %}
 GROUP BY 1,2,3
 )
 
