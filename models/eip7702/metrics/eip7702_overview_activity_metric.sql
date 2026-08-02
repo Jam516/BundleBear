@@ -1,7 +1,8 @@
 {{ config
 (
-    materialized = 'table',
-    copy_grants=true
+    materialized = 'incremental',
+    copy_grants=true,
+    unique_key = ['date', 'timeframe', 'chain']
 )
 }}
 
@@ -13,7 +14,12 @@ WITH day_metrics AS (
     COUNT(*) AS NUM_AUTHORIZATIONS,
     COUNT(DISTINCT TX_HASH) AS NUM_SET_CODE_TXNS
     FROM BUNDLEBEAR.DBT_KOFI.EIP7702_ALL_AUTHORIZATIONS
+    {% if is_incremental() %}
+    WHERE BLOCK_DATE >= DATE_TRUNC('day', CURRENT_DATE()) - INTERVAL '3 day'
+    AND BLOCK_DATE < date_trunc('day', CURRENT_DATE())
+    {% else %}
     WHERE BLOCK_DATE < date_trunc('day', CURRENT_DATE())
+    {% endif %}
     GROUP BY 1,2,3
 )
 
@@ -25,7 +31,12 @@ WITH day_metrics AS (
     COUNT(*) AS NUM_AUTHORIZATIONS,
     COUNT(DISTINCT TX_HASH) AS NUM_SET_CODE_TXNS
     FROM BUNDLEBEAR.DBT_KOFI.EIP7702_ALL_AUTHORIZATIONS
+    {% if is_incremental() %}
+    WHERE BLOCK_DATE >= DATE_TRUNC('week', CURRENT_DATE()) - INTERVAL '3 week'
+    AND BLOCK_DATE < date_trunc('week', CURRENT_DATE())
+    {% else %}
     WHERE BLOCK_DATE < date_trunc('week', CURRENT_DATE())
+    {% endif %}
     GROUP BY 1,2,3
 )
 
@@ -37,7 +48,12 @@ WITH day_metrics AS (
     COUNT(*) AS NUM_AUTHORIZATIONS,
     COUNT(DISTINCT TX_HASH) AS NUM_SET_CODE_TXNS
     FROM BUNDLEBEAR.DBT_KOFI.EIP7702_ALL_AUTHORIZATIONS
+    {% if is_incremental() %}
+    WHERE BLOCK_DATE >= DATE_TRUNC('month', CURRENT_DATE()) - INTERVAL '3 month'
+    AND BLOCK_DATE < date_trunc('month', CURRENT_DATE())
+    {% else %}
     WHERE BLOCK_DATE < date_trunc('month', CURRENT_DATE())
+    {% endif %}
     GROUP BY 1,2,3 
 )
 
