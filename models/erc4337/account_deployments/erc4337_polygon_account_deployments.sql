@@ -27,7 +27,8 @@ INNER JOIN {{ source('polygon_raw', 'transactions') }} t
     '0x0000000071727de22e5e9d8baf0edac6f37da032',
     '0x0576a174d229e3cfa37253523e645a78a0c91b57', 
     '0x0f46c65c17aa6b4102046935f33301f0510b163a',
-    '0x4337084d9e255ff0702461cf8895ce9e3b5ff108')
+    '0x4337084d9e255ff0702461cf8895ce9e3b5ff108',
+    '0x433709009b8330fda32311df1c2afa402ed8d009')
     {% if is_incremental() %}
     AND l.BLOCK_TIMESTAMP >= CURRENT_TIMESTAMP() - interval '3 day' 
     AND t.BLOCK_TIMESTAMP >= CURRENT_TIMESTAMP() - interval '3 day' 

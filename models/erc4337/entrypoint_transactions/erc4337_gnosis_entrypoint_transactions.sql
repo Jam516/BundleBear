@@ -21,7 +21,8 @@ with output AS (
         AND t.TO_ADDRESS IN
     ('0x5ff137d4b0fdcd49dca30c7cf57e578a026d2789', 
     '0x0000000071727de22e5e9d8baf0edac6f37da032',
-    '0x4337084d9e255ff0702461cf8895ce9e3b5ff108')
+    '0x4337084d9e255ff0702461cf8895ce9e3b5ff108',
+    '0x433709009b8330fda32311df1c2afa402ed8d009')
         AND LEFT(INPUT,10) IN ('0x1fad948c','0x765e827f')    
         {% if is_incremental() %}
         AND BLOCK_TIMESTAMP >= CURRENT_TIMESTAMP() - interval '3 day' 
